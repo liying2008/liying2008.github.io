@@ -1,0 +1,631 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Android Studio2.2中JNI的简单使用 | duduhuo&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="独毒火">
+    
+
+    
+    <meta name="description" content="方式1：直接创建包含C++支持的项目如下图所示，创建项目时，勾选“Include C++ Support”选项。  方式2：手动引入C++支持在没有勾选“Include C++ Support”选项的情况下，创建出来的项目大致是这样子的（Project视图）：  引入C++支持的步骤： ###1、配置NDK路径在项目节点上点右键，选择“Open Module Settings”。配置Android">
+<meta name="keywords" content="Android,JNI">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android Studio2.2中JNI的简单使用">
+<meta property="og:url" content="/2016/11/27/Android Studio2.2中JNI的简单使用/index.html">
+<meta property="og:site_name" content="duduhuo&#39;s Blog">
+<meta property="og:description" content="方式1：直接创建包含C++支持的项目如下图所示，创建项目时，勾选“Include C++ Support”选项。  方式2：手动引入C++支持在没有勾选“Include C++ Support”选项的情况下，创建出来的项目大致是这样子的（Project视图）：  引入C++支持的步骤： ###1、配置NDK路径在项目节点上点右键，选择“Open Module Settings”。配置Android">
+<meta property="og:image" content="http://img.blog.csdn.net/20161127134708974">
+<meta property="og:image" content="http://img.blog.csdn.net/20161127135338837">
+<meta property="og:image" content="http://img.blog.csdn.net/20161127142125347">
+<meta property="og:image" content="http://img.blog.csdn.net/20161127145009324">
+<meta property="og:updated_time" content="2017-05-12T08:55:29.237Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android Studio2.2中JNI的简单使用">
+<meta name="twitter:description" content="方式1：直接创建包含C++支持的项目如下图所示，创建项目时，勾选“Include C++ Support”选项。  方式2：手动引入C++支持在没有勾选“Include C++ Support”选项的情况下，创建出来的项目大致是这样子的（Project视图）：  引入C++支持的步骤： ###1、配置NDK路径在项目节点上点右键，选择“Open Module Settings”。配置Android">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20161127134708974">
+<meta name="twitter:creator" content="@topliying">
+
+    
+    <link rel="alternative" href="/atom.xml" title="duduhuo&#39;s Blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.png">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="duduhuo&#39;s Blog">duduhuo&#39;s Blog</a></h1>
+				<h2 class="blog-motto">To be better.</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页|Home</a></li>
+					
+						<li><a href="/archives">归档|Archives</a></li>
+					
+						<li><a href="/about">关于|About</a></li>
+					
+						<li><a href="/categories">分类|Categories</a></li>
+					
+						<li><a href="/tags">标签|Tags</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/11/27/Android Studio2.2中JNI的简单使用/" title="Android Studio2.2中JNI的简单使用" itemprop="url">Android Studio2.2中JNI的简单使用</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="独毒火" target="_blank" itemprop="author">独毒火</a>
+		
+  <p class="article-time">
+    <time datetime="2016-11-26T16:00:00.000Z" itemprop="datePublished"> Published 2016-11-27</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#方式1：直接创建包含C-支持的项目"><span class="toc-number">1.</span> <span class="toc-text">方式1：直接创建包含C++支持的项目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方式2：手动引入C-支持"><span class="toc-number">2.</span> <span class="toc-text">方式2：手动引入C++支持</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2、编写CMakeLists-txt文件"><span class="toc-number">2.1.</span> <span class="toc-text">2、编写CMakeLists.txt文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、在Java文件中创建native方法、加载动态库并使用"><span class="toc-number">2.2.</span> <span class="toc-text">3、在Java文件中创建native方法、加载动态库并使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4、编写C-代码"><span class="toc-number">2.3.</span> <span class="toc-text">4、编写C++代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5、配置app目录下的build-gradle文件"><span class="toc-number">2.4.</span> <span class="toc-text">5、配置app目录下的build.gradle文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6、构建项目并运行"><span class="toc-number">2.5.</span> <span class="toc-text">6、构建项目并运行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7、一些说明"><span class="toc-number">2.6.</span> <span class="toc-text">7、一些说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8、代码下载"><span class="toc-number">2.7.</span> <span class="toc-text">8、代码下载</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<h2 id="方式1：直接创建包含C-支持的项目"><a href="#方式1：直接创建包含C-支持的项目" class="headerlink" title="方式1：直接创建包含C++支持的项目"></a>方式1：直接创建包含C++支持的项目</h2><p>如下图所示，创建项目时，勾选“Include C++ Support”选项。</p>
+<p><img src="http://img.blog.csdn.net/20161127134708974" alt="Jni include"></p>
+<h2 id="方式2：手动引入C-支持"><a href="#方式2：手动引入C-支持" class="headerlink" title="方式2：手动引入C++支持"></a>方式2：手动引入C++支持</h2><p>在没有勾选“Include C++ Support”选项的情况下，创建出来的项目大致是这样子的（Project视图）：</p>
+<p><img src="http://img.blog.csdn.net/20161127135338837" alt="不含JNI的目录结构"></p>
+<p><strong><em>引入C++支持的步骤：</em></strong></p>
+<p>###1、配置NDK路径<br>在项目节点上点右键，选择“Open Module Settings”。<br>配置Android NDK Location，如下图所示：<br><img src="http://img.blog.csdn.net/20161127142125347" alt="NDK Location"></p>
+<blockquote>
+<p>需要下载NDK、CMake等工具。</p>
+</blockquote>
+<h3 id="2、编写CMakeLists-txt文件"><a href="#2、编写CMakeLists-txt文件" class="headerlink" title="2、编写CMakeLists.txt文件"></a>2、编写CMakeLists.txt文件</h3><p>在app目录下新建一个文件(File)，名称为 “CMakeLists.txt” 。<br>在其中添加如下内容：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">cmake_minimum_required(VERSION 3.4.1) # CMake版本</div><div class="line"></div><div class="line">add_library(</div><div class="line">             test-lib # 动态库的名称</div><div class="line"></div><div class="line">             SHARED # 作为共享库（动态引入）</div><div class="line"></div><div class="line">             src/main/cpp/test-lib.cpp # cpp源文件路径</div><div class="line">            )</div><div class="line"></div><div class="line">find_library(</div><div class="line">                log-lib</div><div class="line">                log</div><div class="line">            )</div><div class="line"></div><div class="line"># 被链接的目标库的名称</div><div class="line">target_link_libraries(</div><div class="line">                       test-lib</div><div class="line">                       $&#123;log-lib&#125;</div><div class="line">                     )</div></pre></td></tr></table></figure>
+<h3 id="3、在Java文件中创建native方法、加载动态库并使用"><a href="#3、在Java文件中创建native方法、加载动态库并使用" class="headerlink" title="3、在Java文件中创建native方法、加载动态库并使用"></a>3、在Java文件中创建native方法、加载动态库并使用</h3><ul>
+<li>activity_main.xml</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line"><span class="tag">&lt;<span class="name">LinearLayout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line">    <span class="attr">xmlns:tools</span>=<span class="string">"http://schemas.android.com/tools"</span></div><div class="line">    <span class="attr">android:id</span>=<span class="string">"@+id/activity_main"</span></div><div class="line">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">    <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></div><div class="line">    <span class="attr">android:orientation</span>=<span class="string">"vertical"</span></div><div class="line">    <span class="attr">tools:context</span>=<span class="string">"cc.duduhuo.jnidemo.MainActivity"</span>&gt;</div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">TextView</span></span></div><div class="line">        <span class="attr">android:id</span>=<span class="string">"@+id/tv"</span></div><div class="line">        <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">        <span class="attr">android:text</span>=<span class="string">"默认字符串"</span> /&gt;</div><div class="line">    </div><div class="line">    <span class="tag">&lt;<span class="name">Button</span></span></div><div class="line">        <span class="attr">android:id</span>=<span class="string">"@+id/btn"</span></div><div class="line">        <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span> /&gt;</div><div class="line"><span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></div></pre></td></tr></table></figure>
+<ul>
+<li>MainActivity.java</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> TextView tv;</div><div class="line">    <span class="keyword">private</span> Button btn;</div><div class="line"></div><div class="line">    <span class="comment">// 加载动态库</span></div><div class="line">    <span class="keyword">static</span> &#123;</div><div class="line">        System.loadLibrary(<span class="string">"test-lib"</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// 创建native方法</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">native</span> String <span class="title">getTextFromCpp</span><span class="params">()</span></span>;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.activity_main);</div><div class="line">        tv = (TextView) findViewById(R.id.tv);</div><div class="line">        btn = (Button) findViewById(R.id.btn);</div><div class="line">        btn.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</div><div class="line">                <span class="comment">// 使用native方法</span></div><div class="line">                tv.setText(getTextFromCpp());</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="4、编写C-代码"><a href="#4、编写C-代码" class="headerlink" title="4、编写C++代码"></a>4、编写C++代码</h3><p>首先我们需要在app/src/main目录下创建一个目录(Directory)，名称为“cpp”。<br>之后在cpp目录下创建一个cpp文件(C/C++ Source File)，名称为“test-lib.cpp”。<br>在其中编写如下代码：</p>
+<ul>
+<li>test-lib.cpp</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;jni.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">extern</span> <span class="string">"C"</span></div><div class="line"><span class="function">jstring</span></div><div class="line"><span class="title">Java_cc_duduhuo_jnidemo_MainActivity_getTextFromCpp</span><span class="params">(</span></div><div class="line">        JNIEnv* env,</div><div class="line">        jobject <span class="comment">/* this */</span>) &#123;</div><div class="line">    <span class="built_in">std</span>::<span class="built_in">string</span> text = <span class="string">"Text From C++"</span>;</div><div class="line">    <span class="keyword">return</span> env-&gt;NewStringUTF(text.c_str());</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>其中<code>jstring</code>是C++函数的返回值类型，<code>Java_cc_duduhuo_jnidemo_MainActivity_getTextFromCpp</code>是函数名称，由Java+包名+类名+native方法名构成。</p>
+<h3 id="5、配置app目录下的build-gradle文件"><a href="#5、配置app目录下的build-gradle文件" class="headerlink" title="5、配置app目录下的build.gradle文件"></a>5、配置app目录下的<code>build.gradle</code>文件</h3><p>在<code>defaultConfig</code>节点下添加如下内容：</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">externalNativeBuild &#123;</div><div class="line">    cmake &#123;</div><div class="line">        cppFlags <span class="string">""</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在<code>android</code>节点下，添加如下内容：<br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">externalNativeBuild &#123;</div><div class="line">    cmake &#123;</div><div class="line">        path <span class="string">"CMakeLists.txt"</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>完整代码如下：</p>
+<ul>
+<li>build.gradle</li>
+</ul>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">apply plugin: <span class="string">'com.android.application'</span></div><div class="line"></div><div class="line">android &#123;</div><div class="line">    compileSdkVersion <span class="number">24</span></div><div class="line">    buildToolsVersion <span class="string">"25.0.0"</span></div><div class="line">    defaultConfig &#123;</div><div class="line">        applicationId <span class="string">"cc.duduhuo.jnidemo"</span></div><div class="line">        minSdkVersion <span class="number">11</span></div><div class="line">        targetSdkVersion <span class="number">24</span></div><div class="line">        versionCode <span class="number">1</span></div><div class="line">        versionName <span class="string">"1.0"</span></div><div class="line">        testInstrumentationRunner <span class="string">"android.support.test.runner.AndroidJUnitRunner"</span></div><div class="line">        externalNativeBuild &#123;</div><div class="line">            cmake &#123;</div><div class="line">                cppFlags <span class="string">""</span></div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    buildTypes &#123;</div><div class="line">        release &#123;</div><div class="line">            minifyEnabled <span class="keyword">false</span></div><div class="line">            proguardFiles getDefaultProguardFile(<span class="string">'proguard-android.txt'</span>), <span class="string">'proguard-rules.pro'</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    externalNativeBuild &#123;</div><div class="line">        cmake &#123;</div><div class="line">            path <span class="string">"CMakeLists.txt"</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">dependencies</span> &#123;</div><div class="line">    <span class="keyword">compile</span> <span class="keyword">fileTree</span>(dir: <span class="string">'libs'</span>, <span class="keyword">include</span>: [<span class="string">'*.jar'</span>])</div><div class="line">    androidTestCompile(<span class="string">'com.android.support.test.espresso:espresso-core:2.2.2'</span>, &#123;</div><div class="line">        <span class="keyword">exclude</span> <span class="keyword">group</span>: <span class="string">'com.android.support'</span>, module: <span class="string">'support-annotations'</span></div><div class="line">    &#125;)</div><div class="line">    <span class="keyword">compile</span> <span class="string">'com.android.support:appcompat-v7:24.2.1'</span></div><div class="line">    testCompile <span class="string">'junit:junit:4.12'</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="6、构建项目并运行"><a href="#6、构建项目并运行" class="headerlink" title="6、构建项目并运行"></a>6、构建项目并运行</h3><p>点击“Make Project”，编译完成之后，再点击“Run ‘app’”，运行项目。<br>效果如下图所示：<br><img src="http://img.blog.csdn.net/20161127145009324" alt="Jni_Demo"></p>
+<h3 id="7、一些说明"><a href="#7、一些说明" class="headerlink" title="7、一些说明"></a>7、一些说明</h3><p>以debug模式运行项目之后，会在<code>app/build/intermediates/cmake/debug/obj</code>目录下生成各个平台下的so库，名称为<code>libtest-lib.so</code>。<br>Android Studio会将这些平台下的so库全部打包进apk中。</p>
+<h3 id="8、代码下载"><a href="#8、代码下载" class="headerlink" title="8、代码下载"></a>8、代码下载</h3><p><a href="http://download.csdn.net/detail/u012939909/9694888" target="_blank" rel="external">Demo代码下载</a></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/NDK/">NDK</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Android/">Android</a><a href="/tags/JNI/">JNI</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="/2016/11/27/Android Studio2.2中JNI的简单使用/" data-title="Android Studio2.2中JNI的简单使用 | duduhuo&#39;s Blog" data-tsina="3832099344" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2016/11/27/小技巧：使用Excel通过拼接文本批量生成代码/" title="小技巧：使用Excel通过拼接文本批量生成代码">
+  <strong>上一篇：</strong><br/>
+  <span>
+  小技巧：使用Excel通过拼接文本批量生成代码</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2016/11/26/Android时间轴(Timeline)效果的实现/"  title="Android时间轴(Timeline)效果的实现">
+ <strong>下一篇：</strong><br/> 
+ <span>Android时间轴(Timeline)效果的实现
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#方式1：直接创建包含C-支持的项目"><span class="toc-number">1.</span> <span class="toc-text">方式1：直接创建包含C++支持的项目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方式2：手动引入C-支持"><span class="toc-number">2.</span> <span class="toc-text">方式2：手动引入C++支持</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2、编写CMakeLists-txt文件"><span class="toc-number">2.1.</span> <span class="toc-text">2、编写CMakeLists.txt文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、在Java文件中创建native方法、加载动态库并使用"><span class="toc-number">2.2.</span> <span class="toc-text">3、在Java文件中创建native方法、加载动态库并使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4、编写C-代码"><span class="toc-number">2.3.</span> <span class="toc-text">4、编写C++代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5、配置app目录下的build-gradle文件"><span class="toc-number">2.4.</span> <span class="toc-text">5、配置app目录下的build.gradle文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6、构建项目并运行"><span class="toc-number">2.5.</span> <span class="toc-text">6、构建项目并运行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7、一些说明"><span class="toc-number">2.6.</span> <span class="toc-text">7、一些说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8、代码下载"><span class="toc-number">2.7.</span> <span class="toc-text">8、代码下载</span></a></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github Card</p>
+<div class="github-card" data-github="liying2008" data-width="220" data-height="119" data-theme="medium">
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+  </div>
+
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Android基础/" title="Android基础">Android基础<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Kotlin/" title="Kotlin">Kotlin<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/NDK/" title="NDK">NDK<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/View/" title="View">View<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/其他技能/" title="其他技能">其他技能<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/开源库/" title="开源库">开源库<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/我的开源/" title="我的开源">我的开源<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/相关技能/" title="相关技能">相关技能<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/记录/" title="记录">记录<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/问题解决/" title="问题解决">问题解决<sup>2</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/Android/" title="Android">Android<sup>13</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Timeline/" title="Timeline">Timeline<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/JNI/" title="JNI">JNI<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Vector/" title="Vector">Vector<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/接口/" title="接口">接口<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Java/" title="Java">Java<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/View/" title="View">View<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Fragment/" title="Fragment">Fragment<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/RecyclerView/" title="RecyclerView">RecyclerView<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/IP/" title="IP">IP<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/IPv4/" title="IPv4">IPv4<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Permissions/" title="Permissions">Permissions<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Splash/" title="Splash">Splash<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Kotlin/" title="Kotlin">Kotlin<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/打包/" title="打包">打包<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/多渠道/" title="多渠道">多渠道<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Nexus/" title="Nexus">Nexus<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Maven/" title="Maven">Maven<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/jitpack/" title="jitpack">jitpack<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/jcenter/" title="jcenter">jcenter<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://duduhuo.cc" target="_blank" title="独毒火的个人网站">远山寒鸦</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.jianshu.com/u/14ab91761183" target="_blank" title="独毒火的简书主页">独毒火的简书</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m LiYing. <br/>
+			To be better.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/neuliying" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/liying2008" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		<a href="https://twitter.com/topliying" target="_blank" class="icon-twitter" title="twitter"></a>
+		
+		
+		<a href="https://www.facebook.com/topliying" target="_blank" class="icon-facebook" title="facebook"></a>
+		
+		
+		<a href="https://www.linkedin.com/in/neuliying" target="_blank" class="icon-linkedin" title="linkedin"></a>
+		
+		
+		
+		
+		
+		<a href="mailto:liruoer2008@yeah.net" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2017 
+		
+		<a href="/about" target="_blank" title="独毒火">独毒火</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+
+
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1261936722'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s23.cnzz.com/z_stat.php%3Fid%3D1261936722' type='text/javascript'%3E%3C/script%3E"));</script>
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

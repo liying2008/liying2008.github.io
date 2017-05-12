@@ -1,0 +1,700 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>自定义一个可以即时显示的Toast的工具类库 | duduhuo&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="独毒火">
+    
+
+    
+    <meta name="description" content="1 AppToast介绍1.1 实现方式全局只有一个Toast实例，每次调用show()方法显示Toast前都要先取消上次的Toast显示，然后显示本次的消息。   首先创建一个名为AppToast的类，在里面定义一个全局静态Toast对象和一个全局Application对象的弱引用。12private static Toast toast = null;  // Global Toastpriv">
+<meta name="keywords" content="Android,Toast,Library">
+<meta property="og:type" content="article">
+<meta property="og:title" content="自定义一个可以即时显示的Toast的工具类库">
+<meta property="og:url" content="/2016/11/25/自定义一个可以即时显示的Toast的工具类库/index.html">
+<meta property="og:site_name" content="duduhuo&#39;s Blog">
+<meta property="og:description" content="1 AppToast介绍1.1 实现方式全局只有一个Toast实例，每次调用show()方法显示Toast前都要先取消上次的Toast显示，然后显示本次的消息。   首先创建一个名为AppToast的类，在里面定义一个全局静态Toast对象和一个全局Application对象的弱引用。12private static Toast toast = null;  // Global Toastpriv">
+<meta property="og:image" content="http://img.blog.csdn.net/20161125215420046">
+<meta property="og:image" content="https://github.com/liying2008/CusToast/raw/master/pic/style_default.png">
+<meta property="og:image" content="https://github.com/liying2008/CusToast/raw/master/pic/style_lightblue.png">
+<meta property="og:image" content="https://github.com/liying2008/CusToast/raw/master/pic/style_blue.png">
+<meta property="og:image" content="https://github.com/liying2008/CusToast/raw/master/pic/style_lightred.png">
+<meta property="og:image" content="https://github.com/liying2008/CusToast/raw/master/pic/style_red.png">
+<meta property="og:image" content="https://github.com/liying2008/CusToast/raw/master/pic/style_lightgreen.png">
+<meta property="og:image" content="https://github.com/liying2008/CusToast/raw/master/pic/style_green.png">
+<meta property="og:image" content="https://github.com/liying2008/CusToast/raw/master/pic/style_lightyellow.png">
+<meta property="og:image" content="https://github.com/liying2008/CusToast/raw/master/pic/style_yellow.png">
+<meta property="og:image" content="https://github.com/liying2008/CusToast/raw/master/pic/style_gray1.png">
+<meta property="og:image" content="https://github.com/liying2008/CusToast/raw/master/pic/custoast_with_sub.png">
+<meta property="og:image" content="https://github.com/liying2008/CusToast/raw/master/pic/custoast_with_icon.png">
+<meta property="og:updated_time" content="2017-05-12T08:42:29.212Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="自定义一个可以即时显示的Toast的工具类库">
+<meta name="twitter:description" content="1 AppToast介绍1.1 实现方式全局只有一个Toast实例，每次调用show()方法显示Toast前都要先取消上次的Toast显示，然后显示本次的消息。   首先创建一个名为AppToast的类，在里面定义一个全局静态Toast对象和一个全局Application对象的弱引用。12private static Toast toast = null;  // Global Toastpriv">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20161125215420046">
+<meta name="twitter:creator" content="@topliying">
+
+    
+    <link rel="alternative" href="/atom.xml" title="duduhuo&#39;s Blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.png">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="duduhuo&#39;s Blog">duduhuo&#39;s Blog</a></h1>
+				<h2 class="blog-motto">To be better.</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页|Home</a></li>
+					
+						<li><a href="/archives">归档|Archives</a></li>
+					
+						<li><a href="/about">关于|About</a></li>
+					
+						<li><a href="/categories">分类|Categories</a></li>
+					
+						<li><a href="/tags">标签|Tags</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/11/25/自定义一个可以即时显示的Toast的工具类库/" title="自定义一个可以即时显示的Toast的工具类库" itemprop="url">自定义一个可以即时显示的Toast的工具类库</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="独毒火" target="_blank" itemprop="author">独毒火</a>
+		
+  <p class="article-time">
+    <time datetime="2016-11-24T16:00:00.000Z" itemprop="datePublished"> Published 2016-11-25</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-AppToast介绍"><span class="toc-number">1.</span> <span class="toc-text">1 AppToast介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-实现方式"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 实现方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-使用方法"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 使用方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-CusToast介绍"><span class="toc-number">2.</span> <span class="toc-text">2 CusToast介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-功能介绍"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 功能介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-使用方法"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 使用方法</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<h2 id="1-AppToast介绍"><a href="#1-AppToast介绍" class="headerlink" title="1 AppToast介绍"></a>1 AppToast介绍</h2><h3 id="1-1-实现方式"><a href="#1-1-实现方式" class="headerlink" title="1.1 实现方式"></a>1.1 实现方式</h3><p>全局只有一个Toast实例，每次调用<code>show()</code>方法显示Toast前都要先取消上次的Toast显示，然后显示本次的消息。  </p>
+<p>首先创建一个名为AppToast的类，在里面定义一个全局静态Toast对象和一个全局Application对象的弱引用。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> Toast toast = <span class="keyword">null</span>;  <span class="comment">// Global Toast</span></div><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> WeakReference&lt;Application&gt; app;</div></pre></td></tr></table></figure></p>
+<p>定义一个<code>init()</code>方法，用于得到用户传入的Application实例。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">(Application application)</span> </span>&#123;</div><div class="line">    app = <span class="keyword">new</span> WeakReference&lt;Application&gt;(application);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>封装<code>showToast()</code>方法，方便调用。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Display Toast</div><div class="line"> *</div><div class="line"> * <span class="doctag">@param</span> resId The resource id of the string resource to use.  Can be formatted text.</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">showToast</span><span class="params">(@StringRes <span class="keyword">int</span> resId)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (toast != <span class="keyword">null</span>) &#123;</div><div class="line">        toast.cancel();</div><div class="line">        toast = <span class="keyword">null</span>;</div><div class="line">    &#125;</div><div class="line">    toast = Toast.makeText(app.get(), resId, LENGTH_SHORT);</div><div class="line">    toast.show();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>也可以封装一个<code>getToast()</code>方法用于得到Toast实例，允许我们设置其属性，便于自定义Toast显示的效果。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Get a Toast object &lt;br&gt;</div><div class="line"> * Need to call show() method to be displayed</div><div class="line"> *</div><div class="line"> * <span class="doctag">@return</span> Toast object.</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Toast <span class="title">getToast</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (toast != <span class="keyword">null</span>) &#123;</div><div class="line">        toast.cancel();</div><div class="line">        toast = <span class="keyword">null</span>;</div><div class="line">    &#125;</div><div class="line">    toast = Toast.makeText(app.get(), <span class="string">""</span>, Toast.LENGTH_SHORT);</div><div class="line">    <span class="keyword">return</span> toast;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="1-2-使用方法"><a href="#1-2-使用方法" class="headerlink" title="1.2 使用方法"></a>1.2 使用方法</h3><p>首先创建一个类继承自<code>Application</code>，在其<code>onCreate()</code>方法中调用我们之前写的<code>init()</code>方法进行AppToast类的初始化。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyApplication</span> <span class="keyword">extends</span> <span class="title">Application</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onCreate();</div><div class="line">        <span class="comment">// 初始化AppToast库</span></div><div class="line">        AppToast.init(<span class="keyword">this</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>注意：不要忘记在AndroidManifest.xml文件中的application节点下配置android:name属性。</p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">application</span></span></div><div class="line">    <span class="attr">...</span></div><div class="line">    <span class="attr">android:name</span>=<span class="string">".MyApplication"</span> &gt;</div><div class="line">    <span class="tag">&lt;<span class="name">activity</span> <span class="attr">android:name</span>=<span class="string">".MainActivity"</span> &gt;</span></div><div class="line">        ...</div><div class="line">    <span class="tag">&lt;/<span class="name">activity</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">application</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>之后就可以在代码中进行使用了，比如：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">AppToast.showToast(R.string.toast2);</div></pre></td></tr></table></figure></p>
+<p>和<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Toast toast = AppToast.getToast();</div><div class="line">toast.setGravity(Gravity.TOP | Gravity.CENTER, <span class="number">0</span>, <span class="number">0</span>);</div><div class="line">toast.setText(<span class="string">"自定义Toast"</span>);</div><div class="line">toast.setDuration(Toast.LENGTH_SHORT);</div><div class="line">toast.show();</div></pre></td></tr></table></figure></p>
+<p>显示效果如下图：<br><img src="http://img.blog.csdn.net/20161125215420046" alt="显示效果"></p>
+<p>开源库、样例工程、详细文档下载地址：<br><a href="https://github.com/liying2008/ApplicationToast" target="_blank" rel="external">liying2008/ApplicationToast</a></p>
+<p>该库已上传至jcenter仓库，使用Android Studio可以通过在线依赖引用的方式引入该库。<br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">dependencies</span> &#123;</div><div class="line">  <span class="keyword">compile</span> <span class="string">'cc.duduhuo.applicationtoast:applicationtoast:0.3'</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="2-CusToast介绍"><a href="#2-CusToast介绍" class="headerlink" title="2 CusToast介绍"></a>2 CusToast介绍</h2><h3 id="2-1-功能介绍"><a href="#2-1-功能介绍" class="headerlink" title="2.1 功能介绍"></a>2.1 功能介绍</h3><p>CusToast是一个具有即时显示并且内置了10种样式的Toast工具库，现在简单介绍其实现原理。<br>在CusToast类中定义了一个枚举类型Style，即Toast显示的样式。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">enum</span> Style &#123;</div><div class="line">    DEFAULT,</div><div class="line">    LIGHT_BLUE,</div><div class="line">    BLUE,</div><div class="line">    LIGHT_RED,</div><div class="line">    RED,</div><div class="line">    LIGHT_GREEN,</div><div class="line">    GREEN,</div><div class="line">    LIGHT_YELLOW,</div><div class="line">    YELLOW,</div><div class="line">    GRAY_1</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>为了方便对Toast对象进行操作，我们创建一个自定义的Toast类，其继承自Toast，方便我们扩展Toast的功能，比如显示带图片的Toast和显示带副标题的Toast。<br>通过向<code>DToast</code>类的<code>setView()</code>方法传入样式名，得到不同样式的<code>DToast</code>。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Add a view to CusToast.</div><div class="line"> *</div><div class="line"> * <span class="doctag">@param</span> application this application.</div><div class="line"> * <span class="doctag">@param</span> style       the style of CusToast.</div><div class="line"> * <span class="doctag">@return</span> current instance.</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">public</span> DToast <span class="title">setView</span><span class="params">(Application application, CusToast.Style style)</span> </span>&#123;</div><div class="line">    dView = View.inflate(application, R.layout.ddh_cus_toast, <span class="keyword">null</span>);</div><div class="line">    dText = (TextView) dView.findViewById(R.id.dText);</div><div class="line">    setStyle(style);</div><div class="line">    <span class="keyword">super</span>.setView(dView);</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>其余方法和布局文件请参考文末链接。</p>
+<p><code>CusToast</code>类中的<code>showToast()</code>方法如下所示。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Display Toast.</div><div class="line"> *</div><div class="line"> * <span class="doctag">@param</span> text The resource id of the string resource to use.  Can be formatted text.</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">showToast</span><span class="params">(@StringRes <span class="keyword">int</span> text)</span> </span>&#123;</div><div class="line">    clearToast();</div><div class="line">    toast = <span class="keyword">new</span> DToast(app.get());</div><div class="line">    toast.setView(app.get(), defStyle);</div><div class="line">    toast.setText(text);</div><div class="line">    toast.setDuration(Toast.LENGTH_SHORT);</div><div class="line">    toast.show();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><code>clearToast()</code>方法如下，目的就是立即取消正在显示的“旧”Toast。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Clear an existing CusToast.</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">clearToast</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (toast != <span class="keyword">null</span>) &#123;</div><div class="line">        toast.cancel();</div><div class="line">        toast = <span class="keyword">null</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="2-2-使用方法"><a href="#2-2-使用方法" class="headerlink" title="2.2 使用方法"></a>2.2 使用方法</h3><p>首先，和AppToast一样，在自己项目的<code>Application</code>类中初始化<code>CusToast</code>库，方法也和AppToast类似。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyApplication</span> <span class="keyword">extends</span> <span class="title">Application</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onCreate();</div><div class="line">        <span class="comment">// 初始化CusToast库（两种方式选其一）</span></div><div class="line">        <span class="comment">// 方式1：初始化同时指定CusToast的默认显示样式</span></div><div class="line">        CusToast.init(<span class="keyword">this</span>, CusToast.Style.RED);</div><div class="line">        <span class="comment">// 方式2：初始化，使用默认显示样式</span></div><div class="line">        <span class="comment">// CusToast.init(this);</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>之后就可以在代码中进行使用了，比如：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">CusToast.showToast(<span class="string">"Toast 1"</span>);</div></pre></td></tr></table></figure></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">CusToast.showToast(<span class="string">"Toast 3"</span>, Toast.LENGTH_LONG, CusToast.Style.LIGHT_RED);</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">DToast toast = CusToast.getToast(<span class="string">"自定义Toast"</span>);</div><div class="line">toast.setCusToastGravity(Gravity.CENTER, <span class="number">0</span>, <span class="number">0</span>)</div><div class="line">        .setTextSize(<span class="number">16</span>)</div><div class="line">        .setStyle(CusToast.Style.GRAY_1)</div><div class="line">        .setTextColor(Color.WHITE)</div><div class="line">        <span class="comment">// .setBackground(R.mipmap.ic_launcher)</span></div><div class="line">        <span class="comment">// .setBackgroundColor(0xffff3444)</span></div><div class="line">        .setCusToastDuration(Toast.LENGTH_SHORT)</div><div class="line">        .show();</div></pre></td></tr></table></figure>
+<p>在此列举一下CusToast的几种内置样式。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Style</th>
+<th style="text-align:center">预览</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">DEFAULT</td>
+<td style="text-align:center"><img src="https://github.com/liying2008/CusToast/raw/master/pic/style_default.png" alt="DEFAULT"></td>
+</tr>
+<tr>
+<td style="text-align:center">LIGHT_BLUE</td>
+<td style="text-align:center"><img src="https://github.com/liying2008/CusToast/raw/master/pic/style_lightblue.png" alt="LIGHT_BLUE"></td>
+</tr>
+<tr>
+<td style="text-align:center">BLUE</td>
+<td style="text-align:center"><img src="https://github.com/liying2008/CusToast/raw/master/pic/style_blue.png" alt="BLUE"></td>
+</tr>
+<tr>
+<td style="text-align:center">LIGHT_RED</td>
+<td style="text-align:center"><img src="https://github.com/liying2008/CusToast/raw/master/pic/style_lightred.png" alt="LIGHT_RED"></td>
+</tr>
+<tr>
+<td style="text-align:center">RED</td>
+<td style="text-align:center"><img src="https://github.com/liying2008/CusToast/raw/master/pic/style_red.png" alt="RED"></td>
+</tr>
+<tr>
+<td style="text-align:center">LIGHT_GREEN</td>
+<td style="text-align:center"><img src="https://github.com/liying2008/CusToast/raw/master/pic/style_lightgreen.png" alt="LIGHT_GREEN"></td>
+</tr>
+<tr>
+<td style="text-align:center">GREEN</td>
+<td style="text-align:center"><img src="https://github.com/liying2008/CusToast/raw/master/pic/style_green.png" alt="GREEN"></td>
+</tr>
+<tr>
+<td style="text-align:center">LIGHT_YELLOW</td>
+<td style="text-align:center"><img src="https://github.com/liying2008/CusToast/raw/master/pic/style_lightyellow.png" alt="LIGHT_YELLOW"></td>
+</tr>
+<tr>
+<td style="text-align:center">YELLOW</td>
+<td style="text-align:center"><img src="https://github.com/liying2008/CusToast/raw/master/pic/style_yellow.png" alt="YELLOW"></td>
+</tr>
+<tr>
+<td style="text-align:center">GRAY_1</td>
+<td style="text-align:center"><img src="https://github.com/liying2008/CusToast/raw/master/pic/style_gray1.png" alt="GRAY_1"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>其他样式</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">样式</th>
+<th style="text-align:center">预览</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">CusToastWithSub</td>
+<td style="text-align:center"><img src="https://github.com/liying2008/CusToast/raw/master/pic/custoast_with_sub.png" alt="CusToastWithSub"></td>
+</tr>
+<tr>
+<td style="text-align:center">CusToastWithIcon</td>
+<td style="text-align:center"><img src="https://github.com/liying2008/CusToast/raw/master/pic/custoast_with_icon.png" alt="CusToastWithIcon"></td>
+</tr>
+</tbody>
+</table>
+<p>开源库、样例工程、详细文档下载地址：<br><a href="https://github.com/liying2008/CusToast" target="_blank" rel="external">liying2008/CusToast</a></p>
+<p>该库已上传至jcenter仓库，使用Android Studio可以通过在线依赖引用的方式引入该库。<br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">dependencies</span> &#123;</div><div class="line">  <span class="keyword">compile</span> <span class="string">'cc.duduhuo.custoast:custoast:0.2'</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/我的开源/">我的开源</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Android/">Android</a><a href="/tags/Toast/">Toast</a><a href="/tags/Library/">Library</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="/2016/11/25/自定义一个可以即时显示的Toast的工具类库/" data-title="自定义一个可以即时显示的Toast的工具类库 | duduhuo&#39;s Blog" data-tsina="3832099344" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2016/11/26/问题解决：Fragment not attached to Activity/" title="问题解决：Fragment not attached to Activity">
+  <strong>上一篇：</strong><br/>
+  <span>
+  问题解决：Fragment not attached to Activity</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2016/08/27/使用coding进行项目代码管理（全程可视化操作！）/"  title="使用coding进行项目代码管理（全程可视化操作！）">
+ <strong>下一篇：</strong><br/> 
+ <span>使用coding进行项目代码管理（全程可视化操作！）
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-AppToast介绍"><span class="toc-number">1.</span> <span class="toc-text">1 AppToast介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-实现方式"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 实现方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-使用方法"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 使用方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-CusToast介绍"><span class="toc-number">2.</span> <span class="toc-text">2 CusToast介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-功能介绍"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 功能介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-使用方法"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 使用方法</span></a></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github Card</p>
+<div class="github-card" data-github="liying2008" data-width="220" data-height="119" data-theme="medium">
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+  </div>
+
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Android基础/" title="Android基础">Android基础<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Kotlin/" title="Kotlin">Kotlin<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/NDK/" title="NDK">NDK<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/View/" title="View">View<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/其他技能/" title="其他技能">其他技能<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/开源库/" title="开源库">开源库<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/我的开源/" title="我的开源">我的开源<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/相关技能/" title="相关技能">相关技能<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/记录/" title="记录">记录<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/问题解决/" title="问题解决">问题解决<sup>2</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/Android/" title="Android">Android<sup>13</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Timeline/" title="Timeline">Timeline<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/JNI/" title="JNI">JNI<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Vector/" title="Vector">Vector<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/接口/" title="接口">接口<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Java/" title="Java">Java<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/View/" title="View">View<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Fragment/" title="Fragment">Fragment<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/RecyclerView/" title="RecyclerView">RecyclerView<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/IP/" title="IP">IP<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/IPv4/" title="IPv4">IPv4<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Permissions/" title="Permissions">Permissions<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Splash/" title="Splash">Splash<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Kotlin/" title="Kotlin">Kotlin<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/打包/" title="打包">打包<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/多渠道/" title="多渠道">多渠道<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Nexus/" title="Nexus">Nexus<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Maven/" title="Maven">Maven<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/jitpack/" title="jitpack">jitpack<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/jcenter/" title="jcenter">jcenter<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://duduhuo.cc" target="_blank" title="独毒火的个人网站">远山寒鸦</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.jianshu.com/u/14ab91761183" target="_blank" title="独毒火的简书主页">独毒火的简书</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m LiYing. <br/>
+			To be better.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/neuliying" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/liying2008" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		<a href="https://twitter.com/topliying" target="_blank" class="icon-twitter" title="twitter"></a>
+		
+		
+		<a href="https://www.facebook.com/topliying" target="_blank" class="icon-facebook" title="facebook"></a>
+		
+		
+		<a href="https://www.linkedin.com/in/neuliying" target="_blank" class="icon-linkedin" title="linkedin"></a>
+		
+		
+		
+		
+		
+		<a href="mailto:liruoer2008@yeah.net" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2017 
+		
+		<a href="/about" target="_blank" title="独毒火">独毒火</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+
+
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1261936722'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s23.cnzz.com/z_stat.php%3Fid%3D1261936722' type='text/javascript'%3E%3C/script%3E"));</script>
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

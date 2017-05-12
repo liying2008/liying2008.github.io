@@ -1,0 +1,698 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>PermissionsDispatcher使用详解 | duduhuo&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="独毒火">
+    
+
+    
+    <meta name="description" content="PermissionsDispatcher是一个基于注解、帮助开发者简单处理Android 6.0系统中的运行时权限的开源库。避免了开发者编写大量繁琐的样板代码。 开源地址：https://github.com/hotchemi/PermissionsDispatcher 文档介绍：http://hotchemi.github.io/PermissionsDispatcher/ 下面详细介绍一下如">
+<meta name="keywords" content="Android,Permissions">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PermissionsDispatcher使用详解">
+<meta property="og:url" content="/2016/12/27/PermissionsDispatcher使用详解/index.html">
+<meta property="og:site_name" content="duduhuo&#39;s Blog">
+<meta property="og:description" content="PermissionsDispatcher是一个基于注解、帮助开发者简单处理Android 6.0系统中的运行时权限的开源库。避免了开发者编写大量繁琐的样板代码。 开源地址：https://github.com/hotchemi/PermissionsDispatcher 文档介绍：http://hotchemi.github.io/PermissionsDispatcher/ 下面详细介绍一下如">
+<meta property="og:image" content="http://img.blog.csdn.net/20161227201859240">
+<meta property="og:updated_time" content="2017-05-12T09:04:46.507Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PermissionsDispatcher使用详解">
+<meta name="twitter:description" content="PermissionsDispatcher是一个基于注解、帮助开发者简单处理Android 6.0系统中的运行时权限的开源库。避免了开发者编写大量繁琐的样板代码。 开源地址：https://github.com/hotchemi/PermissionsDispatcher 文档介绍：http://hotchemi.github.io/PermissionsDispatcher/ 下面详细介绍一下如">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20161227201859240">
+<meta name="twitter:creator" content="@topliying">
+
+    
+    <link rel="alternative" href="/atom.xml" title="duduhuo&#39;s Blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.png">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="duduhuo&#39;s Blog">duduhuo&#39;s Blog</a></h1>
+				<h2 class="blog-motto">To be better.</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页|Home</a></li>
+					
+						<li><a href="/archives">归档|Archives</a></li>
+					
+						<li><a href="/about">关于|About</a></li>
+					
+						<li><a href="/categories">分类|Categories</a></li>
+					
+						<li><a href="/tags">标签|Tags</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/12/27/PermissionsDispatcher使用详解/" title="PermissionsDispatcher使用详解" itemprop="url">PermissionsDispatcher使用详解</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="独毒火" target="_blank" itemprop="author">独毒火</a>
+		
+  <p class="article-time">
+    <time datetime="2016-12-26T16:00:00.000Z" itemprop="datePublished"> Published 2016-12-27</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1、添加依赖"><span class="toc-number">1.</span> <span class="toc-text">1、添加依赖</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2、在Activity或Fragment中使用"><span class="toc-number">2.</span> <span class="toc-text">2、在Activity或Fragment中使用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3、附：危险权限和权限组列表"><span class="toc-number">3.</span> <span class="toc-text">3、附：危险权限和权限组列表</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4、附：Demo下载"><span class="toc-number">4.</span> <span class="toc-text">4、附：Demo下载</span></a></li></ol>
+		
+		</div>
+		
+		<p>PermissionsDispatcher是一个基于注解、帮助开发者简单处理Android 6.0系统中的运行时权限的开源库。避免了开发者编写大量繁琐的样板代码。</p>
+<p><strong>开源地址：<a href="https://github.com/hotchemi/PermissionsDispatcher" target="_blank" rel="external">https://github.com/hotchemi/PermissionsDispatcher</a></strong></p>
+<p><strong>文档介绍：<a href="http://hotchemi.github.io/PermissionsDispatcher/" target="_blank" rel="external">http://hotchemi.github.io/PermissionsDispatcher/</a></strong></p>
+<p>下面详细介绍一下如何在Android Studio上使用该开源库。</p>
+<h1 id="1、添加依赖"><a href="#1、添加依赖" class="headerlink" title="1、添加依赖"></a>1、添加依赖</h1><p>首先在项目工程下的<code>build.gradle</code>文件中加入对maven仓库依赖引入的支持。</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">allprojects</span> &#123;</div><div class="line">    <span class="keyword">repositories</span> &#123;</div><div class="line">        jcenter()</div><div class="line">        mavenCentral()</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>之后在module下的<code>build.gradle</code>文件中添加两项依赖：</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">compile</span> <span class="string">'com.github.hotchemi:permissionsdispatcher:2.3.1'</span></div><div class="line">annotationProcessor <span class="string">'com.github.hotchemi:permissionsdispatcher-processor:2.3.1'</span></div></pre></td></tr></table></figure>
+<p>并将<code>targetSdkVersion</code>设为23，即：<code>targetSdkVersion 23</code></p>
+<h1 id="2、在Activity或Fragment中使用"><a href="#2、在Activity或Fragment中使用" class="headerlink" title="2、在Activity或Fragment中使用"></a>2、在Activity或Fragment中使用</h1><p>注解列表：</p>
+<table>
+<thead>
+<tr>
+<th>Annotation</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>@RuntimePermissions</code></td>
+<td><strong>✓</strong></td>
+<td>注解在其内部需要使用运行时权限的Activity或Fragment上</td>
+</tr>
+<tr>
+<td><code>@NeedsPermission</code></td>
+<td><strong>✓</strong></td>
+<td>注解在需要调用运行时权限的方法上，当用户给予权限时会执行该方法</td>
+</tr>
+<tr>
+<td><code>@OnShowRationale</code></td>
+<td></td>
+<td>注解在用于向用户解释为什么需要调用该权限的方法上，只有当第一次请求权限被用户拒绝，下次请求权限之前会调用</td>
+</tr>
+<tr>
+<td><code>@OnPermissionDenied</code></td>
+<td></td>
+<td>注解在当用户拒绝了权限请求时需要调用的方法上</td>
+</tr>
+<tr>
+<td><code>@OnNeverAskAgain</code></td>
+<td></td>
+<td>注解在当用户选中了授权窗口中的<strong><em>不再询问</em></strong>复选框后并拒绝了权限请求时需要调用的方法，一般可以向用户解释为何申请此权限，并根据实际需求决定是否再次弹出权限请求对话框</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>注意：被注解的方法不能是私有方法。</strong></p>
+</blockquote>
+<p>只有<code>@RuntimePermissions</code>和<code>@NeedsPermission</code>是必须的，其余注解均为可选。当使用了<code>@RuntimePermissions</code>和<code>@NeedsPermission</code>之后，需要点击菜单栏中<code>Build</code>菜单下的<code>Make Project</code>，或者按快捷键<code>Ctrl + F9</code>编译整个项目，编译器会在<code>app\build\intermediates\classes\debug</code>目录下与被注解的Activity同一个包下生成一个辅助类，名称为<code>被注解的Activity名称+PermissionsDispatcher.class</code>，如图所示：</p>
+<p><img src="http://img.blog.csdn.net/20161227201859240" alt="生成的辅助类"></p>
+<p>接下来可以调用辅助类里面的方法完成应用的权限请求了。</p>
+<p>在需要调用权限的位置调用辅助类里面的<code>xxxWithCheck</code>方法，<code>xxx</code>是被<code>@NeedsPermission</code>注解的方法名。如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">MainActivityPermissionsDispatcher.showCameraWithCheck(<span class="keyword">this</span>);</div></pre></td></tr></table></figure>
+<p>之后，还需要重写该Activity的<code>onRequestPermissionsResult()</code>方法，其方法内调用辅助类的<code>onRequestPermissionsResult()</code>方法，如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onRequestPermissionsResult</span><span class="params">(<span class="keyword">int</span> requestCode, @NonNull String[] permissions, @NonNull <span class="keyword">int</span>[] grantResults)</span> </span>&#123;</div><div class="line">    <span class="keyword">super</span>.onRequestPermissionsResult(requestCode, permissions, grantResults);</div><div class="line">    <span class="comment">// <span class="doctag">NOTE:</span> delegate the permission handling to generated method</span></div><div class="line">    MainActivityPermissionsDispatcher.onRequestPermissionsResult(<span class="keyword">this</span>, requestCode, grantResults);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>完整的<code>MainActivity</code>如下所示。</p>
+<ul>
+<li>MainActivity.java</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@RuntimePermissions</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> <span class="keyword">implements</span> <span class="title">View</span>.<span class="title">OnClickListener</span> </span>&#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.activity_main);</div><div class="line">        findViewById(R.id.button_camera).setOnClickListener(<span class="keyword">this</span>);</div><div class="line">        findViewById(R.id.button_contacts).setOnClickListener(<span class="keyword">this</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(@NonNull View v)</span> </span>&#123;</div><div class="line">        <span class="keyword">switch</span> (v.getId()) &#123;</div><div class="line">            <span class="keyword">case</span> R.id.button_camera:</div><div class="line">                <span class="comment">// <span class="doctag">NOTE:</span> delegate the permission handling to generated method</span></div><div class="line">                MainActivityPermissionsDispatcher.showCameraWithCheck(<span class="keyword">this</span>);</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            <span class="keyword">case</span> R.id.button_contacts:</div><div class="line">                <span class="comment">// <span class="doctag">NOTE:</span> delegate the permission handling to generated method</span></div><div class="line">                MainActivityPermissionsDispatcher.showContactsWithCheck(<span class="keyword">this</span>);</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onRequestPermissionsResult</span><span class="params">(<span class="keyword">int</span> requestCode, @NonNull String[] permissions, @NonNull <span class="keyword">int</span>[] grantResults)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onRequestPermissionsResult(requestCode, permissions, grantResults);</div><div class="line">        <span class="comment">// <span class="doctag">NOTE:</span> delegate the permission handling to generated method</span></div><div class="line">        MainActivityPermissionsDispatcher.onRequestPermissionsResult(<span class="keyword">this</span>, requestCode, grantResults);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@NeedsPermission</span>(Manifest.permission.CAMERA)</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">showCamera</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="comment">// <span class="doctag">NOTE:</span> Perform action that requires the permission. If this is run by PermissionsDispatcher, the permission will have been granted</span></div><div class="line">        getSupportFragmentManager().beginTransaction()</div><div class="line">                .replace(R.id.sample_content_fragment, CameraPreviewFragment.newInstance())</div><div class="line">                .addToBackStack(<span class="string">"camera"</span>)</div><div class="line">                .commitAllowingStateLoss();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@NeedsPermission</span>(&#123;Manifest.permission.READ_CONTACTS, Manifest.permission.WRITE_CONTACTS&#125;)</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">showContacts</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="comment">// <span class="doctag">NOTE:</span> Perform action that requires the permission.</span></div><div class="line">        <span class="comment">// If this is run by PermissionsDispatcher, the permission will have been granted</span></div><div class="line">        getSupportFragmentManager().beginTransaction()</div><div class="line">                .replace(R.id.sample_content_fragment, ContactsFragment.newInstance())</div><div class="line">                .addToBackStack(<span class="string">"contacts"</span>)</div><div class="line">                .commitAllowingStateLoss();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@OnShowRationale</span>(Manifest.permission.CAMERA)</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">showRationaleForCamera</span><span class="params">(PermissionRequest request)</span> </span>&#123;</div><div class="line">        <span class="comment">// <span class="doctag">NOTE:</span> Show a rationale to explain why the permission is needed, e.g. with a dialog.</span></div><div class="line">        <span class="comment">// Call proceed() or cancel() on the provided PermissionRequest to continue or abort</span></div><div class="line">        showRationaleDialog(R.string.permission_camera_rationale, request);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@OnShowRationale</span>(&#123;Manifest.permission.READ_CONTACTS, Manifest.permission.WRITE_CONTACTS&#125;)</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">showRationaleForContact</span><span class="params">(PermissionRequest request)</span> </span>&#123;</div><div class="line">        <span class="comment">// <span class="doctag">NOTE:</span> Show a rationale to explain why the permission is needed, e.g. with a dialog.</span></div><div class="line">        <span class="comment">// Call proceed() or cancel() on the provided PermissionRequest to continue or abort</span></div><div class="line">        showRationaleDialog(R.string.permission_contacts_rationale, request);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@OnPermissionDenied</span>(Manifest.permission.CAMERA)</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">onCameraDenied</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="comment">// <span class="doctag">NOTE:</span> Deal with a denied permission, e.g. by showing specific UI</span></div><div class="line">        <span class="comment">// or disabling certain functionality</span></div><div class="line">        Toast.makeText(<span class="keyword">this</span>, R.string.permission_camera_denied, Toast.LENGTH_SHORT).show();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@OnNeverAskAgain</span>(Manifest.permission.CAMERA)</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">onCameraNeverAskAgain</span><span class="params">()</span> </span>&#123;</div><div class="line">        Toast.makeText(<span class="keyword">this</span>, R.string.permission_camera_never_askagain, Toast.LENGTH_SHORT).show();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onBackClick</span><span class="params">(View view)</span> </span>&#123;</div><div class="line">        getSupportFragmentManager().popBackStack();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">showRationaleDialog</span><span class="params">(@StringRes <span class="keyword">int</span> messageResId, <span class="keyword">final</span> PermissionRequest request)</span> </span>&#123;</div><div class="line">        <span class="keyword">new</span> AlertDialog.Builder(<span class="keyword">this</span>)</div><div class="line">                .setPositiveButton(<span class="string">"允许"</span>, <span class="keyword">new</span> DialogInterface.OnClickListener() &#123;</div><div class="line">                    <span class="meta">@Override</span></div><div class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(@NonNull DialogInterface dialog, <span class="keyword">int</span> which)</span> </span>&#123;</div><div class="line">                        request.proceed();</div><div class="line">                    &#125;</div><div class="line">                &#125;)</div><div class="line">                .setNegativeButton(<span class="string">"拒绝"</span>, <span class="keyword">new</span> DialogInterface.OnClickListener() &#123;</div><div class="line">                    <span class="meta">@Override</span></div><div class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(@NonNull DialogInterface dialog, <span class="keyword">int</span> which)</span> </span>&#123;</div><div class="line">                        request.cancel();</div><div class="line">                    &#125;</div><div class="line">                &#125;)</div><div class="line">                .setCancelable(<span class="keyword">false</span>)</div><div class="line">                .setMessage(messageResId)</div><div class="line">                .show();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="3、附：危险权限和权限组列表"><a href="#3、附：危险权限和权限组列表" class="headerlink" title="3、附：危险权限和权限组列表"></a>3、附：危险权限和权限组列表</h1><p>Android官方文档：<a href="https://developer.android.com/guide/topics/security/permissions.html#normal-dangerous" target="_blank" rel="external">https://developer.android.com/guide/topics/security/permissions.html#normal-dangerous</a></p>
+<p>摘录如下：</p>
+<table>
+<thead>
+<tr>
+<th>权限组</th>
+<th>权限</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>CALENDAR</strong></td>
+<td>READ_CALENDAR<br>WRITE_CALENDAR</td>
+</tr>
+<tr>
+<td><strong>CAMERA</strong></td>
+<td>CAMERA</td>
+</tr>
+<tr>
+<td><strong>CONTACTS</strong></td>
+<td>READ_CONTACTS<br>WRITE_CONTACTS<br>GET_ACCOUNTS</td>
+</tr>
+<tr>
+<td><strong>LOCATION</strong></td>
+<td>ACCESS_FINE_LOCATION<br>ACCESS_COARSE_LOCATION</td>
+</tr>
+<tr>
+<td><strong>PHONE</strong></td>
+<td>READ_PHONE_STATE<br>CALL_PHONE<br>READ_CALL_LOG<br>WRITE_CALL_LOG<br>ADD_VOICEMAIL<br>USE_SIP<br>PROCESS_OUTGOING_CALLS</td>
+</tr>
+<tr>
+<td><strong>SENSORS</strong></td>
+<td>BODY_SENSORS</td>
+</tr>
+<tr>
+<td><strong>SMS</strong></td>
+<td>SEND_SMS<br>RECEIVE_SMS<br>READ_SMS<br>RECEIVE_WAP_PUSH<br>RECEIVE_MMS</td>
+</tr>
+<tr>
+<td><strong>STORAGE</strong></td>
+<td>READ_EXTERNAL_STORAGE<br>WRITE_EXTERNAL_STORAGE</td>
+</tr>
+</tbody>
+</table>
+<h1 id="4、附：Demo下载"><a href="#4、附：Demo下载" class="headerlink" title="4、附：Demo下载"></a>4、附：Demo下载</h1><p><a href="http://download.csdn.net/detail/u012939909/9722890" target="_blank" rel="external">http://download.csdn.net/detail/u012939909/9722890</a></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/开源库/">开源库</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Android/">Android</a><a href="/tags/Permissions/">Permissions</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="/2016/12/27/PermissionsDispatcher使用详解/" data-title="PermissionsDispatcher使用详解 | duduhuo&#39;s Blog" data-tsina="3832099344" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2017/03/24/使用Nexus私服代理其他maven仓库(jitpack、jcenter)/" title="使用Nexus私服代理其他maven仓库(jitpack、jcenter)">
+  <strong>上一篇：</strong><br/>
+  <span>
+  使用Nexus私服代理其他maven仓库(jitpack、jcenter)</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2016/12/22/Android Studio使用Vector Asset的注意事项/"  title="Android Studio使用Vector Asset的注意事项">
+ <strong>下一篇：</strong><br/> 
+ <span>Android Studio使用Vector Asset的注意事项
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1、添加依赖"><span class="toc-number">1.</span> <span class="toc-text">1、添加依赖</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2、在Activity或Fragment中使用"><span class="toc-number">2.</span> <span class="toc-text">2、在Activity或Fragment中使用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3、附：危险权限和权限组列表"><span class="toc-number">3.</span> <span class="toc-text">3、附：危险权限和权限组列表</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4、附：Demo下载"><span class="toc-number">4.</span> <span class="toc-text">4、附：Demo下载</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github Card</p>
+<div class="github-card" data-github="liying2008" data-width="220" data-height="119" data-theme="medium">
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+  </div>
+
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Android基础/" title="Android基础">Android基础<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Kotlin/" title="Kotlin">Kotlin<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/NDK/" title="NDK">NDK<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/View/" title="View">View<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/其他技能/" title="其他技能">其他技能<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/开源库/" title="开源库">开源库<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/我的开源/" title="我的开源">我的开源<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/相关技能/" title="相关技能">相关技能<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/记录/" title="记录">记录<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/问题解决/" title="问题解决">问题解决<sup>2</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/Android/" title="Android">Android<sup>13</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Timeline/" title="Timeline">Timeline<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/JNI/" title="JNI">JNI<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Vector/" title="Vector">Vector<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/接口/" title="接口">接口<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Java/" title="Java">Java<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/View/" title="View">View<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Fragment/" title="Fragment">Fragment<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/RecyclerView/" title="RecyclerView">RecyclerView<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/IP/" title="IP">IP<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/IPv4/" title="IPv4">IPv4<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Permissions/" title="Permissions">Permissions<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Splash/" title="Splash">Splash<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Kotlin/" title="Kotlin">Kotlin<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/打包/" title="打包">打包<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/多渠道/" title="多渠道">多渠道<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Nexus/" title="Nexus">Nexus<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Maven/" title="Maven">Maven<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/jitpack/" title="jitpack">jitpack<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/jcenter/" title="jcenter">jcenter<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://duduhuo.cc" target="_blank" title="独毒火的个人网站">远山寒鸦</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.jianshu.com/u/14ab91761183" target="_blank" title="独毒火的简书主页">独毒火的简书</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m LiYing. <br/>
+			To be better.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/neuliying" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/liying2008" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		<a href="https://twitter.com/topliying" target="_blank" class="icon-twitter" title="twitter"></a>
+		
+		
+		<a href="https://www.facebook.com/topliying" target="_blank" class="icon-facebook" title="facebook"></a>
+		
+		
+		<a href="https://www.linkedin.com/in/neuliying" target="_blank" class="icon-linkedin" title="linkedin"></a>
+		
+		
+		
+		
+		
+		<a href="mailto:liruoer2008@yeah.net" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2017 
+		
+		<a href="/about" target="_blank" title="独毒火">独毒火</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+
+
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1261936722'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s23.cnzz.com/z_stat.php%3Fid%3D1261936722' type='text/javascript'%3E%3C/script%3E"));</script>
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
