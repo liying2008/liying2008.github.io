@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>/2017/05/11/Android%20Studio%E9%85%8D%E7%BD%AEKotlin%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E7%9A%84%E6%9C%80%E7%AE%80%E5%8D%95%E6%96%B9%E5%BC%8F/</loc>
+    
+    <lastmod>2017-05-12T14:08:53.493Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>/about/index.html</loc>
     
     <lastmod>2017-05-12T13:54:30.447Z</lastmod>
@@ -124,13 +131,6 @@
     <loc>/2016/08/20/Android%E4%B8%AD%E6%8E%A5%E5%8F%A3(Interface)%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/</loc>
     
     <lastmod>2017-05-12T08:39:37.688Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>/2017/05/11/Android%20Studio%E9%85%8D%E7%BD%AEKotlin%E5%8F%91%E5%BC%80%E7%8E%AF%E5%A2%83%E7%9A%84%E6%9C%80%E7%AE%80%E5%8D%95%E6%96%B9%E5%BC%8F/</loc>
-    
-    <lastmod>2017-05-12T08:36:30.206Z</lastmod>
     
   </url>
   
