@@ -1,0 +1,655 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>SmartisanDialog - 锤子风格的对话框 | duduhuo&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="独毒火">
+    
+
+    
+    <meta name="description" content="Github地址https://github.com/liying2008/SmartisanDialog  Download Demo Apk  屏幕截图 (Screenshots) 下载 (Download)Use Gradle1compile &apos;cc.duduhuo.dialog:smartisan-dialog:1.0.0&apos; Or Maven123456&amp;lt;dependency&amp;gt;">
+<meta name="keywords" content="Android,Dialog">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SmartisanDialog - 锤子风格的对话框">
+<meta property="og:url" content="/2017/05/14/SmartisanDialog - 锤子风格的对话框/index.html">
+<meta property="og:site_name" content="duduhuo&#39;s Blog">
+<meta property="og:description" content="Github地址https://github.com/liying2008/SmartisanDialog  Download Demo Apk  屏幕截图 (Screenshots) 下载 (Download)Use Gradle1compile &apos;cc.duduhuo.dialog:smartisan-dialog:1.0.0&apos; Or Maven123456&amp;lt;dependency&amp;gt;">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2883714-355dc76c6a508ff7.gif">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2883714-fd1424e3b0e9235a.png">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2883714-c40676b2860db19e.png">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2883714-40ba786c41cbe182.png">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2883714-2886f728134c90f1.png">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2883714-0e2b68dc051190f7.png">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2883714-a6877b4d893562c6.png">
+<meta property="og:updated_time" content="2017-05-14T08:26:31.142Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SmartisanDialog - 锤子风格的对话框">
+<meta name="twitter:description" content="Github地址https://github.com/liying2008/SmartisanDialog  Download Demo Apk  屏幕截图 (Screenshots) 下载 (Download)Use Gradle1compile &apos;cc.duduhuo.dialog:smartisan-dialog:1.0.0&apos; Or Maven123456&amp;lt;dependency&amp;gt;">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/2883714-355dc76c6a508ff7.gif">
+<meta name="twitter:creator" content="@topliying">
+
+    
+    <link rel="alternative" href="/atom.xml" title="duduhuo&#39;s Blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.png">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="duduhuo&#39;s Blog">duduhuo&#39;s Blog</a></h1>
+				<h2 class="blog-motto">To be better.</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页|Home</a></li>
+					
+						<li><a href="/archives">归档|Archives</a></li>
+					
+						<li><a href="/about">关于|About</a></li>
+					
+						<li><a href="/categories">分类|Categories</a></li>
+					
+						<li><a href="/tags">标签|Tags</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2017/05/14/SmartisanDialog - 锤子风格的对话框/" title="SmartisanDialog - 锤子风格的对话框" itemprop="url">SmartisanDialog - 锤子风格的对话框</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="独毒火" target="_blank" itemprop="author">独毒火</a>
+		
+  <p class="article-time">
+    <time datetime="2017-05-13T16:00:00.000Z" itemprop="datePublished"> Published 2017-05-14</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Github地址"><span class="toc-number">1.</span> <span class="toc-text">Github地址</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#屏幕截图-Screenshots"><span class="toc-number">2.</span> <span class="toc-text">屏幕截图 (Screenshots)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#下载-Download"><span class="toc-number">3.</span> <span class="toc-text">下载 (Download)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Use-Gradle"><span class="toc-number">3.1.</span> <span class="toc-text">Use Gradle</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Or-Maven"><span class="toc-number">3.2.</span> <span class="toc-text">Or Maven</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用-Usage"><span class="toc-number">4.</span> <span class="toc-text">使用 (Usage)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#样式预览-Style-Preview"><span class="toc-number">5.</span> <span class="toc-text">样式预览 (Style Preview)</span></a></li></ol>
+		
+		</div>
+		
+		<h2 id="Github地址"><a href="#Github地址" class="headerlink" title="Github地址"></a>Github地址</h2><p><a href="https://github.com/liying2008/SmartisanDialog" target="_blank" rel="external">https://github.com/liying2008/SmartisanDialog</a></p>
+<blockquote>
+<p><a href="https://raw.githubusercontent.com/liying2008/SmartisanDialog/master/app/app-debug.apk" target="_blank" rel="external">Download Demo Apk</a></p>
+</blockquote>
+<h2 id="屏幕截图-Screenshots"><a href="#屏幕截图-Screenshots" class="headerlink" title="屏幕截图 (Screenshots)"></a>屏幕截图 (Screenshots)</h2><p><img src="http://upload-images.jianshu.io/upload_images/2883714-355dc76c6a508ff7.gif" alt="Dialog展示"></p>
+<h2 id="下载-Download"><a href="#下载-Download" class="headerlink" title="下载 (Download)"></a>下载 (Download)</h2><h3 id="Use-Gradle"><a href="#Use-Gradle" class="headerlink" title="Use Gradle"></a>Use Gradle</h3><figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">compile</span> <span class="string">'cc.duduhuo.dialog:smartisan-dialog:1.0.0'</span></div></pre></td></tr></table></figure>
+<h3 id="Or-Maven"><a href="#Or-Maven" class="headerlink" title="Or Maven"></a>Or Maven</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>cc.duduhuo.dialog<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>smartisan-dialog<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.0.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">type</span>&gt;</span>pom<span class="tag">&lt;/<span class="name">type</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="使用-Usage"><a href="#使用-Usage" class="headerlink" title="使用 (Usage)"></a>使用 (Usage)</h2><ul>
+<li>显示普通Dialog</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">final</span> NormalDialog dialog = SmartisanDialog.createNormalDialog(<span class="keyword">this</span>);</div><div class="line">dialog.setTitle(<span class="string">"这是标题"</span>)</div><div class="line">    .setMsg(<span class="string">"对话框信息"</span>)</div><div class="line">    .setMsgGravity(Gravity.CENTER)</div><div class="line">    .setLeftBtnText(<span class="string">"确定"</span>)   <span class="comment">// 设置文本的按钮会显示，不设置文本则不显示</span></div><div class="line">    .setRightBtnText(<span class="string">"取消"</span>)</div><div class="line">    .show();</div><div class="line"><span class="comment">// 设置点击监听（下同，不再解释）</span></div><div class="line">dialog.setOnSelectListener(<span class="keyword">new</span> NormalDialog.OnSelectListener() &#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onLeftSelect</span><span class="params">()</span> </span>&#123;</div><div class="line">        Toast.makeText(MainActivity.<span class="keyword">this</span>, <span class="string">"onLeftSelect"</span>, Toast.LENGTH_SHORT).show();</div><div class="line">        dialog.dismiss();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onRightSelect</span><span class="params">()</span> </span>&#123;</div><div class="line">        Toast.makeText(MainActivity.<span class="keyword">this</span>, <span class="string">"onRightSelect"</span>, Toast.LENGTH_SHORT).show();</div><div class="line">        dialog.dismiss();</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ul>
+<li>显示带两个选项的Dialog</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">final</span> TwoOptionsDialog dialog = SmartisanDialog.createTwoOptionsDialog(<span class="keyword">this</span>);</div><div class="line">dialog.setTitle(<span class="string">"选择一个选项"</span>)</div><div class="line">    .setOp1Text(<span class="string">"第一个选项"</span>)   <span class="comment">// 设置第一个选项的文本</span></div><div class="line">    .setOp2Text(<span class="string">"第二个选项"</span>)   <span class="comment">// 设置第二个选项的文本</span></div><div class="line">    .show();</div><div class="line">dialog.setOnSelectListener(<span class="keyword">new</span> TwoOptionsDialog.OnSelectListener() &#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onOp1</span><span class="params">()</span> </span>&#123;</div><div class="line">        Toast.makeText(MainActivity.<span class="keyword">this</span>, <span class="string">"onOp1"</span>, Toast.LENGTH_SHORT).show();</div><div class="line">        dialog.dismiss();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onOp2</span><span class="params">()</span> </span>&#123;</div><div class="line">        Toast.makeText(MainActivity.<span class="keyword">this</span>, <span class="string">"onOp2"</span>, Toast.LENGTH_SHORT).show();</div><div class="line">        dialog.dismiss();</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ul>
+<li>显示带三个选项的Dialog</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">final</span> ThreeOptionsDialog dialog = SmartisanDialog.createThreeOptionsDialog(<span class="keyword">this</span>);</div><div class="line">dialog.setOp1Text(<span class="string">"选项1"</span>)</div><div class="line">    .setOp2Text(<span class="string">"选项2"</span>)</div><div class="line">    .setOp3Text(<span class="string">"选项3"</span>)</div><div class="line">    .show();</div><div class="line">dialog.setOnSelectListener(<span class="keyword">new</span> ThreeOptionsDialog.OnSelectListener() &#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onOp1</span><span class="params">()</span> </span>&#123;</div><div class="line">        Toast.makeText(MainActivity.<span class="keyword">this</span>, <span class="string">"onOp1"</span>, Toast.LENGTH_SHORT).show();</div><div class="line">        dialog.dismiss();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onOp2</span><span class="params">()</span> </span>&#123;</div><div class="line">        Toast.makeText(MainActivity.<span class="keyword">this</span>, <span class="string">"onOp2"</span>, Toast.LENGTH_SHORT).show();</div><div class="line">        dialog.dismiss();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onOp3</span><span class="params">()</span> </span>&#123;</div><div class="line">        Toast.makeText(MainActivity.<span class="keyword">this</span>, <span class="string">"onOp3"</span>, Toast.LENGTH_SHORT).show();</div><div class="line">        dialog.dismiss();</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ul>
+<li>显示警告Dialog</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">final</span> WarningDialog dialog = SmartisanDialog.createWarningDialog(<span class="keyword">this</span>);</div><div class="line">dialog.setTitle(<span class="string">"确定退出登录吗"</span>)</div><div class="line">    .setConfirmText(<span class="string">"退出登录"</span>)</div><div class="line">    .show();</div><div class="line">dialog.setOnConfirmListener(<span class="keyword">new</span> WarningDialog.OnConfirmListener() &#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onConfirm</span><span class="params">()</span> </span>&#123;</div><div class="line">        Toast.makeText(MainActivity.<span class="keyword">this</span>, <span class="string">"onConfirm"</span>, Toast.LENGTH_SHORT).show();</div><div class="line">        dialog.dismiss();</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ul>
+<li>显示选项列表Dialog</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">List&lt;String&gt; options = <span class="keyword">new</span> ArrayList&lt;&gt;(<span class="number">6</span>);</div><div class="line">options.add(<span class="string">"选项1"</span>);</div><div class="line">options.add(<span class="string">"选项2"</span>);</div><div class="line">options.add(<span class="string">"选项3"</span>);</div><div class="line">options.add(<span class="string">"选项4"</span>);</div><div class="line">options.add(<span class="string">"选项5"</span>);</div><div class="line">options.add(<span class="string">"选项6"</span>);</div><div class="line"><span class="keyword">final</span> OptionListDialog dialog = SmartisanDialog.createOptionListDialog(<span class="keyword">this</span>);</div><div class="line">dialog.setTitle(<span class="string">"请选择一个选项"</span>)</div><div class="line">    .setOptionList(options)</div><div class="line">    .setLastOption(<span class="string">"选项5"</span>)   <span class="comment">// 上次选择的选项</span></div><div class="line">    .setItemGravity(Gravity.CENTER) <span class="comment">// Item是居左、居中还是居右</span></div><div class="line">    .setLastColor(<span class="number">0xFF40B64A</span>)   <span class="comment">// 上次选择的选项显示的颜色，用于区分</span></div><div class="line">    .show();</div><div class="line"><span class="comment">// setOnOptionItemSelectListener()方法必须在show()方法之后调用，否则无效</span></div><div class="line">dialog.setOnOptionItemSelectListener(<span class="keyword">new</span> OnOptionItemSelectListener() &#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onSelect</span><span class="params">(<span class="keyword">int</span> position, CharSequence option)</span> </span>&#123;</div><div class="line">        Toast.makeText(MainActivity.<span class="keyword">this</span>, <span class="string">"position = "</span> + position + <span class="string">", option = "</span> + option, Toast.LENGTH_SHORT).show();</div><div class="line">        dialog.dismiss();</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ul>
+<li>可以自定义Dialog的内容视图</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">final</span> CustomizedDialog dialog = SmartisanDialog.createCustomizedDialog(<span class="keyword">this</span>);</div><div class="line">View rootView = getLayoutInflater().inflate(R.layout.test_view, <span class="keyword">null</span>);</div><div class="line">dialog.addView(rootView)</div><div class="line">    .setTitle(<span class="string">"自定义内容视图"</span>)</div><div class="line">    .setLeftBtnText(<span class="string">"按钮1"</span>)  <span class="comment">// 设置文本的按钮会显示，不设置文本则不显示</span></div><div class="line">    .setRightBtnText(<span class="string">"按钮2"</span>)</div><div class="line">    .show();</div><div class="line">dialog.setOnSelectListener(<span class="keyword">new</span> CustomizedDialog.OnSelectListener() &#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onLeftSelect</span><span class="params">()</span> </span>&#123;</div><div class="line">        Toast.makeText(MainActivity.<span class="keyword">this</span>, <span class="string">"onLeftSelect"</span>, Toast.LENGTH_SHORT).show();</div><div class="line">        dialog.dismiss();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onRightSelect</span><span class="params">()</span> </span>&#123;</div><div class="line">        Toast.makeText(MainActivity.<span class="keyword">this</span>, <span class="string">"onRightSelect"</span>, Toast.LENGTH_SHORT).show();</div><div class="line">        dialog.dismiss();</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h2 id="样式预览-Style-Preview"><a href="#样式预览-Style-Preview" class="headerlink" title="样式预览 (Style Preview)"></a>样式预览 (Style Preview)</h2><table>
+<thead>
+<tr>
+<th style="text-align:center">样式</th>
+<th style="text-align:center">预览</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">NormalDialog</td>
+<td style="text-align:center"><img src="http://upload-images.jianshu.io/upload_images/2883714-fd1424e3b0e9235a.png" alt="NormalDialog"></td>
+</tr>
+<tr>
+<td style="text-align:center">TwoOptionsDialog</td>
+<td style="text-align:center"><img src="http://upload-images.jianshu.io/upload_images/2883714-c40676b2860db19e.png" alt="TwoOptionsDialog"></td>
+</tr>
+<tr>
+<td style="text-align:center">ThreeOptionsDialog</td>
+<td style="text-align:center"><img src="http://upload-images.jianshu.io/upload_images/2883714-40ba786c41cbe182.png" alt="ThreeOptionsDialog"></td>
+</tr>
+<tr>
+<td style="text-align:center">WarningDialog</td>
+<td style="text-align:center"><img src="http://upload-images.jianshu.io/upload_images/2883714-2886f728134c90f1.png" alt="WarningDialog"></td>
+</tr>
+<tr>
+<td style="text-align:center">OptionListDialog</td>
+<td style="text-align:center"><img src="http://upload-images.jianshu.io/upload_images/2883714-0e2b68dc051190f7.png" alt="OptionListDialog"></td>
+</tr>
+<tr>
+<td style="text-align:center">CustomizedDialog</td>
+<td style="text-align:center"><img src="http://upload-images.jianshu.io/upload_images/2883714-a6877b4d893562c6.png" alt="CustomizedDialog"></td>
+</tr>
+</tbody>
+</table>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/我的开源/">我的开源</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Android/">Android</a><a href="/tags/Dialog/">Dialog</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="/2017/05/14/SmartisanDialog - 锤子风格的对话框/" data-title="SmartisanDialog - 锤子风格的对话框 | duduhuo&#39;s Blog" data-tsina="3832099344" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2017/05/11/Android Studio配置Kotlin开发环境的最简单方式/"  title="Android Studio配置Kotlin开发环境的最简单方式">
+ <strong>下一篇：</strong><br/> 
+ <span>Android Studio配置Kotlin开发环境的最简单方式
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Github地址"><span class="toc-number">1.</span> <span class="toc-text">Github地址</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#屏幕截图-Screenshots"><span class="toc-number">2.</span> <span class="toc-text">屏幕截图 (Screenshots)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#下载-Download"><span class="toc-number">3.</span> <span class="toc-text">下载 (Download)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Use-Gradle"><span class="toc-number">3.1.</span> <span class="toc-text">Use Gradle</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Or-Maven"><span class="toc-number">3.2.</span> <span class="toc-text">Or Maven</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用-Usage"><span class="toc-number">4.</span> <span class="toc-text">使用 (Usage)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#样式预览-Style-Preview"><span class="toc-number">5.</span> <span class="toc-text">样式预览 (Style Preview)</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github Card</p>
+<div class="github-card" data-github="liying2008" data-width="220" data-height="119" data-theme="medium">
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+  </div>
+
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Android基础/" title="Android基础">Android基础<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Kotlin/" title="Kotlin">Kotlin<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/NDK/" title="NDK">NDK<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/View/" title="View">View<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/其他技能/" title="其他技能">其他技能<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/开源库/" title="开源库">开源库<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/我的开源/" title="我的开源">我的开源<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/相关技能/" title="相关技能">相关技能<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/记录/" title="记录">记录<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/问题解决/" title="问题解决">问题解决<sup>2</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/Android/" title="Android">Android<sup>14</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Timeline/" title="Timeline">Timeline<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/JNI/" title="JNI">JNI<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Vector/" title="Vector">Vector<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/接口/" title="接口">接口<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Java/" title="Java">Java<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/View/" title="View">View<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Dialog/" title="Dialog">Dialog<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/RecyclerView/" title="RecyclerView">RecyclerView<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/IP/" title="IP">IP<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/IPv4/" title="IPv4">IPv4<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Permissions/" title="Permissions">Permissions<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Splash/" title="Splash">Splash<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/AsyncTask/" title="AsyncTask">AsyncTask<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Kotlin/" title="Kotlin">Kotlin<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/多渠道/" title="多渠道">多渠道<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Nexus/" title="Nexus">Nexus<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Maven/" title="Maven">Maven<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/jitpack/" title="jitpack">jitpack<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/jcenter/" title="jcenter">jcenter<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://duduhuo.cc" target="_blank" title="独毒火的个人网站">远山寒鸦</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.jianshu.com/u/14ab91761183" target="_blank" title="独毒火的简书主页">独毒火的简书</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m LiYing. <br/>
+			To be better.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/neuliying" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/liying2008" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		<a href="https://twitter.com/topliying" target="_blank" class="icon-twitter" title="twitter"></a>
+		
+		
+		<a href="https://www.facebook.com/topliying" target="_blank" class="icon-facebook" title="facebook"></a>
+		
+		
+		<a href="https://www.linkedin.com/in/neuliying" target="_blank" class="icon-linkedin" title="linkedin"></a>
+		
+		
+		
+		
+		
+		<a href="mailto:liruoer2008@yeah.net" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2017 
+		
+		<a href="/about" target="_blank" title="独毒火">独毒火</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+
+
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1261936722'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s23.cnzz.com/z_stat.php%3Fid%3D1261936722' type='text/javascript'%3E%3C/script%3E"));</script>
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
