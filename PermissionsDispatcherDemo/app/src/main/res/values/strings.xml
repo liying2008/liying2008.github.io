@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">PermissionsDispatcherDemo</string>
+    <string name="contacts_string">联系人个数: %1$,d\n第一个联系人:<b>%2$s</b></string>
+    <string name="contacts_empty">联系人没有加载。</string>
+    <string name="permission_camera_rationale">应用需要得到相机权限才能显示相机预览。</string>
+    <string name="permission_contacts_rationale">应用需要获得联系人权限才能演示对联系人数据库的访问。</string>
+    <string name="permission_camera_denied">请求相机权限被拒绝。 如果要访问相机，则必须授予该权限。</string>
+    <string name="permission_camera_never_askagain">请求相机权限被拒绝，并不再询问。</string>
+</resources>

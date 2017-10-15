@@ -1,0 +1,25 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="cc.duduhuo.fragmentattachdemo.fragment.FirstFragment">
+
+    <TextView
+        android:id="@+id/tvMsg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="The First Fragment" />
+
+    <Button
+        android:id="@+id/btnStartTask"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="耗时任务" />
+
+    <Button
+        android:id="@+id/btnRecreate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="重建Activity" />
+</LinearLayout>
