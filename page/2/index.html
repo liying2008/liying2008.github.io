@@ -84,6 +84,28 @@
   
 <section class="post" itemscope itemprop="blogitem">
   
+    <a href="/2016/12/19/Android获取本机IPv4地址/" title="Android获取本机IPv4地址" itemprop="url">
+  
+    <h1 itemprop="name">Android获取本机IPv4地址</h1>
+    
+     
+           <p itemprop="description" >获取本机IPv4地址可分两种情况，一种是WiFi已开启，一种是蜂窝移动数据已开启。
+
+1、WiFi已开启WiFi开启的情况下，通过WiFi获取本机IP地址，如果仅仅打开WiFi，但并未接入网络，则IP地址可认为是0.0.0.0。如果已经接入网络，则可以通过如下方式获取IPv4地址</p>
+        
+    
+    <time datetime="2016-12-18T16:00:00.000Z" itemprop="datePublished">2016-12-19</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
     <a href="/2016/12/17/使用Android Studio进行多渠道打包/" title="使用Android Studio进行多渠道打包" itemprop="url">
   
     <h1 itemprop="name">使用Android Studio进行多渠道打包</h1>
@@ -126,20 +148,13 @@
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/2016/12/07/记录个人PC使用的软件列表(部分)/" title="记录个人PC使用的软件列表(部分)" itemprop="url">
+    <a href="/2016/12/07/Android时间轴(Timeline)效果的实现(使用RecyclerView)/" title="Android时间轴(Timeline)效果的实现(使用RecyclerView)" itemprop="url">
   
-    <h1 itemprop="name">记录个人PC使用的软件列表(部分)</h1>
+    <h1 itemprop="name">Android时间轴(Timeline)效果的实现(使用RecyclerView)</h1>
     
      
-           <p itemprop="description" >记录此列表以备不时之需：以后换电脑时可以轻松找到之前使用的一些很顺手的软件。
-1、IDE
-IntelliJ IDEA
-JetBrains CLion
-JetBrains PhpStorm 
-JetBrains WebStorm
-Eclipse
-Android Studio
-微信w</p>
+           <p itemprop="description" >1、时间轴效果我们要实现的时间轴效果如下图所示，这是锤子手机的查看物流信息界面的截图。
+2、主要布局的实现在TraceActivity关联的布局文件activity_trace.xml中放置一个RecyclerView，代码如下。将overScrollMode属性设置为never</p>
         
     
     <time datetime="2016-12-06T16:00:00.000Z" itemprop="datePublished">2016-12-07</time>
@@ -182,39 +197,23 @@ Ge</p>
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/2016/12/07/Android时间轴(Timeline)效果的实现(使用RecyclerView)/" title="Android时间轴(Timeline)效果的实现(使用RecyclerView)" itemprop="url">
+    <a href="/2016/12/07/记录个人PC使用的软件列表(部分)/" title="记录个人PC使用的软件列表(部分)" itemprop="url">
   
-    <h1 itemprop="name">Android时间轴(Timeline)效果的实现(使用RecyclerView)</h1>
+    <h1 itemprop="name">记录个人PC使用的软件列表(部分)</h1>
     
      
-           <p itemprop="description" >1、时间轴效果我们要实现的时间轴效果如下图所示，这是锤子手机的查看物流信息界面的截图。
-2、主要布局的实现在TraceActivity关联的布局文件activity_trace.xml中放置一个RecyclerView，代码如下。将overScrollMode属性设置为never</p>
+           <p itemprop="description" >记录此列表以备不时之需：以后换电脑时可以轻松找到之前使用的一些很顺手的软件。
+1、IDE
+IntelliJ IDEA
+JetBrains CLion
+JetBrains PhpStorm 
+JetBrains WebStorm
+Eclipse
+Android Studio
+微信w</p>
         
     
     <time datetime="2016-12-06T16:00:00.000Z" itemprop="datePublished">2016-12-07</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2016/11/27/小技巧：使用Excel通过拼接文本批量生成代码/" title="小技巧：使用Excel通过拼接文本批量生成代码" itemprop="url">
-  
-    <h1 itemprop="name">小技巧：使用Excel通过拼接文本批量生成代码</h1>
-    
-     
-           <p itemprop="description" >操作比较简单，我就不叙述了，直接上动图。
-1、分割代码片段
-2、使用表达式生成一行代码
-3、批量生成代码</p>
-        
-    
-    <time datetime="2016-11-26T16:00:00.000Z" itemprop="datePublished">2016-11-27</time>
   </a>
 </section>
 
@@ -250,15 +249,18 @@ Ge</p>
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/2016/11/26/Splash界面(启动界面)中处理耗时任务/" title="Splash界面(启动界面)中处理耗时任务" itemprop="url">
+    <a href="/2016/11/27/小技巧：使用Excel通过拼接文本批量生成代码/" title="小技巧：使用Excel通过拼接文本批量生成代码" itemprop="url">
   
-    <h1 itemprop="name">Splash界面(启动界面)中处理耗时任务</h1>
+    <h1 itemprop="name">小技巧：使用Excel通过拼接文本批量生成代码</h1>
     
      
-           <p itemprop="description" >1、SplashActivity将SplashActivity设为Launcher Activity，只需要在AndroidManifest.xml文件中配置SplashActivity的intent-filter如下所示：12345678910&amp;lt;!--启动界面--&amp;gt;</p>
+           <p itemprop="description" >操作比较简单，我就不叙述了，直接上动图。
+1、分割代码片段
+2、使用表达式生成一行代码
+3、批量生成代码</p>
         
     
-    <time datetime="2016-11-25T16:00:00.000Z" itemprop="datePublished">2016-11-26</time>
+    <time datetime="2016-11-26T16:00:00.000Z" itemprop="datePublished">2016-11-27</time>
   </a>
 </section>
 
@@ -354,7 +356,7 @@ Ge</p>
 		  
 		
 		  
-			<li><a href="/categories/相关技能/" title="相关技能">相关技能<sup>3</sup></a></li>
+			<li><a href="/categories/相关技能/" title="相关技能">相关技能<sup>4</sup></a></li>
 		  
 		
 		  
@@ -375,11 +377,11 @@ Ge</p>
 		<ul class="clearfix">
 		
 			
-				<li><a href="/tags/Android/" title="Android">Android<sup>16</sup></a></li>
+				<li><a href="/tags/Android/" title="Android">Android<sup>17</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/Kotlin/" title="Kotlin">Kotlin<sup>3</sup></a></li>
+				<li><a href="/tags/Kotlin/" title="Kotlin">Kotlin<sup>4</sup></a></li>
 			
 		
 			
@@ -411,7 +413,7 @@ Ge</p>
 			
 		
 			
-				<li><a href="/tags/Genymotion/" title="Genymotion">Genymotion<sup>1</sup></a></li>
+				<li><a href="/tags/dokka/" title="dokka">dokka<sup>1</sup></a></li>
 			
 		
 			
@@ -435,11 +437,11 @@ Ge</p>
 			
 		
 			
-				<li><a href="/tags/JNI/" title="JNI">JNI<sup>1</sup></a></li>
+				<li><a href="/tags/AsyncTask/" title="AsyncTask">AsyncTask<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/打包/" title="打包">打包<sup>1</sup></a></li>
+				<li><a href="/tags/JNI/" title="JNI">JNI<sup>1</sup></a></li>
 			
 		
 			

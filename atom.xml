@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2017-08-20T03:50:18.008Z</updated>
+  <updated>2017-11-19T09:18:11.931Z</updated>
   <id>/</id>
   
   <author>
@@ -14,6 +14,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>使用Gradle打包Kotlin项目代码、生成Kotlin代码文档</title>
+    <link href="/2017/11/19/%E4%BD%BF%E7%94%A8Gradle%E6%89%93%E5%8C%85Kotlin%E9%A1%B9%E7%9B%AE%E4%BB%A3%E7%A0%81%E3%80%81%E7%94%9F%E6%88%90Kotlin%E4%BB%A3%E7%A0%81%E6%96%87%E6%A1%A3/"/>
+    <id>/2017/11/19/使用Gradle打包Kotlin项目代码、生成Kotlin代码文档/</id>
+    <published>2017-11-18T16:00:00.000Z</published>
+    <updated>2017-11-19T09:18:11.931Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Kotlin项目&quot;&gt;&lt;a href=&quot;#Kotlin项目&quot; class=&quot;headerlink&quot; title=&quot;Kotlin项目&quot;&gt;&lt;/a&gt;Kotlin项目&lt;/h1&gt;&lt;p&gt;在 &lt;strong&gt;Root Project&lt;/strong&gt; 下的 &lt;code&gt;build
+    
+    </summary>
+    
+      <category term="相关技能" scheme="/categories/%E7%9B%B8%E5%85%B3%E6%8A%80%E8%83%BD/"/>
+    
+    
+      <category term="Android" scheme="/tags/Android/"/>
+    
+      <category term="Kotlin" scheme="/tags/Kotlin/"/>
+    
+      <category term="Gradle" scheme="/tags/Gradle/"/>
+    
+      <category term="javadoc" scheme="/tags/javadoc/"/>
+    
+      <category term="dokka" scheme="/tags/dokka/"/>
+    
+  </entry>
   
   <entry>
     <title>在Android中全屏显示GIF图片</title>
@@ -294,22 +322,26 @@
   </entry>
   
   <entry>
-    <title>记录个人PC使用的软件列表(部分)</title>
-    <link href="/2016/12/07/%E8%AE%B0%E5%BD%95%E4%B8%AA%E4%BA%BAPC%E4%BD%BF%E7%94%A8%E7%9A%84%E8%BD%AF%E4%BB%B6%E5%88%97%E8%A1%A8(%E9%83%A8%E5%88%86)/"/>
-    <id>/2016/12/07/记录个人PC使用的软件列表(部分)/</id>
+    <title>Android时间轴(Timeline)效果的实现(使用RecyclerView)</title>
+    <link href="/2016/12/07/Android%E6%97%B6%E9%97%B4%E8%BD%B4(Timeline)%E6%95%88%E6%9E%9C%E7%9A%84%E5%AE%9E%E7%8E%B0(%E4%BD%BF%E7%94%A8RecyclerView)/"/>
+    <id>/2016/12/07/Android时间轴(Timeline)效果的实现(使用RecyclerView)/</id>
     <published>2016-12-06T16:00:00.000Z</published>
-    <updated>2017-05-12T08:59:26.073Z</updated>
+    <updated>2017-05-12T08:59:58.561Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;记录此列表以备不时之需：以后换电脑时可以轻松找到之前使用的一些很顺手的软件。&lt;/p&gt;
-&lt;h2 id=&quot;1、IDE&quot;&gt;&lt;a href=&quot;#1、IDE&quot; class=&quot;headerlink&quot; title=&quot;1、IDE&quot;&gt;&lt;/a&gt;1、IDE&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;Intell
+      &lt;h2 id=&quot;1、时间轴效果&quot;&gt;&lt;a href=&quot;#1、时间轴效果&quot; class=&quot;headerlink&quot; title=&quot;1、时间轴效果&quot;&gt;&lt;/a&gt;1、时间轴效果&lt;/h2&gt;&lt;p&gt;我们要实现的时间轴效果如下图所示，这是锤子手机的查看物流信息界面的截图。&lt;br&gt;&lt;img src=&quot;
     
     </summary>
     
-      <category term="记录" scheme="/categories/%E8%AE%B0%E5%BD%95/"/>
+      <category term="View" scheme="/categories/View/"/>
     
+    
+      <category term="Android" scheme="/tags/Android/"/>
+    
+      <category term="Timeline" scheme="/tags/Timeline/"/>
+    
+      <category term="RecyclerView" scheme="/tags/RecyclerView/"/>
     
   </entry>
   
@@ -337,44 +369,21 @@
   </entry>
   
   <entry>
-    <title>Android时间轴(Timeline)效果的实现(使用RecyclerView)</title>
-    <link href="/2016/12/07/Android%E6%97%B6%E9%97%B4%E8%BD%B4(Timeline)%E6%95%88%E6%9E%9C%E7%9A%84%E5%AE%9E%E7%8E%B0(%E4%BD%BF%E7%94%A8RecyclerView)/"/>
-    <id>/2016/12/07/Android时间轴(Timeline)效果的实现(使用RecyclerView)/</id>
+    <title>记录个人PC使用的软件列表(部分)</title>
+    <link href="/2016/12/07/%E8%AE%B0%E5%BD%95%E4%B8%AA%E4%BA%BAPC%E4%BD%BF%E7%94%A8%E7%9A%84%E8%BD%AF%E4%BB%B6%E5%88%97%E8%A1%A8(%E9%83%A8%E5%88%86)/"/>
+    <id>/2016/12/07/记录个人PC使用的软件列表(部分)/</id>
     <published>2016-12-06T16:00:00.000Z</published>
-    <updated>2017-05-12T08:59:58.561Z</updated>
+    <updated>2017-05-12T08:59:26.073Z</updated>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;1、时间轴效果&quot;&gt;&lt;a href=&quot;#1、时间轴效果&quot; class=&quot;headerlink&quot; title=&quot;1、时间轴效果&quot;&gt;&lt;/a&gt;1、时间轴效果&lt;/h2&gt;&lt;p&gt;我们要实现的时间轴效果如下图所示，这是锤子手机的查看物流信息界面的截图。&lt;br&gt;&lt;img src=&quot;
+      &lt;p&gt;记录此列表以备不时之需：以后换电脑时可以轻松找到之前使用的一些很顺手的软件。&lt;/p&gt;
+&lt;h2 id=&quot;1、IDE&quot;&gt;&lt;a href=&quot;#1、IDE&quot; class=&quot;headerlink&quot; title=&quot;1、IDE&quot;&gt;&lt;/a&gt;1、IDE&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;Intell
     
     </summary>
     
-      <category term="View" scheme="/categories/View/"/>
-    
-    
-      <category term="Android" scheme="/tags/Android/"/>
-    
-      <category term="Timeline" scheme="/tags/Timeline/"/>
-    
-      <category term="RecyclerView" scheme="/tags/RecyclerView/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>小技巧：使用Excel通过拼接文本批量生成代码</title>
-    <link href="/2016/11/27/%E5%B0%8F%E6%8A%80%E5%B7%A7%EF%BC%9A%E4%BD%BF%E7%94%A8Excel%E9%80%9A%E8%BF%87%E6%8B%BC%E6%8E%A5%E6%96%87%E6%9C%AC%E6%89%B9%E9%87%8F%E7%94%9F%E6%88%90%E4%BB%A3%E7%A0%81/"/>
-    <id>/2016/11/27/小技巧：使用Excel通过拼接文本批量生成代码/</id>
-    <published>2016-11-26T16:00:00.000Z</published>
-    <updated>2017-05-13T00:38:20.152Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;操作比较简单，我就不叙述了，直接上动图。&lt;/p&gt;
-&lt;h2 id=&quot;1、分割代码片段&quot;&gt;&lt;a href=&quot;#1、分割代码片段&quot; class=&quot;headerlink&quot; title=&quot;1、分割代码片段&quot;&gt;&lt;/a&gt;1、分割代码片段&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;http://i
-    
-    </summary>
-    
-      <category term="其他技能" scheme="/categories/%E5%85%B6%E4%BB%96%E6%8A%80%E8%83%BD/"/>
+      <category term="记录" scheme="/categories/%E8%AE%B0%E5%BD%95/"/>
     
     
   </entry>
@@ -402,26 +411,21 @@
   </entry>
   
   <entry>
-    <title>Splash界面(启动界面)中处理耗时任务</title>
-    <link href="/2016/11/26/Splash%E7%95%8C%E9%9D%A2(%E5%90%AF%E5%8A%A8%E7%95%8C%E9%9D%A2)%E4%B8%AD%E5%A4%84%E7%90%86%E8%80%97%E6%97%B6%E4%BB%BB%E5%8A%A1/"/>
-    <id>/2016/11/26/Splash界面(启动界面)中处理耗时任务/</id>
-    <published>2016-11-25T16:00:00.000Z</published>
-    <updated>2017-05-12T08:43:41.184Z</updated>
+    <title>小技巧：使用Excel通过拼接文本批量生成代码</title>
+    <link href="/2016/11/27/%E5%B0%8F%E6%8A%80%E5%B7%A7%EF%BC%9A%E4%BD%BF%E7%94%A8Excel%E9%80%9A%E8%BF%87%E6%8B%BC%E6%8E%A5%E6%96%87%E6%9C%AC%E6%89%B9%E9%87%8F%E7%94%9F%E6%88%90%E4%BB%A3%E7%A0%81/"/>
+    <id>/2016/11/27/小技巧：使用Excel通过拼接文本批量生成代码/</id>
+    <published>2016-11-26T16:00:00.000Z</published>
+    <updated>2017-05-13T00:38:20.152Z</updated>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;1、SplashActivity&quot;&gt;&lt;a href=&quot;#1、SplashActivity&quot; class=&quot;headerlink&quot; title=&quot;1、SplashActivity&quot;&gt;&lt;/a&gt;1、SplashActivity&lt;/h2&gt;&lt;p&gt;将SplashActivit
+      &lt;p&gt;操作比较简单，我就不叙述了，直接上动图。&lt;/p&gt;
+&lt;h2 id=&quot;1、分割代码片段&quot;&gt;&lt;a href=&quot;#1、分割代码片段&quot; class=&quot;headerlink&quot; title=&quot;1、分割代码片段&quot;&gt;&lt;/a&gt;1、分割代码片段&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;http://i
     
     </summary>
     
-      <category term="Android基础" scheme="/categories/Android%E5%9F%BA%E7%A1%80/"/>
+      <category term="其他技能" scheme="/categories/%E5%85%B6%E4%BB%96%E6%8A%80%E8%83%BD/"/>
     
-    
-      <category term="Android" scheme="/tags/Android/"/>
-    
-      <category term="Splash" scheme="/tags/Splash/"/>
-    
-      <category term="AsyncTask" scheme="/tags/AsyncTask/"/>
     
   </entry>
   

@@ -4,23 +4,24 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>记录个人Android Studio安装插件列表 | duduhuo&#39;s Blog</title>
+    <title>使用Gradle打包Kotlin项目代码、生成Kotlin代码文档 | duduhuo&#39;s Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="独毒火">
     
 
     
-    <meta name="description" content="写这个列表是为了以后重装AndroidStudio之后可以找到之前所用的插件。  .ignore ADB WIFI Android File Grouping Android Parcelable code generator Android Selector Codota Genymotion Groovy GsonFormat JSONOnlineViewer Kotlin Markdown">
+    <meta name="description" content="Kotlin项目在 Root Project 下的 build.gradle 文件中 buildscript 下的 dependencies 中添加： 1classpath &quot;org.jetbrains.dokka:dokka-gradle-plugin:0.9.15&quot; 在 module 下的 build.gradle 文件中添加： 12345678910111213141516171819202">
+<meta name="keywords" content="Android,Kotlin,Gradle,javadoc,dokka">
 <meta property="og:type" content="article">
-<meta property="og:title" content="记录个人Android Studio安装插件列表">
-<meta property="og:url" content="/2016/12/07/记录个人Android Studio安装插件列表/index.html">
+<meta property="og:title" content="使用Gradle打包Kotlin项目代码、生成Kotlin代码文档">
+<meta property="og:url" content="/2017/11/19/使用Gradle打包Kotlin项目代码、生成Kotlin代码文档/index.html">
 <meta property="og:site_name" content="duduhuo&#39;s Blog">
-<meta property="og:description" content="写这个列表是为了以后重装AndroidStudio之后可以找到之前所用的插件。  .ignore ADB WIFI Android File Grouping Android Parcelable code generator Android Selector Codota Genymotion Groovy GsonFormat JSONOnlineViewer Kotlin Markdown">
-<meta property="og:updated_time" content="2017-05-12T09:00:43.862Z">
+<meta property="og:description" content="Kotlin项目在 Root Project 下的 build.gradle 文件中 buildscript 下的 dependencies 中添加： 1classpath &quot;org.jetbrains.dokka:dokka-gradle-plugin:0.9.15&quot; 在 module 下的 build.gradle 文件中添加： 12345678910111213141516171819202">
+<meta property="og:updated_time" content="2017-11-19T09:18:11.931Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="记录个人Android Studio安装插件列表">
-<meta name="twitter:description" content="写这个列表是为了以后重装AndroidStudio之后可以找到之前所用的插件。  .ignore ADB WIFI Android File Grouping Android Parcelable code generator Android Selector Codota Genymotion Groovy GsonFormat JSONOnlineViewer Kotlin Markdown">
+<meta name="twitter:title" content="使用Gradle打包Kotlin项目代码、生成Kotlin代码文档">
+<meta name="twitter:description" content="Kotlin项目在 Root Project 下的 build.gradle 文件中 buildscript 下的 dependencies 中添加： 1classpath &quot;org.jetbrains.dokka:dokka-gradle-plugin:0.9.15&quot; 在 module 下的 build.gradle 文件中添加： 12345678910111213141516171819202">
 <meta name="twitter:creator" content="@topliying">
 <link rel="publisher" href="101179519081581317436">
 
@@ -86,14 +87,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/12/07/记录个人Android Studio安装插件列表/" title="记录个人Android Studio安装插件列表" itemprop="url">记录个人Android Studio安装插件列表</a>
+      <a href="/2017/11/19/使用Gradle打包Kotlin项目代码、生成Kotlin代码文档/" title="使用Gradle打包Kotlin项目代码、生成Kotlin代码文档" itemprop="url">使用Gradle打包Kotlin项目代码、生成Kotlin代码文档</a>
   </h1>
   <p class="article-author">By
        
 		<a href="https://plus.google.com/101179519081581317436?rel=author" title="独毒火" target="_blank" itemprop="author">独毒火</a>
 		
   <p class="article-time">
-    <time datetime="2016-12-06T16:00:00.000Z" itemprop="datePublished"> Published 2016-12-07</time>
+    <time datetime="2017-11-18T16:00:00.000Z" itemprop="datePublished"> Published 2017-11-19</time>
     
   </p>
 </header>
@@ -102,27 +103,26 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Kotlin项目"><span class="toc-number">1.</span> <span class="toc-text">Kotlin项目</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#使用Kotlin开发的Android项目"><span class="toc-number">2.</span> <span class="toc-text">使用Kotlin开发的Android项目</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#相关参考链接"><span class="toc-number">3.</span> <span class="toc-text">相关参考链接</span></a></li></ol>
 		
 		</div>
 		
-		<p>写这个列表是为了以后重装AndroidStudio之后可以找到之前所用的插件。</p>
-<ul>
-<li>.ignore</li>
-<li>ADB WIFI</li>
-<li>Android File Grouping</li>
-<li>Android Parcelable code generator</li>
-<li>Android Selector</li>
-<li>Codota</li>
-<li>Genymotion</li>
-<li>Groovy</li>
-<li>GsonFormat</li>
-<li>JSONOnlineViewer</li>
-<li>Kotlin</li>
-<li>Markdown Navigator</li>
-<li>PermissionsDispatcher plugin</li>
-<li>Sexy Editor</li>
-</ul>
+		<h1 id="Kotlin项目"><a href="#Kotlin项目" class="headerlink" title="Kotlin项目"></a>Kotlin项目</h1><p>在 <strong>Root Project</strong> 下的 <code>build.gradle</code> 文件中 <code>buildscript</code> 下的 <code>dependencies</code> 中添加：</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">classpath</span> <span class="string">"org.jetbrains.dokka:dokka-gradle-plugin:0.9.15"</span></div></pre></td></tr></table></figure>
+<p>在 <strong>module</strong> 下的 <code>build.gradle</code> 文件中添加：</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">apply plugin: <span class="string">'org.jetbrains.dokka'</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">task</span> generateSourcesJar(type: Jar) &#123;</div><div class="line">    <span class="keyword">group</span> = <span class="string">'jar'</span></div><div class="line">    <span class="keyword">from</span> <span class="keyword">sourceSets</span>.main.java.srcDirs</div><div class="line">    classifier = <span class="string">'sources'</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">task</span> dokkaJavadoc(type: org.jetbrains.dokka.gradle.DokkaTask) &#123;</div><div class="line">    outputFormat = <span class="string">"javadoc"</span></div><div class="line">    outputDirectory = javadoc.<span class="keyword">destinationDir</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">task</span> generateJavadoc(type: Jar, dependsOn: dokkaJavadoc) &#123;</div><div class="line">    <span class="keyword">group</span> = <span class="string">'jar'</span></div><div class="line">    classifier = <span class="string">'javadoc'</span></div><div class="line">    <span class="keyword">from</span> javadoc.<span class="keyword">destinationDir</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">artifacts</span> &#123;</div><div class="line">    archives generateJavadoc</div><div class="line">    archives generateSourcesJar</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>其中， <code>generateSourcesJar</code> Task 中的  <code>from sourceSets.main.java.srcDirs</code>  需要根据项目实际源码目录填写。</p>
+<p>同步之后，在 <code>gradle</code> 的任务列表中的 <code>jar</code> 分组下就可以看到 <code>generateSourcesJar</code> 和  <code>generateJavadoc</code> 两个任务了。<br>双击这两个任务，<code>sources.jar</code> 和 <code>javadoc.jar</code> 就会生成，位置在 <code>build/libs</code> 目录下。</p>
+<h1 id="使用Kotlin开发的Android项目"><a href="#使用Kotlin开发的Android项目" class="headerlink" title="使用Kotlin开发的Android项目"></a>使用Kotlin开发的Android项目</h1><p>在 <strong>Root Project</strong> 下的 <code>build.gradle</code> 文件中 <code>buildscript</code> 下的 <code>dependencies</code> 中添加：</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">classpath</span> <span class="string">'org.jetbrains.dokka:dokka-android-gradle-plugin:0.9.15'</span></div></pre></td></tr></table></figure>
+<p>在 <strong>module</strong> 下的 <code>build.gradle</code> 文件中添加：</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">apply plugin: <span class="string">'org.jetbrains.dokka-android'</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">task</span> generateSourcesJar(type: Jar) &#123;</div><div class="line">    <span class="keyword">group</span> = <span class="string">'jar'</span></div><div class="line">    <span class="keyword">from</span> android.<span class="keyword">sourceSets</span>.main.java.srcDirs</div><div class="line">    classifier = <span class="string">'sources'</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">task</span> javadoc(type: Javadoc) &#123;</div><div class="line">    <span class="keyword">source</span> = android.<span class="keyword">sourceSets</span>.main.java.srcDirs</div><div class="line">    <span class="keyword">classpath</span> += <span class="keyword">project</span>.files(android.getBootClasspath().<span class="keyword">join</span>(<span class="keyword">File</span>.pathSeparator))</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">task</span> dokkaJavadoc(type: org.jetbrains.dokka.gradle.DokkaTask) &#123;</div><div class="line">    outputFormat = <span class="string">"javadoc"</span></div><div class="line">    outputDirectory = javadoc.<span class="keyword">destinationDir</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">task</span> generateJavadoc(type: Jar, dependsOn: dokkaJavadoc) &#123;</div><div class="line">    <span class="keyword">group</span> = <span class="string">'jar'</span></div><div class="line">    classifier = <span class="string">'javadoc'</span></div><div class="line">    <span class="keyword">from</span> javadoc.<span class="keyword">destinationDir</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">artifacts</span> &#123;</div><div class="line">    archives generateJavadoc</div><div class="line">    archives generateSourcesJar</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>其中， <code>generateSourcesJar</code> Task 和 <code>javadoc</code> Task 中的  <code>sourceSets.main.java.srcDirs</code>  需要根据项目实际源码目录填写。</p>
+<p>同步之后，在 <code>gradle</code> 的任务列表中的 <code>jar</code> 分组下就可以看到 <code>generateSourcesJar</code> 和  <code>generateJavadoc</code> 两个任务了。<br>双击这两个任务，<code>sources.jar</code> 和 <code>javadoc.jar</code> 就会生成，位置在 <code>build/libs</code> 目录下。</p>
+<h1 id="相关参考链接"><a href="#相关参考链接" class="headerlink" title="相关参考链接"></a>相关参考链接</h1><blockquote>
+<p><a href="http://kotlinlang.org/docs/reference/kotlin-doc.html" target="_blank" rel="external">Documenting Kotlin Code</a></p>
+<p><a href="https://github.com/Kotlin/dokka" target="_blank" rel="external">Github Kotlin/dokka</a></p>
+</blockquote>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -130,9 +130,14 @@
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/记录/">记录</a>
+  <a class="article-category-link" href="/categories/相关技能/">相关技能</a>
 </div>
 
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Android/">Android</a><a href="/tags/Kotlin/">Kotlin</a><a href="/tags/Gradle/">Gradle</a><a href="/tags/javadoc/">javadoc</a><a href="/tags/dokka/">dokka</a>
+  </div>
 
 </div>
 
@@ -140,7 +145,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="/2016/12/07/记录个人Android Studio安装插件列表/" data-title="记录个人Android Studio安装插件列表 | duduhuo&#39;s Blog" data-tsina="3832099344" class="share clearfix">
+	  <div data-url="/2017/11/19/使用Gradle打包Kotlin项目代码、生成Kotlin代码文档/" data-title="使用Gradle打包Kotlin项目代码、生成Kotlin代码文档 | duduhuo&#39;s Blog" data-tsina="3832099344" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -153,19 +158,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2016/12/07/Android时间轴(Timeline)效果的实现(使用RecyclerView)/" title="Android时间轴(Timeline)效果的实现(使用RecyclerView)">
-  <strong>上一篇：</strong><br/>
-  <span>
-  Android时间轴(Timeline)效果的实现(使用RecyclerView)</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2016/12/07/记录个人PC使用的软件列表(部分)/"  title="记录个人PC使用的软件列表(部分)">
+<a href="/2017/08/20/在Android中全屏显示GIF图片/"  title="在Android中全屏显示GIF图片">
  <strong>下一篇：</strong><br/> 
- <span>记录个人PC使用的软件列表(部分)
+ <span>在Android中全屏显示GIF图片
 </span>
 </a>
 </div>
@@ -181,7 +178,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
  
- 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Kotlin项目"><span class="toc-number">1.</span> <span class="toc-text">Kotlin项目</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#使用Kotlin开发的Android项目"><span class="toc-number">2.</span> <span class="toc-text">使用Kotlin开发的Android项目</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#相关参考链接"><span class="toc-number">3.</span> <span class="toc-text">相关参考链接</span></a></li></ol>
  
   </div>
 
