@@ -4,23 +4,27 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>记录个人Android Studio安装插件列表 | duduhuo&#39;s Blog</title>
+    <title>移动硬盘安装Ubuntu系统（UEFI引导）的一些记录 | duduhuo&#39;s Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="独毒火">
     
 
     
-    <meta name="description" content="写这个列表是为了以后重装AndroidStudio之后可以找到之前所用的插件。  .ignore ADB WIFI Android File Grouping Android Parcelable code generator Android Selector Codota Genymotion Groovy GsonFormat JSONOnlineViewer Kotlin Markdown">
+    <meta name="description" content="移动硬盘需要提前将磁盘分区表类型转为GUID（即 GPT）转换方法：使用DiskGenius软件，选中磁盘右键，选择 “转换分区表类型为GUID格式” 。 磁盘分区为了避免安装系统时出现 “分配到/的分区/dev/sdb3开始于3584字节,使用磁盘的最小对齐,这可能造成非常差的性能” 这样的错误，可以提前在Windows系统下将分区创建好。   使用DiskGenius，创建分区如下：  注意">
+<meta name="keywords" content="Linux,Ubuntu,UEFI">
 <meta property="og:type" content="article">
-<meta property="og:title" content="记录个人Android Studio安装插件列表">
-<meta property="og:url" content="/2016/12/07/记录个人Android Studio安装插件列表/index.html">
+<meta property="og:title" content="移动硬盘安装Ubuntu系统（UEFI引导）的一些记录">
+<meta property="og:url" content="/2018/06/20/移动硬盘安装Ubuntu系统（UEFI引导）的一些记录/index.html">
 <meta property="og:site_name" content="duduhuo&#39;s Blog">
-<meta property="og:description" content="写这个列表是为了以后重装AndroidStudio之后可以找到之前所用的插件。  .ignore ADB WIFI Android File Grouping Android Parcelable code generator Android Selector Codota Genymotion Groovy GsonFormat JSONOnlineViewer Kotlin Markdown">
-<meta property="og:updated_time" content="2017-05-12T09:00:43.862Z">
+<meta property="og:description" content="移动硬盘需要提前将磁盘分区表类型转为GUID（即 GPT）转换方法：使用DiskGenius软件，选中磁盘右键，选择 “转换分区表类型为GUID格式” 。 磁盘分区为了避免安装系统时出现 “分配到/的分区/dev/sdb3开始于3584字节,使用磁盘的最小对齐,这可能造成非常差的性能” 这样的错误，可以提前在Windows系统下将分区创建好。   使用DiskGenius，创建分区如下：  注意">
+<meta property="og:image" content="https://img-blog.csdn.net/2018062021280252">
+<meta property="og:image" content="https://img-blog.csdn.net/20180620214112528">
+<meta property="og:updated_time" content="2018-06-20T14:30:12.753Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="记录个人Android Studio安装插件列表">
-<meta name="twitter:description" content="写这个列表是为了以后重装AndroidStudio之后可以找到之前所用的插件。  .ignore ADB WIFI Android File Grouping Android Parcelable code generator Android Selector Codota Genymotion Groovy GsonFormat JSONOnlineViewer Kotlin Markdown">
+<meta name="twitter:title" content="移动硬盘安装Ubuntu系统（UEFI引导）的一些记录">
+<meta name="twitter:description" content="移动硬盘需要提前将磁盘分区表类型转为GUID（即 GPT）转换方法：使用DiskGenius软件，选中磁盘右键，选择 “转换分区表类型为GUID格式” 。 磁盘分区为了避免安装系统时出现 “分配到/的分区/dev/sdb3开始于3584字节,使用磁盘的最小对齐,这可能造成非常差的性能” 这样的错误，可以提前在Windows系统下将分区创建好。   使用DiskGenius，创建分区如下：  注意">
+<meta name="twitter:image" content="https://img-blog.csdn.net/2018062021280252">
 <meta name="twitter:creator" content="@topliying">
 <link rel="publisher" href="101179519081581317436">
 
@@ -86,14 +90,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/12/07/记录个人Android Studio安装插件列表/" title="记录个人Android Studio安装插件列表" itemprop="url">记录个人Android Studio安装插件列表</a>
+      <a href="/2018/06/20/移动硬盘安装Ubuntu系统（UEFI引导）的一些记录/" title="移动硬盘安装Ubuntu系统（UEFI引导）的一些记录" itemprop="url">移动硬盘安装Ubuntu系统（UEFI引导）的一些记录</a>
   </h1>
   <p class="article-author">By
        
 		<a href="https://plus.google.com/101179519081581317436?rel=author" title="独毒火" target="_blank" itemprop="author">独毒火</a>
 		
   <p class="article-time">
-    <time datetime="2016-12-06T16:00:00.000Z" itemprop="datePublished"> 发表于 2016-12-07</time>
+    <time datetime="2018-06-19T16:00:00.000Z" itemprop="datePublished"> 发表于 2018-06-20</time>
     
   </p>
 </header>
@@ -102,26 +106,45 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#移动硬盘需要提前将磁盘分区表类型转为GUID（即-GPT）"><span class="toc-number">1.</span> <span class="toc-text">移动硬盘需要提前将磁盘分区表类型转为GUID（即 GPT）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#磁盘分区"><span class="toc-number">2.</span> <span class="toc-text">磁盘分区</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#注意"><span class="toc-number">2.1.</span> <span class="toc-text">注意</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装时的分区配置"><span class="toc-number">3.</span> <span class="toc-text">安装时的分区配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#注意-1"><span class="toc-number">3.1.</span> <span class="toc-text">注意</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ESP分区没有引导文件的解决方法"><span class="toc-number">4.</span> <span class="toc-text">ESP分区没有引导文件的解决方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#步骤"><span class="toc-number">4.1.</span> <span class="toc-text">步骤</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BIOS设置（不同品牌的计算机有差异）"><span class="toc-number">5.</span> <span class="toc-text">BIOS设置（不同品牌的计算机有差异）</span></a></li></ol>
 		
 		</div>
 		
-		<p>写这个列表是为了以后重装AndroidStudio之后可以找到之前所用的插件。</p>
+		<h2 id="移动硬盘需要提前将磁盘分区表类型转为GUID（即-GPT）"><a href="#移动硬盘需要提前将磁盘分区表类型转为GUID（即-GPT）" class="headerlink" title="移动硬盘需要提前将磁盘分区表类型转为GUID（即 GPT）"></a>移动硬盘需要提前将磁盘分区表类型转为GUID（即 GPT）</h2><p>转换方法：使用DiskGenius软件，选中磁盘右键，选择 “<strong>转换分区表类型为GUID格式</strong>” 。</p>
+<h2 id="磁盘分区"><a href="#磁盘分区" class="headerlink" title="磁盘分区"></a>磁盘分区</h2><p>为了避免安装系统时出现 “<strong>分配到/的分区/dev/sdb3开始于3584字节,使用磁盘的最小对齐,这可能造成非常差的性能</strong>” 这样的错误，可以提前在Windows系统下将分区创建好。  </p>
+<p>使用DiskGenius，创建分区如下：</p>
+<p><img src="https://img-blog.csdn.net/2018062021280252" alt="DiskGenius分区"></p>
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><ul>
+<li>序号0的分区【本地磁盘(G:)】是一个<strong>FAT32</strong>类型的分区（其实是一个 ESP 分区），安装系统是需要将引导放在此分区，大小最好在200M以上，如图我分了514MB；</li>
+<li>序号1的分区【BIOS(H:)】实际上用不到，可以不创建；</li>
+<li>序号2的分区【Linux Swap Partition】是Linux系统下的交换分区；</li>
+<li>序号3的分区【分区(3)】是一个EXT4类型分区，用于挂载 /；</li>
+<li><p>序号4的分区【分区(4)】是一个EXT4类型分区，用于挂载 /home。</p>
+<blockquote>
+<p>序号0的分区（ESP分区）为磁盘第一个分区，创建好之后格式化。<br>EXT4分区也要格式化，簇大小选择4096（即 <strong>4K对齐</strong>）。</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="安装时的分区配置"><a href="#安装时的分区配置" class="headerlink" title="安装时的分区配置"></a>安装时的分区配置</h2><p><img src="https://img-blog.csdn.net/20180620214112528" alt="安装时的分区配置"></p>
+<h3 id="注意-1"><a href="#注意-1" class="headerlink" title="注意"></a>注意</h3><p>假设sdb是待安装Ubuntu的磁盘：</p>
 <ul>
-<li>.ignore</li>
-<li>ADB WIFI</li>
-<li>Android File Grouping</li>
-<li>Android Parcelable code generator</li>
-<li>Android Selector</li>
-<li>Codota</li>
-<li>Genymotion</li>
-<li>Groovy</li>
-<li>GsonFormat</li>
-<li>JSONOnlineViewer</li>
-<li>Kotlin</li>
-<li>Markdown Navigator</li>
-<li>PermissionsDispatcher plugin</li>
-<li>Sexy Editor</li>
+<li>sdb1 需要选择 “EFI系统分区”；</li>
+<li>sdb2 没有用处；</li>
+<li>sdb3 选择“用于交换空间”；</li>
+<li>sdb4和sdb5分别挂载 / 和 /home。</li>
+</ul>
+<blockquote>
+<p>所有分区都不要格式化（之前已经格式化过了）。<br>安装启动引导器的设备选择 sdb1。（安装结束后，我发现sdb1上并没有任何引导文件，不知道哪里出了问题，之后会介绍解决方法。）</p>
+</blockquote>
+<h2 id="ESP分区没有引导文件的解决方法"><a href="#ESP分区没有引导文件的解决方法" class="headerlink" title="ESP分区没有引导文件的解决方法"></a>ESP分区没有引导文件的解决方法</h2><p>进入U盘中的Live Ubuntu系统，插上移动硬盘，连上网络，安装一个叫 “<strong>boot-repair</strong>” 的软件。</p>
+<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo apt-add-repository ppa:yannubuntu/boot-repair</div><div class="line">sudo apt update</div><div class="line">sudo apt install boot-repair</div></pre></td></tr></table></figure>
+<p>安装完成后，执行 <code>boot-repair</code> 即可启动软件，然后选择 “<strong>Recommended repair</strong>” 等待引导修复完成。<br>修复完成之后，在ESP分区会出现一个名为 <code>EFI</code> 的目录，里面有 <code>BOOT</code> 和 <code>ubuntu</code> 两个子目录，用来启动 Ubuntu 系统的引导文件就是位于 <code>ubuntu</code> 目录中的 <code>shimx64.efi</code> 文件 。</p>
+<h2 id="BIOS设置（不同品牌的计算机有差异）"><a href="#BIOS设置（不同品牌的计算机有差异）" class="headerlink" title="BIOS设置（不同品牌的计算机有差异）"></a>BIOS设置（不同品牌的计算机有差异）</h2><p>以下是Acer品牌的计算机的设置方法：</p>
+<ul>
+<li>（<strong>重要</strong>）进入计算机的BIOS，在  <strong>Boot</strong> 选项卡中设置 <strong>Boot Mode</strong> 为  <strong>UEFI</strong>；    </li>
+<li>关闭 “<strong>Secure Boot</strong>” （注：据说可以不关闭，我没有试验过）；    </li>
+<li><strong>Security</strong> 选项卡中选择 “<strong>Select an UEFI file as trusted for executing:</strong>”，在目标设备上（移动硬盘的ESP分区）选择 <code>/EFI/ubuntu/shimx64.efi</code> ，输入引导项的名称，回车即可；  </li>
+<li>保存BIOS设置，退出。再次开机在启动项中选择刚刚添加的引导即可进入Ubuntu系统。</li>
 </ul>
   
 	</div>
@@ -130,9 +153,14 @@
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/记录/">记录</a>
+  <a class="article-category-link" href="/categories/其他技能/">其他技能</a>
 </div>
 
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Linux/">Linux</a><a href="/tags/Ubuntu/">Ubuntu</a><a href="/tags/UEFI/">UEFI</a>
+  </div>
 
 </div>
 
@@ -140,7 +168,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="/2016/12/07/记录个人Android Studio安装插件列表/" data-title="记录个人Android Studio安装插件列表 | duduhuo&#39;s Blog" data-tsina="3832099344" class="share clearfix">
+	  <div data-url="/2018/06/20/移动硬盘安装Ubuntu系统（UEFI引导）的一些记录/" data-title="移动硬盘安装Ubuntu系统（UEFI引导）的一些记录 | duduhuo&#39;s Blog" data-tsina="3832099344" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -153,19 +181,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2016/12/07/问题解决：启动Genymotion模拟器，执行adb命令异常/" title="问题解决：启动Genymotion模拟器，执行adb命令异常">
-  <strong>上一篇：</strong><br/>
-  <span>
-  问题解决：启动Genymotion模拟器，执行adb命令异常</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2016/11/27/Android Studio2.2中JNI的简单使用/"  title="Android Studio2.2中JNI的简单使用">
+<a href="/2018/03/04/Linux系统下的Jenkins的简要安装方法/"  title="Linux系统下的Jenkins的简要安装方法">
  <strong>下一篇：</strong><br/> 
- <span>Android Studio2.2中JNI的简单使用
+ <span>Linux系统下的Jenkins的简要安装方法
 </span>
 </a>
 </div>
@@ -181,7 +201,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#移动硬盘需要提前将磁盘分区表类型转为GUID（即-GPT）"><span class="toc-number">1.</span> <span class="toc-text">移动硬盘需要提前将磁盘分区表类型转为GUID（即 GPT）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#磁盘分区"><span class="toc-number">2.</span> <span class="toc-text">磁盘分区</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#注意"><span class="toc-number">2.1.</span> <span class="toc-text">注意</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装时的分区配置"><span class="toc-number">3.</span> <span class="toc-text">安装时的分区配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#注意-1"><span class="toc-number">3.1.</span> <span class="toc-text">注意</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ESP分区没有引导文件的解决方法"><span class="toc-number">4.</span> <span class="toc-text">ESP分区没有引导文件的解决方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#步骤"><span class="toc-number">4.1.</span> <span class="toc-text">步骤</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BIOS设置（不同品牌的计算机有差异）"><span class="toc-number">5.</span> <span class="toc-text">BIOS设置（不同品牌的计算机有差异）</span></a></li></ol>
  
   </div>
 
