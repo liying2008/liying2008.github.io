@@ -20,7 +20,7 @@
 <meta property="og:description" content="移动硬盘需要提前将磁盘分区表类型转为GUID（即 GPT）转换方法：使用DiskGenius软件，选中磁盘右键，选择 “转换分区表类型为GUID格式” 。 磁盘分区为了避免安装系统时出现 “分配到/的分区/dev/sdb3开始于3584字节,使用磁盘的最小对齐,这可能造成非常差的性能” 这样的错误，可以提前在Windows系统下将分区创建好。   使用DiskGenius，创建分区如下：  注意">
 <meta property="og:image" content="https://img-blog.csdn.net/2018062021280252">
 <meta property="og:image" content="https://img-blog.csdn.net/20180620214112528">
-<meta property="og:updated_time" content="2018-06-20T14:30:12.753Z">
+<meta property="og:updated_time" content="2018-06-24T07:38:50.681Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="移动硬盘安装Ubuntu系统（UEFI引导）的一些记录">
 <meta name="twitter:description" content="移动硬盘需要提前将磁盘分区表类型转为GUID（即 GPT）转换方法：使用DiskGenius软件，选中磁盘右键，选择 “转换分区表类型为GUID格式” 。 磁盘分区为了避免安装系统时出现 “分配到/的分区/dev/sdb3开始于3584字节,使用磁盘的最小对齐,这可能造成非常差的性能” 这样的错误，可以提前在Windows系统下将分区创建好。   使用DiskGenius，创建分区如下：  注意">
@@ -54,7 +54,7 @@
 				<h1 class="site-name"><a href="/" title="duduhuo&#39;s Blog">duduhuo&#39;s Blog</a></h1>
 				<h2 class="blog-motto">To be better.</h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -74,7 +74,7 @@
  					
 					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
 						<label>Search</label>
-						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
 						<input type="hidden" name="q" value="site:">
 					</form>
 					
@@ -97,14 +97,14 @@
 		<a href="https://plus.google.com/101179519081581317436?rel=author" title="独毒火" target="_blank" itemprop="author">独毒火</a>
 		
   <p class="article-time">
-    <time datetime="2018-06-19T16:00:00.000Z" itemprop="datePublished"> 发表于 2018-06-20</time>
+    <time datetime="2018-06-19T16:00:00.000Z" itemprop="datePublished"> Published 2018-06-20</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
 		<div id="toc" class="toc-article">
-			<strong class="toc-title">文章目录</strong>
+			<strong class="toc-title">Contents</strong>
 		
 			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#移动硬盘需要提前将磁盘分区表类型转为GUID（即-GPT）"><span class="toc-number">1.</span> <span class="toc-text">移动硬盘需要提前将磁盘分区表类型转为GUID（即 GPT）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#磁盘分区"><span class="toc-number">2.</span> <span class="toc-text">磁盘分区</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#注意"><span class="toc-number">2.1.</span> <span class="toc-text">注意</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装时的分区配置"><span class="toc-number">3.</span> <span class="toc-text">安装时的分区配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#注意-1"><span class="toc-number">3.1.</span> <span class="toc-text">注意</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ESP分区没有引导文件的解决方法"><span class="toc-number">4.</span> <span class="toc-text">ESP分区没有引导文件的解决方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#步骤"><span class="toc-number">4.1.</span> <span class="toc-text">步骤</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BIOS设置（不同品牌的计算机有差异）"><span class="toc-number">5.</span> <span class="toc-text">BIOS设置（不同品牌的计算机有差异）</span></a></li></ol>
 		
@@ -142,9 +142,9 @@
 <h2 id="BIOS设置（不同品牌的计算机有差异）"><a href="#BIOS设置（不同品牌的计算机有差异）" class="headerlink" title="BIOS设置（不同品牌的计算机有差异）"></a>BIOS设置（不同品牌的计算机有差异）</h2><p>以下是Acer品牌的计算机的设置方法：</p>
 <ul>
 <li>（<strong>重要</strong>）进入计算机的BIOS，在  <strong>Boot</strong> 选项卡中设置 <strong>Boot Mode</strong> 为  <strong>UEFI</strong>；    </li>
-<li>关闭 “<strong>Secure Boot</strong>” （注：据说可以不关闭，我没有试验过）；    </li>
+<li>关闭 “<strong>Secure Boot</strong>” （注：经测试，不关闭也可以启动 Ubuntu ，但是无法使用闭源的显卡驱动。此外，使用 VirtualBox 也要求关闭 Secure Boot 。）；     </li>
 <li><strong>Security</strong> 选项卡中选择 “<strong>Select an UEFI file as trusted for executing:</strong>”，在目标设备上（移动硬盘的ESP分区）选择 <code>/EFI/ubuntu/shimx64.efi</code> ，输入引导项的名称，回车即可；  </li>
-<li>保存BIOS设置，退出。再次开机在启动项中选择刚刚添加的引导即可进入Ubuntu系统。</li>
+<li>保存BIOS设置，退出。再次开机在启动项中选择刚刚添加的引导即可进入Ubuntu系统。（注：移动硬盘所使用的计算机的USB插口不能变。）  </li>
 </ul>
   
 	</div>
@@ -196,22 +196,22 @@
 
 
 </div>  
-      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
 
   <div id="toc" class="toc-aside">
-  <strong class="toc-title">文章目录</strong>
+  <strong class="toc-title">Contents</strong>
  
  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#移动硬盘需要提前将磁盘分区表类型转为GUID（即-GPT）"><span class="toc-number">1.</span> <span class="toc-text">移动硬盘需要提前将磁盘分区表类型转为GUID（即 GPT）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#磁盘分区"><span class="toc-number">2.</span> <span class="toc-text">磁盘分区</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#注意"><span class="toc-number">2.1.</span> <span class="toc-text">注意</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装时的分区配置"><span class="toc-number">3.</span> <span class="toc-text">安装时的分区配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#注意-1"><span class="toc-number">3.1.</span> <span class="toc-text">注意</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ESP分区没有引导文件的解决方法"><span class="toc-number">4.</span> <span class="toc-text">ESP分区没有引导文件的解决方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#步骤"><span class="toc-number">4.1.</span> <span class="toc-text">步骤</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BIOS设置（不同品牌的计算机有差异）"><span class="toc-number">5.</span> <span class="toc-text">BIOS设置（不同品牌的计算机有差异）</span></a></li></ol>
  
   </div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
 <aside class="clearfix">
 
   
 <div class="categorieslist">
-	<p class="asidetitle">分类</p>
+	<p class="asidetitle">Categories</p>
 		<ul>
 		
 		  
@@ -264,7 +264,7 @@
 
   
 <div class="tagslist">
-	<p class="asidetitle">标签</p>
+	<p class="asidetitle">Tags</p>
 		<ul class="clearfix">
 		
 			
@@ -352,7 +352,7 @@
 
 
   <div class="linkslist">
-  <p class="asidetitle">友情链接</p>
+  <p class="asidetitle">Links</p>
     <ul>
         
           <li>
@@ -374,7 +374,7 @@
 
 
   <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
 </div>
 
 </aside>
@@ -610,7 +610,7 @@ $(document).ready(function(){
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 
