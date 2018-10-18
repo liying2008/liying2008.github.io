@@ -1,6 +1,7 @@
 package cc.duduhuo.timelinerecyclerview.adapter;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,20 +29,21 @@ public class TraceListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     private LayoutInflater inflater;
     private List<Trace> traceList = new ArrayList<>(1);
     private static final int TYPE_TOP = 0x0000;
-    private static final int TYPE_NORMAL= 0x0001;
+    private static final int TYPE_NORMAL = 0x0001;
 
     public TraceListAdapter(Context context, List<Trace> traceList) {
         inflater = LayoutInflater.from(context);
         this.traceList = traceList;
     }
 
+    @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new ViewHolder(inflater.inflate(R.layout.item_trace, parent, false));
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         ViewHolder itemHolder = (ViewHolder) holder;
         if (getItemViewType(position) == TYPE_TOP) {
             // 第一行头的竖线不显示
@@ -73,9 +75,10 @@ public class TraceListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         return TYPE_NORMAL;
     }
 
-    public  class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder {
         private TextView tvAcceptTime, tvAcceptStation;
         private TextView tvTopLine, tvDot;
+
         public ViewHolder(View itemView) {
             super(itemView);
             tvAcceptTime = (TextView) itemView.findViewById(R.id.tvAcceptTime);

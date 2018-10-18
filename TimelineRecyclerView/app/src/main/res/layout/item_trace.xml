@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="center"
@@ -37,17 +38,17 @@
         android:id="@+id/rlCenter"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingBottom="6dp"
+        android:paddingTop="6dp"
         android:paddingRight="10dp"
-        android:paddingTop="6dp">
+        android:paddingBottom="6dp">
 
         <TextView
             android:id="@+id/tvAcceptTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="2014/06/24 20:55:28"
             android:textColor="#999"
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            tools:text="2014/06/24 20:55:28" />
 
         <TextView
             android:id="@+id/tvAcceptStation"
@@ -55,8 +56,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/tvAcceptTime"
             android:layout_marginTop="5dp"
-            android:text="快件在 深圳 ,准备送往下一站 深圳集散中心 [深圳市]"
             android:textColor="#999"
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            tools:text="快件在 深圳 ,准备送往下一站 深圳集散中心 [深圳市]" />
     </RelativeLayout>
 </LinearLayout>
