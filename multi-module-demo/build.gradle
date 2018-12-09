@@ -30,17 +30,17 @@ task clean(type: Delete) {
     }
 }
 
-task packageJar {
-    def mainBuildDir = new File('module-main/build').absoluteFile
-    println("mainBuildDir=$mainBuildDir")
-    subprojects {
-        if (it.toString() != "project ':module-main'") {
-            println("copying: $it")
-            copy {
-                from file("$buildDir/classes/kotlin/main")
-                into "$mainBuildDir/classes/kotlin/main"
-                exclude("META-INF", "**/*Application*.class")
-            }
-        }
-    }
-}
+//task packageJar {
+//    def mainBuildDir = new File('module-main/build').absoluteFile
+//    println("mainBuildDir=$mainBuildDir")
+//    subprojects {
+//        if (it.toString() != "project ':module-main'") {
+//            println("copying: $it")
+//            copy {
+//                from file("$buildDir/classes/kotlin/main")
+//                into "$mainBuildDir/classes/kotlin/main"
+//                exclude("META-INF", "**/*Application*.class")
+//            }
+//        }
+//    }
+//}
