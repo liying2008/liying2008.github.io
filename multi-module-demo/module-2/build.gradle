@@ -21,7 +21,8 @@ compileTestKotlin {
 }
 
 dependencies {
-    api project(":module-1")
+//    api project(":module-1")
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation('org.springframework.boot:spring-boot-starter-aop')
     implementation('org.springframework.boot:spring-boot-starter-web')
     implementation('com.fasterxml.jackson.module:jackson-module-kotlin')
