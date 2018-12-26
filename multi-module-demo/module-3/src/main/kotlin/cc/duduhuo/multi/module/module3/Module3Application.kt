@@ -1,11 +1,6 @@
 package cc.duduhuo.multi.module.module3
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
-import org.springframework.boot.runApplication
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = ["cc.duduhuo.multi.module"])
 class Module3Application
-
-fun main(args: Array<String>) {
-    runApplication<Module3Application>(*args)
-}
