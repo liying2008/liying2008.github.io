@@ -1,0 +1,610 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Splash界面(启动界面)中处理耗时任务 | duduhuo&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="独毒火">
+    
+
+    
+    <meta name="description" content="1、SplashActivity将SplashActivity设为Launcher Activity，只需要在AndroidManifest.xml文件中配置SplashActivity的intent-filter如下所示：12345678910&amp;lt;!--启动界面--&amp;gt;&amp;lt;activity    android:name=&quot;.SplashActivity&quot;    android:th">
+<meta name="keywords" content="Android,Splash,AsyncTask">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Splash界面(启动界面)中处理耗时任务">
+<meta property="og:url" content="/2016/11/26/2016.04 - Splash界面(启动界面)中处理耗时任务/index.html">
+<meta property="og:site_name" content="duduhuo&#39;s Blog">
+<meta property="og:description" content="1、SplashActivity将SplashActivity设为Launcher Activity，只需要在AndroidManifest.xml文件中配置SplashActivity的intent-filter如下所示：12345678910&amp;lt;!--启动界面--&amp;gt;&amp;lt;activity    android:name=&quot;.SplashActivity&quot;    android:th">
+<meta property="og:image" content="http://img.blog.csdn.net/20161126144117814">
+<meta property="og:updated_time" content="2018-04-08T14:09:34.163Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Splash界面(启动界面)中处理耗时任务">
+<meta name="twitter:description" content="1、SplashActivity将SplashActivity设为Launcher Activity，只需要在AndroidManifest.xml文件中配置SplashActivity的intent-filter如下所示：12345678910&amp;lt;!--启动界面--&amp;gt;&amp;lt;activity    android:name=&quot;.SplashActivity&quot;    android:th">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20161126144117814">
+<meta name="twitter:creator" content="@topliying">
+<link rel="publisher" href="101179519081581317436">
+
+    
+    <link rel="alternative" href="/atom.xml" title="duduhuo&#39;s Blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.png">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="duduhuo&#39;s Blog" title="duduhuo&#39;s Blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="duduhuo&#39;s Blog">duduhuo&#39;s Blog</a></h1>
+				<h2 class="blog-motto">To be better.</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页|Home</a></li>
+					
+						<li><a href="/archives">归档|Archives</a></li>
+					
+						<li><a href="/about">关于|About</a></li>
+					
+						<li><a href="/categories">分类|Categories</a></li>
+					
+						<li><a href="/tags">标签|Tags</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/11/26/2016.04 - Splash界面(启动界面)中处理耗时任务/" title="Splash界面(启动界面)中处理耗时任务" itemprop="url">Splash界面(启动界面)中处理耗时任务</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/101179519081581317436?rel=author" title="独毒火" target="_blank" itemprop="author">独毒火</a>
+		
+  <p class="article-time">
+    <time datetime="2016-11-25T16:00:00.000Z" itemprop="datePublished"> Published 2016-11-26</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1、SplashActivity"><span class="toc-number">1.</span> <span class="toc-text">1、SplashActivity</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、SplashLoadDataTask"><span class="toc-number">2.</span> <span class="toc-text">2、SplashLoadDataTask</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3、效果演示"><span class="toc-number">3.</span> <span class="toc-text">3、效果演示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4、Demo代码下载"><span class="toc-number">4.</span> <span class="toc-text">4、Demo代码下载</span></a></li></ol>
+		
+		</div>
+		
+		<h2 id="1、SplashActivity"><a href="#1、SplashActivity" class="headerlink" title="1、SplashActivity"></a>1、SplashActivity</h2><p>将SplashActivity设为Launcher Activity，只需要在<code>AndroidManifest.xml</code>文件中配置SplashActivity的<code>intent-filter</code>如下所示：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!--启动界面--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">activity</span></span></div><div class="line">    <span class="attr">android:name</span>=<span class="string">".SplashActivity"</span></div><div class="line">    <span class="attr">android:theme</span>=<span class="string">"@style/FullScreen"</span>&gt;</div><div class="line">    <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.intent.action.MAIN"</span> /&gt;</span></div><div class="line"></div><div class="line">        <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.LAUNCHER"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">activity</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>SplashActivity一般都是全屏显示的，所以需要为其指定一个全屏显示的theme，可以使用如下的style。<br><code>FullScreen</code><br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- Base application theme. --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">name</span>=<span class="string">"AppTheme"</span> <span class="attr">parent</span>=<span class="string">"Theme.AppCompat.Light"</span>&gt;</span><span class="xml"></span></div><div class="line">    <span class="comment">&lt;!-- Customize your theme here. --&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"colorPrimary"</span>&gt;</span>@color/colorPrimary<span class="tag">&lt;/<span class="name">item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"colorPrimaryDark"</span>&gt;</span>@color/colorPrimaryDark<span class="tag">&lt;/<span class="name">item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"colorAccent"</span>&gt;</span>@color/colorAccent<span class="tag">&lt;/<span class="name">item</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line"></div><div class="line"><span class="comment">&lt;!--全屏--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">name</span>=<span class="string">"FullScreen"</span> <span class="attr">parent</span>=<span class="string">"AppTheme"</span>&gt;</span><span class="xml"></span></div><div class="line">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"windowNoTitle"</span>&gt;</span>true<span class="tag">&lt;/<span class="name">item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:windowFullscreen"</span>&gt;</span>true<span class="tag">&lt;/<span class="name">item</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>一般情况下，SplashActivity起到展示产品形象、显示广告、初始化数据的作用。我们需要为其设定一个展示的时间，比如800ms，800ms之后应用将自动跳转到应用主界面并销毁SplashActivity。<br>所以我们可以在SplashActivity的onCreate方法中使用handler的<code>postDelayed()</code>方法来实现在一定时间间隔后执行某个动作的功能。<br>如下面的代码所示。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SplashActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.activity_splash);</div><div class="line">        <span class="keyword">new</span> Handler().postDelayed(<span class="keyword">new</span> Runnable() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">                jump();<span class="comment">// 界面跳转</span></div><div class="line">            &#125;</div><div class="line">        &#125;, <span class="number">800</span>);   <span class="comment">// 停留时间800ms</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 跳转界面</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">jump</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="comment">// 此处可以根据版本号进行一些判断，再跳转到相应的界面</span></div><div class="line">        startActivity(<span class="keyword">new</span> Intent(<span class="keyword">this</span>, MainActivity.class));</div><div class="line">        finish();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onBackPressed</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="comment">// Splash界面不允许使用back键</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这样就会在800ms之后执行<code>jump()</code>方法，实现Activity跳转并销毁当前的SplashActivity的效果。</p>
+<h2 id="2、SplashLoadDataTask"><a href="#2、SplashLoadDataTask" class="headerlink" title="2、SplashLoadDataTask"></a>2、SplashLoadDataTask</h2><p>如果我们需要在应用启动时初始化一些数据，这些数据可以来自文件、数据库或者网络。从文件或数据库中读取大量数据或者从网络中加载数据这些任务都属于耗时任务，显然就不能放在主线程中了。因此我们新建一个继承自<code>AsyncTask</code>的任务类<code>SplashLoadDataTask</code>用于处理这些耗时任务。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SplashLoadDataTask</span> <span class="keyword">extends</span> <span class="title">AsyncTask</span>&lt;<span class="title">Void</span>, <span class="title">Void</span>, <span class="title">Integer</span>&gt; </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> LoadDataCallback callback;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">SplashLoadDataTask</span><span class="params">(LoadDataCallback callback)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.callback = callback;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> Integer <span class="title">doInBackground</span><span class="params">(Void... params)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> status = <span class="number">0</span>;</div><div class="line">        <span class="comment">// 在此执行耗时任务，可根据任务（数据加载）执行状态给status赋不同的值。</span></div><div class="line">        <span class="comment">// ...</span></div><div class="line"></div><div class="line">        <span class="keyword">return</span> status;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onPostExecute</span><span class="params">(Integer status)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onPostExecute(status);</div><div class="line">        <span class="keyword">if</span> (status == <span class="number">0</span>) &#123;</div><div class="line">            callback.loaded();</div><div class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (status == <span class="number">1</span>) &#123;</div><div class="line">            callback.loadError();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 加载数据回调</div><div class="line">     */</div><div class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">LoadDataCallback</span> </span>&#123;</div><div class="line">        <span class="comment">/**</span></div><div class="line">         * 数据加载完毕</div><div class="line">         */</div><div class="line">        <span class="function"><span class="keyword">void</span> <span class="title">loaded</span><span class="params">()</span></span>;</div><div class="line"></div><div class="line">        <span class="comment">/**</span></div><div class="line">         * 数据加载出错</div><div class="line">         */</div><div class="line">        <span class="function"><span class="keyword">void</span> <span class="title">loadError</span><span class="params">()</span></span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>在SplashActivity中启动这个任务，并在回调方法中进行界面跳转。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SplashActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> <span class="keyword">implements</span> <span class="title">SplashLoadDataTask</span>.<span class="title">LoadDataCallback</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.activity_splash);</div><div class="line">        <span class="comment">// 启动加载应用数据任务类</span></div><div class="line">        SplashLoadDataTask task = <span class="keyword">new</span> SplashLoadDataTask(<span class="keyword">this</span>);</div><div class="line">        task.execute();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 跳转界面</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">jump</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">new</span> Handler().postDelayed(<span class="keyword">new</span> Runnable() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">                <span class="comment">// 此处可以根据版本号进行一些判断，再跳转到相应的界面</span></div><div class="line">                startActivity(<span class="keyword">new</span> Intent(SplashActivity.<span class="keyword">this</span>, MainActivity.class));</div><div class="line">                finish();</div><div class="line">            &#125;</div><div class="line">        &#125;, <span class="number">500</span>);   <span class="comment">// 停留时间500ms</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 数据加载完成</div><div class="line">     */</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">loaded</span><span class="params">()</span> </span>&#123;</div><div class="line">        jump();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 数据加载出错</div><div class="line">     */</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">loadError</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="comment">// 进行出错处理</span></div><div class="line">        <span class="comment">// ...</span></div><div class="line"></div><div class="line">        jump();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onBackPressed</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="comment">// Splash界面不允许使用back键</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>此时要注意的是，所谓“停留时间500ms”并不是指Splash界面显示时长是500ms，而是指耗时任务完成后，再过500ms进行界面跳转，所以Splash界面的显示时间应该大于500ms，在实际的开发中应该先估算一下耗时任务执行时长，再确定<code>postDelayed()</code>的延时时长。</p>
+<h2 id="3、效果演示"><a href="#3、效果演示" class="headerlink" title="3、效果演示"></a>3、效果演示</h2><p><img src="http://img.blog.csdn.net/20161126144117814" alt="效果演示"></p>
+<h2 id="4、Demo代码下载"><a href="#4、Demo代码下载" class="headerlink" title="4、Demo代码下载"></a>4、Demo代码下载</h2><p><a href="http://download.csdn.net/detail/u012939909/9694299" target="_blank" rel="external">Demo代码下载</a></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Android基础/">Android基础</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Android/">Android</a><a href="/tags/Splash/">Splash</a><a href="/tags/AsyncTask/">AsyncTask</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="/2016/11/26/2016.04 - Splash界面(启动界面)中处理耗时任务/" data-title="Splash界面(启动界面)中处理耗时任务 | duduhuo&#39;s Blog" data-tsina="3832099344" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2016/11/26/2016.06 - 问题解决：Fragment not attached to Activity/" title="问题解决：Fragment not attached to Activity">
+  <strong>上一篇：</strong><br/>
+  <span>
+  问题解决：Fragment not attached to Activity</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2016/11/25/2016.03 - 自定义一个可以即时显示的Toast的工具类库/"  title="自定义一个可以即时显示的Toast的工具类库">
+ <strong>下一篇：</strong><br/> 
+ <span>自定义一个可以即时显示的Toast的工具类库
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1、SplashActivity"><span class="toc-number">1.</span> <span class="toc-text">1、SplashActivity</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、SplashLoadDataTask"><span class="toc-number">2.</span> <span class="toc-text">2、SplashLoadDataTask</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3、效果演示"><span class="toc-number">3.</span> <span class="toc-text">3、效果演示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4、Demo代码下载"><span class="toc-number">4.</span> <span class="toc-text">4、Demo代码下载</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Android基础/" title="Android基础">Android基础<sup>5</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Kotlin/" title="Kotlin">Kotlin<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/NDK/" title="NDK">NDK<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/View/" title="View">View<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/其他技能/" title="其他技能">其他技能<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/开源库/" title="开源库">开源库<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/我的开源/" title="我的开源">我的开源<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/持续集成/" title="持续集成">持续集成<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/相关技能/" title="相关技能">相关技能<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/记录/" title="记录">记录<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/问题解决/" title="问题解决">问题解决<sup>2</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/Android/" title="Android">Android<sup>17</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Kotlin/" title="Kotlin">Kotlin<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Timeline/" title="Timeline">Timeline<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Linux/" title="Linux">Linux<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Java/" title="Java">Java<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/IP/" title="IP">IP<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/IPv4/" title="IPv4">IPv4<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Vector/" title="Vector">Vector<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/View/" title="View">View<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/UEFI/" title="UEFI">UEFI<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/RecyclerView/" title="RecyclerView">RecyclerView<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Dialog/" title="Dialog">Dialog<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Permissions/" title="Permissions">Permissions<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/微博/" title="微博">微博<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Splash/" title="Splash">Splash<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/AsyncTask/" title="AsyncTask">AsyncTask<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/打包/" title="打包">打包<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/多渠道/" title="多渠道">多渠道<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Git/" title="Git">Git<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/JNI/" title="JNI">JNI<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://duduhuo.cc" target="_blank" title="独毒火的个人网站">远山寒鸦</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.jianshu.com/u/14ab91761183" target="_blank" title="独毒火的简书主页">独毒火的简书</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m LiYing. <br/>
+			To be better.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/3832099344" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/liying2008" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		<a href="http://stackoverflow.com/users/8063656" target="_blank" class="icon-stack-overflow" title="stackoverflow"></a>
+		
+		
+		<a href="https://twitter.com/topliying" target="_blank" class="icon-twitter" title="twitter"></a>
+		
+		
+		<a href="https://www.facebook.com/topliying" target="_blank" class="icon-facebook" title="facebook"></a>
+		
+		
+		<a href="https://www.linkedin.com/in/neuliying" target="_blank" class="icon-linkedin" title="linkedin"></a>
+		
+		
+		
+		
+		<a href="https://plus.google.com/101179519081581317436?rel=author" target="_blank" class="icon-google_plus" title="Google+"></a>
+		
+		
+		<a href="mailto:liruoer2008@yeah.net" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2019 
+		
+		<a href="/about" target="_blank" title="独毒火">独毒火</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+        getSize();
+        if (myWidth >= 1024) {
+          c.click();
+        }
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+
+
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1261936722'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s23.cnzz.com/z_stat.php%3Fid%3D1261936722' type='text/javascript'%3E%3C/script%3E"));</script>
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

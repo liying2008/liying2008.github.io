@@ -1,0 +1,716 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Simpler - 轻量级的微博客户端(开源) | duduhuo&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="独毒火">
+    
+
+    
+    <meta name="description" content="项目地址https://github.com/liying2008/Simpler 欢迎大家Star/Fork。  此项目仅供Android开发学习交流使用，不得用于其他用途。  下载安装包 (v1.0.2) 编译环境 Android Studio 2.3.3 Gradle 3.3  说明 应用中使用的图片资源大多来自锤子科技论坛，应用界面设计也较大程度参考了锤子科技论坛，特此声明。 应用采用OA">
+<meta name="keywords" content="Android,微博">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Simpler - 轻量级的微博客户端(开源)">
+<meta property="og:url" content="/2017/06/18/2017.06 - Simpler - 轻量级的微博客户端(开源)/index.html">
+<meta property="og:site_name" content="duduhuo&#39;s Blog">
+<meta property="og:description" content="项目地址https://github.com/liying2008/Simpler 欢迎大家Star/Fork。  此项目仅供Android开发学习交流使用，不得用于其他用途。  下载安装包 (v1.0.2) 编译环境 Android Studio 2.3.3 Gradle 3.3  说明 应用中使用的图片资源大多来自锤子科技论坛，应用界面设计也较大程度参考了锤子科技论坛，特此声明。 应用采用OA">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2883714-045ee52d63d95f5c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2883714-06342d83f8883395.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2883714-9bc4e8f5eb05098d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2883714-0b51c2a480301493.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2883714-59feaa22aed5cac6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2883714-0de9a182a67c944c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2883714-e5cf7627acbfaae0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2883714-3ab602814a565fe6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2883714-85a931918be142b1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2883714-25e22a4384eb694f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2883714-4ae7f172fbc355a3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2883714-dc0bf2bd0a75f610.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2883714-6a5bc4d5a260de99.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2883714-ea9cf6bc5da4597f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2883714-ccc2e5d5f6f5d9e3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-04-08T14:09:34.673Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Simpler - 轻量级的微博客户端(开源)">
+<meta name="twitter:description" content="项目地址https://github.com/liying2008/Simpler 欢迎大家Star/Fork。  此项目仅供Android开发学习交流使用，不得用于其他用途。  下载安装包 (v1.0.2) 编译环境 Android Studio 2.3.3 Gradle 3.3  说明 应用中使用的图片资源大多来自锤子科技论坛，应用界面设计也较大程度参考了锤子科技论坛，特此声明。 应用采用OA">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/2883714-045ee52d63d95f5c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:creator" content="@topliying">
+<link rel="publisher" href="101179519081581317436">
+
+    
+    <link rel="alternative" href="/atom.xml" title="duduhuo&#39;s Blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.png">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="duduhuo&#39;s Blog" title="duduhuo&#39;s Blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="duduhuo&#39;s Blog">duduhuo&#39;s Blog</a></h1>
+				<h2 class="blog-motto">To be better.</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页|Home</a></li>
+					
+						<li><a href="/archives">归档|Archives</a></li>
+					
+						<li><a href="/about">关于|About</a></li>
+					
+						<li><a href="/categories">分类|Categories</a></li>
+					
+						<li><a href="/tags">标签|Tags</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2017/06/18/2017.06 - Simpler - 轻量级的微博客户端(开源)/" title="Simpler - 轻量级的微博客户端(开源)" itemprop="url">Simpler - 轻量级的微博客户端(开源)</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/101179519081581317436?rel=author" title="独毒火" target="_blank" itemprop="author">独毒火</a>
+		
+  <p class="article-time">
+    <time datetime="2017-06-17T16:00:00.000Z" itemprop="datePublished"> Published 2017-06-18</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#项目地址"><span class="toc-number">1.</span> <span class="toc-text">项目地址</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#编译环境"><span class="toc-number">2.</span> <span class="toc-text">编译环境</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#说明"><span class="toc-number">2.1.</span> <span class="toc-text">说明</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#主要功能"><span class="toc-number">3.</span> <span class="toc-text">主要功能</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#屏幕截图"><span class="toc-number">4.</span> <span class="toc-text">屏幕截图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#实现功能"><span class="toc-number">5.</span> <span class="toc-text">实现功能</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#其他特性"><span class="toc-number">5.1.</span> <span class="toc-text">其他特性</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#已知BUG"><span class="toc-number">6.</span> <span class="toc-text">已知BUG</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Thanks"><span class="toc-number">7.</span> <span class="toc-text">Thanks</span></a></li></ol>
+		
+		</div>
+		
+		<h1 id="项目地址"><a href="#项目地址" class="headerlink" title="项目地址"></a>项目地址</h1><p><strong><a href="https://github.com/liying2008/Simpler" target="_blank" rel="external">https://github.com/liying2008/Simpler</a></strong><br> 欢迎大家Star/Fork。</p>
+<blockquote>
+<p><strong>此项目仅供Android开发学习交流使用，不得用于其他用途。</strong></p>
+</blockquote>
+<p><a href="https://github.com/liying2008/Simpler/releases/download/v1.0.2/simpler_1.0.2.apk" target="_blank" rel="external">下载安装包 (v1.0.2)</a></p>
+<h1 id="编译环境"><a href="#编译环境" class="headerlink" title="编译环境"></a>编译环境</h1><ul>
+<li>Android Studio 2.3.3</li>
+<li>Gradle 3.3</li>
+</ul>
+<h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><ol>
+<li>应用中使用的图片资源大多来自<a href="http://www.smartisan.com/apps/bbs" target="_blank" rel="external">锤子科技论坛</a>，应用界面设计也较大程度参考了锤子科技论坛，特此声明。</li>
+<li>应用采用OAuth2认证授权，应用本身<strong>不会</strong>保存你的任何帐号和密码信息。</li>
+<li><strong>此项目仅供Android开发学习交流使用，不得用于其他用途，也不允许将此项目打包后在应用商店中发布。</strong></li>
+</ol>
+<h1 id="主要功能"><a href="#主要功能" class="headerlink" title="主要功能"></a>主要功能</h1><p>Simpler是一款轻量级的第三方微博应用，具有微博的基础功能，兼有外观优雅，运行流畅，内存占用低，省电省流量等特点。</p>
+<h1 id="屏幕截图"><a href="#屏幕截图" class="headerlink" title="屏幕截图"></a>屏幕截图</h1><table>
+<thead>
+<tr>
+<th style="text-align:center">截图</th>
+<th style="text-align:center">截图</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><img src="http://upload-images.jianshu.io/upload_images/2883714-045ee52d63d95f5c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="截图1"></td>
+<td style="text-align:center"><img src="http://upload-images.jianshu.io/upload_images/2883714-06342d83f8883395.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="截图2"></td>
+</tr>
+<tr>
+<td style="text-align:center"><img src="http://upload-images.jianshu.io/upload_images/2883714-9bc4e8f5eb05098d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="截图3"></td>
+<td style="text-align:center"><img src="http://upload-images.jianshu.io/upload_images/2883714-0b51c2a480301493.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="截图4"></td>
+</tr>
+<tr>
+<td style="text-align:center"><img src="http://upload-images.jianshu.io/upload_images/2883714-59feaa22aed5cac6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="截图5"></td>
+<td style="text-align:center"><img src="http://upload-images.jianshu.io/upload_images/2883714-0de9a182a67c944c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="截图6"></td>
+</tr>
+<tr>
+<td style="text-align:center"><img src="http://upload-images.jianshu.io/upload_images/2883714-e5cf7627acbfaae0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="截图7"></td>
+<td style="text-align:center"><img src="http://upload-images.jianshu.io/upload_images/2883714-3ab602814a565fe6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="截图8"></td>
+</tr>
+<tr>
+<td style="text-align:center"><img src="http://upload-images.jianshu.io/upload_images/2883714-85a931918be142b1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="截图9"></td>
+<td style="text-align:center"><img src="http://upload-images.jianshu.io/upload_images/2883714-25e22a4384eb694f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="截图10"></td>
+</tr>
+<tr>
+<td style="text-align:center"><img src="http://upload-images.jianshu.io/upload_images/2883714-4ae7f172fbc355a3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="截图11"></td>
+<td style="text-align:center"><img src="http://upload-images.jianshu.io/upload_images/2883714-dc0bf2bd0a75f610.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="截图12"></td>
+</tr>
+<tr>
+<td style="text-align:center"><img src="http://upload-images.jianshu.io/upload_images/2883714-6a5bc4d5a260de99.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="截图13"></td>
+<td style="text-align:center"><img src="http://upload-images.jianshu.io/upload_images/2883714-ea9cf6bc5da4597f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="截图14"></td>
+</tr>
+</tbody>
+</table>
+<p> <img src="http://upload-images.jianshu.io/upload_images/2883714-ccc2e5d5f6f5d9e3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="截图15"></p>
+<h1 id="实现功能"><a href="#实现功能" class="headerlink" title="实现功能"></a>实现功能</h1><ol>
+<li>微博：浏览微博 / 发布微博 / 转发微博 / 复制微博内容 / 热门微博 / 搜索微博 / 周边动态</li>
+<li>评论：浏览评论 / 发表评论 / 转发评论 / 回复评论 / 复制评论</li>
+<li>用户：查看用户基本信息 / 粉丝  / 关注  / 用户微博 / 相册</li>
+<li>关系：关注用户 / 取消关注 / 移出分组 / 更改分组</li>
+<li>消息：消息通知 / 私信通知 / 发出的评论  / 收到的评论 / @我的微博 / @我的评论</li>
+<li>话题：热门话题 / 查看话题 / 搜索话题微博</li>
+<li>收藏：添加收藏 / 取消收藏 / 查看收藏</li>
+<li>帐号：添加帐号 / 退出登录 / 多用户切换 / 更改头像</li>
+<li>草稿箱：将未发布的微博加入草稿箱 / 查看草稿箱 / 删除草稿</li>
+<li>分组：查看分组微博 / 添加分组 / 删除分组 / 编辑分组</li>
+<li>微博详情：查看图片 / 下载图片 / 分享图片 / 观看秒拍视频 / 下载秒拍视频</li>
+<li>赞：点赞 / 取消赞 / 原微博点赞和取消赞</li>
+<li>网页版微博</li>
+<li>设置：微博字体大小 / 每次刷新微博数 / 微博图片显示质量 / 图片上传质量</li>
+<li>消息通知：关闭 / 开启 / 通知时间间隔</li>
+<li>其他：清理图片缓存 / 检查更新 / 用户反馈</li>
+</ol>
+<h2 id="其他特性"><a href="#其他特性" class="headerlink" title="其他特性"></a>其他特性</h2><blockquote>
+<ol>
+<li>支持绑定多个用户  </li>
+<li>支持分页加载和下拉刷新  </li>
+<li>支持发送带有多张图片的微博  </li>
+<li>支持微博缓存（节省流量）  </li>
+<li>微博列表快速滑动时不加载图片（节省流量）  </li>
+<li>视频播放界面，允许锁定横屏或竖屏（非常适用于躺在床上看视频）  </li>
+<li>支持将关注的好友添加进多个分组  </li>
+<li>支持为好友添加备注  </li>
+<li>如果发布的微博是分组微博、私密微博或朋友圈微博，微博列表会标注该条微博的可见分组。  </li>
+</ol>
+</blockquote>
+<h1 id="已知BUG"><a href="#已知BUG" class="headerlink" title="已知BUG"></a>已知BUG</h1><ol>
+<li>加载GIF图时无法获取加载进度。  </li>
+</ol>
+<h1 id="Thanks"><a href="#Thanks" class="headerlink" title="Thanks"></a>Thanks</h1><ul>
+<li><a href="https://github.com/sinaweibosdk/weibo_android_sdk" target="_blank" rel="external">weibo_android_sdk</a></li>
+<li><a href="https://github.com/chrisbanes/PhotoView" target="_blank" rel="external">PhotoView</a></li>
+<li><a href="https://github.com/bumptech/glide" target="_blank" rel="external">glide</a></li>
+<li><a href="https://github.com/square/okhttp" target="_blank" rel="external">okhttp</a></li>
+<li><a href="https://github.com/square/okio" target="_blank" rel="external">okio</a></li>
+<li><a href="https://github.com/JakeWharton/butterknife" target="_blank" rel="external">butterknife</a></li>
+<li><a href="https://github.com/hdodenhof/CircleImageView" target="_blank" rel="external">CircleImageView</a></li>
+<li><a href="https://github.com/jhy/jsoup" target="_blank" rel="external">jsoup</a></li>
+<li><a href="https://github.com/peng8350/LoadingProgress" target="_blank" rel="external">LoadingProgress</a></li>
+<li><a href="https://github.com/google/guava" target="_blank" rel="external">guava</a></li>
+<li><a href="https://github.com/lingochamp/FileDownloader" target="_blank" rel="external">FileDownloader</a></li>
+</ul>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/我的开源/">我的开源</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Android/">Android</a><a href="/tags/微博/">微博</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="/2017/06/18/2017.06 - Simpler - 轻量级的微博客户端(开源)/" data-title="Simpler - 轻量级的微博客户端(开源) | duduhuo&#39;s Blog" data-tsina="3832099344" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2017/08/20/2017.07 - 在Android中全屏显示GIF图片/" title="在Android中全屏显示GIF图片">
+  <strong>上一篇：</strong><br/>
+  <span>
+  在Android中全屏显示GIF图片</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2017/06/02/2017.05 - Kotlin学习笔记（2）：run、apply、let、also、with的用法和区别/"  title="Kotlin学习笔记（2）：run、apply、let、also、with的用法和区别">
+ <strong>下一篇：</strong><br/> 
+ <span>Kotlin学习笔记（2）：run、apply、let、also、with的用法和区别
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#项目地址"><span class="toc-number">1.</span> <span class="toc-text">项目地址</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#编译环境"><span class="toc-number">2.</span> <span class="toc-text">编译环境</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#说明"><span class="toc-number">2.1.</span> <span class="toc-text">说明</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#主要功能"><span class="toc-number">3.</span> <span class="toc-text">主要功能</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#屏幕截图"><span class="toc-number">4.</span> <span class="toc-text">屏幕截图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#实现功能"><span class="toc-number">5.</span> <span class="toc-text">实现功能</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#其他特性"><span class="toc-number">5.1.</span> <span class="toc-text">其他特性</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#已知BUG"><span class="toc-number">6.</span> <span class="toc-text">已知BUG</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Thanks"><span class="toc-number">7.</span> <span class="toc-text">Thanks</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Android基础/" title="Android基础">Android基础<sup>5</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Kotlin/" title="Kotlin">Kotlin<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/NDK/" title="NDK">NDK<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/View/" title="View">View<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/其他技能/" title="其他技能">其他技能<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/开源库/" title="开源库">开源库<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/我的开源/" title="我的开源">我的开源<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/持续集成/" title="持续集成">持续集成<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/相关技能/" title="相关技能">相关技能<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/记录/" title="记录">记录<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/问题解决/" title="问题解决">问题解决<sup>2</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/Android/" title="Android">Android<sup>17</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Kotlin/" title="Kotlin">Kotlin<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Timeline/" title="Timeline">Timeline<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Linux/" title="Linux">Linux<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Java/" title="Java">Java<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/IP/" title="IP">IP<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/IPv4/" title="IPv4">IPv4<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Vector/" title="Vector">Vector<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/View/" title="View">View<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/UEFI/" title="UEFI">UEFI<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/RecyclerView/" title="RecyclerView">RecyclerView<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Dialog/" title="Dialog">Dialog<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Permissions/" title="Permissions">Permissions<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/微博/" title="微博">微博<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Splash/" title="Splash">Splash<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/AsyncTask/" title="AsyncTask">AsyncTask<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/打包/" title="打包">打包<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/多渠道/" title="多渠道">多渠道<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Git/" title="Git">Git<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/JNI/" title="JNI">JNI<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://duduhuo.cc" target="_blank" title="独毒火的个人网站">远山寒鸦</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.jianshu.com/u/14ab91761183" target="_blank" title="独毒火的简书主页">独毒火的简书</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m LiYing. <br/>
+			To be better.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/3832099344" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/liying2008" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		<a href="http://stackoverflow.com/users/8063656" target="_blank" class="icon-stack-overflow" title="stackoverflow"></a>
+		
+		
+		<a href="https://twitter.com/topliying" target="_blank" class="icon-twitter" title="twitter"></a>
+		
+		
+		<a href="https://www.facebook.com/topliying" target="_blank" class="icon-facebook" title="facebook"></a>
+		
+		
+		<a href="https://www.linkedin.com/in/neuliying" target="_blank" class="icon-linkedin" title="linkedin"></a>
+		
+		
+		
+		
+		<a href="https://plus.google.com/101179519081581317436?rel=author" target="_blank" class="icon-google_plus" title="Google+"></a>
+		
+		
+		<a href="mailto:liruoer2008@yeah.net" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2019 
+		
+		<a href="/about" target="_blank" title="独毒火">独毒火</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+        getSize();
+        if (myWidth >= 1024) {
+          c.click();
+        }
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+
+
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1261936722'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s23.cnzz.com/z_stat.php%3Fid%3D1261936722' type='text/javascript'%3E%3C/script%3E"));</script>
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

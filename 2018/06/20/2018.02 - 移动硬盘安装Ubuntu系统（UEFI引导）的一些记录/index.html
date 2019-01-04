@@ -1,0 +1,630 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>移动硬盘安装Ubuntu系统（UEFI引导）的一些记录 | duduhuo&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="独毒火">
+    
+
+    
+    <meta name="description" content="移动硬盘需要提前将磁盘分区表类型转为GUID（即 GPT）转换方法：使用DiskGenius软件，选中磁盘右键，选择 “转换分区表类型为GUID格式” 。 磁盘分区为了避免安装系统时出现 “分配到/的分区/dev/sdb3开始于3584字节,使用磁盘的最小对齐,这可能造成非常差的性能” 这样的错误，可以提前在Windows系统下将分区创建好。   使用DiskGenius，创建分区如下：  注意">
+<meta name="keywords" content="Linux,Ubuntu,UEFI">
+<meta property="og:type" content="article">
+<meta property="og:title" content="移动硬盘安装Ubuntu系统（UEFI引导）的一些记录">
+<meta property="og:url" content="/2018/06/20/2018.02 - 移动硬盘安装Ubuntu系统（UEFI引导）的一些记录/index.html">
+<meta property="og:site_name" content="duduhuo&#39;s Blog">
+<meta property="og:description" content="移动硬盘需要提前将磁盘分区表类型转为GUID（即 GPT）转换方法：使用DiskGenius软件，选中磁盘右键，选择 “转换分区表类型为GUID格式” 。 磁盘分区为了避免安装系统时出现 “分配到/的分区/dev/sdb3开始于3584字节,使用磁盘的最小对齐,这可能造成非常差的性能” 这样的错误，可以提前在Windows系统下将分区创建好。   使用DiskGenius，创建分区如下：  注意">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190104193613202.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190104193704391.jpg">
+<meta property="og:updated_time" content="2019-01-04T11:44:54.972Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="移动硬盘安装Ubuntu系统（UEFI引导）的一些记录">
+<meta name="twitter:description" content="移动硬盘需要提前将磁盘分区表类型转为GUID（即 GPT）转换方法：使用DiskGenius软件，选中磁盘右键，选择 “转换分区表类型为GUID格式” 。 磁盘分区为了避免安装系统时出现 “分配到/的分区/dev/sdb3开始于3584字节,使用磁盘的最小对齐,这可能造成非常差的性能” 这样的错误，可以提前在Windows系统下将分区创建好。   使用DiskGenius，创建分区如下：  注意">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20190104193613202.png">
+<meta name="twitter:creator" content="@topliying">
+<link rel="publisher" href="101179519081581317436">
+
+    
+    <link rel="alternative" href="/atom.xml" title="duduhuo&#39;s Blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.png">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="duduhuo&#39;s Blog" title="duduhuo&#39;s Blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="duduhuo&#39;s Blog">duduhuo&#39;s Blog</a></h1>
+				<h2 class="blog-motto">To be better.</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页|Home</a></li>
+					
+						<li><a href="/archives">归档|Archives</a></li>
+					
+						<li><a href="/about">关于|About</a></li>
+					
+						<li><a href="/categories">分类|Categories</a></li>
+					
+						<li><a href="/tags">标签|Tags</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2018/06/20/2018.02 - 移动硬盘安装Ubuntu系统（UEFI引导）的一些记录/" title="移动硬盘安装Ubuntu系统（UEFI引导）的一些记录" itemprop="url">移动硬盘安装Ubuntu系统（UEFI引导）的一些记录</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/101179519081581317436?rel=author" title="独毒火" target="_blank" itemprop="author">独毒火</a>
+		
+  <p class="article-time">
+    <time datetime="2018-06-19T16:00:00.000Z" itemprop="datePublished"> Published 2018-06-20</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#移动硬盘需要提前将磁盘分区表类型转为GUID（即-GPT）"><span class="toc-number">1.</span> <span class="toc-text">移动硬盘需要提前将磁盘分区表类型转为GUID（即 GPT）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#磁盘分区"><span class="toc-number">2.</span> <span class="toc-text">磁盘分区</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#注意"><span class="toc-number">2.1.</span> <span class="toc-text">注意</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装时的分区配置"><span class="toc-number">3.</span> <span class="toc-text">安装时的分区配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#注意-1"><span class="toc-number">3.1.</span> <span class="toc-text">注意</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ESP分区没有引导文件的解决方法"><span class="toc-number">4.</span> <span class="toc-text">ESP分区没有引导文件的解决方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#步骤"><span class="toc-number">4.1.</span> <span class="toc-text">步骤</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BIOS设置（不同品牌的计算机有差异）"><span class="toc-number">5.</span> <span class="toc-text">BIOS设置（不同品牌的计算机有差异）</span></a></li></ol>
+		
+		</div>
+		
+		<h2 id="移动硬盘需要提前将磁盘分区表类型转为GUID（即-GPT）"><a href="#移动硬盘需要提前将磁盘分区表类型转为GUID（即-GPT）" class="headerlink" title="移动硬盘需要提前将磁盘分区表类型转为GUID（即 GPT）"></a>移动硬盘需要提前将磁盘分区表类型转为GUID（即 GPT）</h2><p>转换方法：使用DiskGenius软件，选中磁盘右键，选择 “<strong>转换分区表类型为GUID格式</strong>” 。</p>
+<h2 id="磁盘分区"><a href="#磁盘分区" class="headerlink" title="磁盘分区"></a>磁盘分区</h2><p>为了避免安装系统时出现 “<strong>分配到/的分区/dev/sdb3开始于3584字节,使用磁盘的最小对齐,这可能造成非常差的性能</strong>” 这样的错误，可以提前在Windows系统下将分区创建好。  </p>
+<p>使用DiskGenius，创建分区如下：</p>
+<p><img src="https://img-blog.csdnimg.cn/20190104193613202.png" alt="DiskGenius分区"></p>
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><ul>
+<li>序号0的分区【本地磁盘(G:)】是一个<strong>FAT32</strong>类型的分区（其实是一个 ESP 分区），安装系统是需要将引导放在此分区，大小最好在200M以上，如图我分了514MB；</li>
+<li>序号1的分区【BIOS(H:)】实际上用不到，可以不创建；</li>
+<li>序号2的分区【Linux Swap Partition】是Linux系统下的交换分区；</li>
+<li>序号3的分区【分区(3)】是一个EXT4类型分区，用于挂载 /；</li>
+<li><p>序号4的分区【分区(4)】是一个EXT4类型分区，用于挂载 /home。</p>
+<blockquote>
+<p>序号0的分区（ESP分区）为磁盘第一个分区，创建好之后格式化。<br>EXT4分区也要格式化，簇大小选择4096（即 <strong>4K对齐</strong>）。</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="安装时的分区配置"><a href="#安装时的分区配置" class="headerlink" title="安装时的分区配置"></a>安装时的分区配置</h2><p><img src="https://img-blog.csdnimg.cn/20190104193704391.jpg" alt="安装时的分区配置"></p>
+<h3 id="注意-1"><a href="#注意-1" class="headerlink" title="注意"></a>注意</h3><p>假设sdb是待安装Ubuntu的磁盘：</p>
+<ul>
+<li>sdb1 需要选择 “EFI系统分区”；</li>
+<li>sdb2 没有用处；</li>
+<li>sdb3 选择“用于交换空间”；</li>
+<li>sdb4和sdb5分别挂载 / 和 /home。</li>
+</ul>
+<blockquote>
+<p>所有分区都不要格式化（之前已经格式化过了）。<br>安装启动引导器的设备选择 sdb1。（安装结束后，我发现sdb1上并没有任何引导文件，不知道哪里出了问题，之后会介绍解决方法。）</p>
+</blockquote>
+<h2 id="ESP分区没有引导文件的解决方法"><a href="#ESP分区没有引导文件的解决方法" class="headerlink" title="ESP分区没有引导文件的解决方法"></a>ESP分区没有引导文件的解决方法</h2><p>进入U盘中的Live Ubuntu系统，插上移动硬盘，连上网络，安装一个叫 “<strong>boot-repair</strong>” 的软件。</p>
+<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo apt-add-repository ppa:yannubuntu/boot-repair</div><div class="line">sudo apt update</div><div class="line">sudo apt install boot-repair</div></pre></td></tr></table></figure>
+<p>安装完成后，执行 <code>boot-repair</code> 即可启动软件，然后选择 “<strong>Recommended repair</strong>” 等待引导修复完成。<br>修复完成之后，在ESP分区会出现一个名为 <code>EFI</code> 的目录，里面有 <code>BOOT</code> 和 <code>ubuntu</code> 两个子目录，用来启动 Ubuntu 系统的引导文件就是位于 <code>ubuntu</code> 目录中的 <code>shimx64.efi</code> 文件 。</p>
+<h2 id="BIOS设置（不同品牌的计算机有差异）"><a href="#BIOS设置（不同品牌的计算机有差异）" class="headerlink" title="BIOS设置（不同品牌的计算机有差异）"></a>BIOS设置（不同品牌的计算机有差异）</h2><p>以下是Acer品牌的计算机的设置方法：</p>
+<ul>
+<li>（<strong>重要</strong>）进入计算机的BIOS，在  <strong>Boot</strong> 选项卡中设置 <strong>Boot Mode</strong> 为  <strong>UEFI</strong>；    </li>
+<li>关闭 “<strong>Secure Boot</strong>” （注：经测试，不关闭也可以启动 Ubuntu ，但是无法使用闭源的显卡驱动。此外，使用 VirtualBox 也要求关闭 Secure Boot 。）；    </li>
+<li><strong>Security</strong> 选项卡中选择 “<strong>Select an UEFI file as trusted for executing:</strong>”，在目标设备上（移动硬盘的ESP分区）选择 <code>/EFI/ubuntu/shimx64.efi</code> ，输入引导项的名称，回车即可；  </li>
+<li>保存BIOS设置，退出。再次开机在启动项中选择刚刚添加的引导即可进入Ubuntu系统。（注：移动硬盘所使用的计算机的USB插口不能变。）  </li>
+</ul>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/其他技能/">其他技能</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Linux/">Linux</a><a href="/tags/Ubuntu/">Ubuntu</a><a href="/tags/UEFI/">UEFI</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="/2018/06/20/2018.02 - 移动硬盘安装Ubuntu系统（UEFI引导）的一些记录/" data-title="移动硬盘安装Ubuntu系统（UEFI引导）的一些记录 | duduhuo&#39;s Blog" data-tsina="3832099344" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2018/03/04/2018.01 - Linux系统下的Jenkins的简要安装方法/"  title="Linux系统下的Jenkins的简要安装方法">
+ <strong>下一篇：</strong><br/> 
+ <span>Linux系统下的Jenkins的简要安装方法
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#移动硬盘需要提前将磁盘分区表类型转为GUID（即-GPT）"><span class="toc-number">1.</span> <span class="toc-text">移动硬盘需要提前将磁盘分区表类型转为GUID（即 GPT）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#磁盘分区"><span class="toc-number">2.</span> <span class="toc-text">磁盘分区</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#注意"><span class="toc-number">2.1.</span> <span class="toc-text">注意</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装时的分区配置"><span class="toc-number">3.</span> <span class="toc-text">安装时的分区配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#注意-1"><span class="toc-number">3.1.</span> <span class="toc-text">注意</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ESP分区没有引导文件的解决方法"><span class="toc-number">4.</span> <span class="toc-text">ESP分区没有引导文件的解决方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#步骤"><span class="toc-number">4.1.</span> <span class="toc-text">步骤</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BIOS设置（不同品牌的计算机有差异）"><span class="toc-number">5.</span> <span class="toc-text">BIOS设置（不同品牌的计算机有差异）</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Android基础/" title="Android基础">Android基础<sup>5</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Kotlin/" title="Kotlin">Kotlin<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/NDK/" title="NDK">NDK<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/View/" title="View">View<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/其他技能/" title="其他技能">其他技能<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/开源库/" title="开源库">开源库<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/我的开源/" title="我的开源">我的开源<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/持续集成/" title="持续集成">持续集成<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/相关技能/" title="相关技能">相关技能<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/记录/" title="记录">记录<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/问题解决/" title="问题解决">问题解决<sup>2</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/Android/" title="Android">Android<sup>17</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Kotlin/" title="Kotlin">Kotlin<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Timeline/" title="Timeline">Timeline<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Linux/" title="Linux">Linux<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Java/" title="Java">Java<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/IP/" title="IP">IP<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/IPv4/" title="IPv4">IPv4<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Vector/" title="Vector">Vector<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/View/" title="View">View<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/UEFI/" title="UEFI">UEFI<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/RecyclerView/" title="RecyclerView">RecyclerView<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Dialog/" title="Dialog">Dialog<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Permissions/" title="Permissions">Permissions<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/微博/" title="微博">微博<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Splash/" title="Splash">Splash<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/AsyncTask/" title="AsyncTask">AsyncTask<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/打包/" title="打包">打包<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/多渠道/" title="多渠道">多渠道<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Git/" title="Git">Git<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/JNI/" title="JNI">JNI<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://duduhuo.cc" target="_blank" title="独毒火的个人网站">远山寒鸦</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.jianshu.com/u/14ab91761183" target="_blank" title="独毒火的简书主页">独毒火的简书</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m LiYing. <br/>
+			To be better.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/3832099344" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/liying2008" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		<a href="http://stackoverflow.com/users/8063656" target="_blank" class="icon-stack-overflow" title="stackoverflow"></a>
+		
+		
+		<a href="https://twitter.com/topliying" target="_blank" class="icon-twitter" title="twitter"></a>
+		
+		
+		<a href="https://www.facebook.com/topliying" target="_blank" class="icon-facebook" title="facebook"></a>
+		
+		
+		<a href="https://www.linkedin.com/in/neuliying" target="_blank" class="icon-linkedin" title="linkedin"></a>
+		
+		
+		
+		
+		<a href="https://plus.google.com/101179519081581317436?rel=author" target="_blank" class="icon-google_plus" title="Google+"></a>
+		
+		
+		<a href="mailto:liruoer2008@yeah.net" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2019 
+		
+		<a href="/about" target="_blank" title="独毒火">独毒火</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+        getSize();
+        if (myWidth >= 1024) {
+          c.click();
+        }
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+
+
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1261936722'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s23.cnzz.com/z_stat.php%3Fid%3D1261936722' type='text/javascript'%3E%3C/script%3E"));</script>
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

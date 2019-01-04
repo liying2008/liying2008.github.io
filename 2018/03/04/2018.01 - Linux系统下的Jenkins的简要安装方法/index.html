@@ -1,0 +1,620 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Linux系统下的Jenkins的简要安装方法 | duduhuo&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="独毒火">
+    
+
+    
+    <meta name="description" content="1 下载软件包 Jenkins访问 https://jenkins.io/download/ 下载最新（LTS版本）的 war 包。 Tomcat访问 https://tomcat.apache.org/download-90.cgi 下载最新的 Tomcat 9.0 。 cloudbees-folder访问 http://ftp.icm.edu.pl/packages/jenkins/plugi">
+<meta name="keywords" content="Linux,Jenkins,持续集成">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux系统下的Jenkins的简要安装方法">
+<meta property="og:url" content="/2018/03/04/2018.01 - Linux系统下的Jenkins的简要安装方法/index.html">
+<meta property="og:site_name" content="duduhuo&#39;s Blog">
+<meta property="og:description" content="1 下载软件包 Jenkins访问 https://jenkins.io/download/ 下载最新（LTS版本）的 war 包。 Tomcat访问 https://tomcat.apache.org/download-90.cgi 下载最新的 Tomcat 9.0 。 cloudbees-folder访问 http://ftp.icm.edu.pl/packages/jenkins/plugi">
+<meta property="og:updated_time" content="2018-04-08T14:09:34.795Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linux系统下的Jenkins的简要安装方法">
+<meta name="twitter:description" content="1 下载软件包 Jenkins访问 https://jenkins.io/download/ 下载最新（LTS版本）的 war 包。 Tomcat访问 https://tomcat.apache.org/download-90.cgi 下载最新的 Tomcat 9.0 。 cloudbees-folder访问 http://ftp.icm.edu.pl/packages/jenkins/plugi">
+<meta name="twitter:creator" content="@topliying">
+<link rel="publisher" href="101179519081581317436">
+
+    
+    <link rel="alternative" href="/atom.xml" title="duduhuo&#39;s Blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.png">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="duduhuo&#39;s Blog" title="duduhuo&#39;s Blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="duduhuo&#39;s Blog">duduhuo&#39;s Blog</a></h1>
+				<h2 class="blog-motto">To be better.</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页|Home</a></li>
+					
+						<li><a href="/archives">归档|Archives</a></li>
+					
+						<li><a href="/about">关于|About</a></li>
+					
+						<li><a href="/categories">分类|Categories</a></li>
+					
+						<li><a href="/tags">标签|Tags</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2018/03/04/2018.01 - Linux系统下的Jenkins的简要安装方法/" title="Linux系统下的Jenkins的简要安装方法" itemprop="url">Linux系统下的Jenkins的简要安装方法</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/101179519081581317436?rel=author" title="独毒火" target="_blank" itemprop="author">独毒火</a>
+		
+  <p class="article-time">
+    <time datetime="2018-03-03T16:00:00.000Z" itemprop="datePublished"> Published 2018-03-04</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-下载软件包"><span class="toc-number">1.</span> <span class="toc-text">1 下载软件包</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-环境配置"><span class="toc-number">2.</span> <span class="toc-text">2 环境配置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-启动-Tomcat"><span class="toc-number">3.</span> <span class="toc-text">3 启动 Tomcat</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-重设管理员密码（可选）"><span class="toc-number">4.</span> <span class="toc-text">4 重设管理员密码（可选）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-安装插件（可选）"><span class="toc-number">5.</span> <span class="toc-text">5 安装插件（可选）</span></a></li></ol>
+		
+		</div>
+		
+		<h1 id="1-下载软件包"><a href="#1-下载软件包" class="headerlink" title="1 下载软件包"></a>1 下载软件包</h1><ul>
+<li><strong>Jenkins</strong><br>访问 <a href="https://jenkins.io/download/" target="_blank" rel="external">https://jenkins.io/download/</a> 下载最新（LTS版本）的 war 包。</li>
+<li><strong>Tomcat</strong><br>访问 <a href="https://tomcat.apache.org/download-90.cgi" target="_blank" rel="external">https://tomcat.apache.org/download-90.cgi</a> 下载最新的 Tomcat 9.0 。</li>
+<li><strong>cloudbees-folder</strong><br>访问 <a href="http://ftp.icm.edu.pl/packages/jenkins/plugins/cloudbees-folder/" target="_blank" rel="external">http://ftp.icm.edu.pl/packages/jenkins/plugins/cloudbees-folder/</a> 下载最新的 cloudbees-folder 插件。</li>
+</ul>
+<h1 id="2-环境配置"><a href="#2-环境配置" class="headerlink" title="2 环境配置"></a>2 环境配置</h1><ol>
+<li>提前安装好<strong>Java 8</strong>，在 <code>/etc/profile</code>  文件（或其他配置文件）中配置好环境变量 <code>JAVA_HOME</code>。</li>
+<li>解压 Tomcat 压缩包至 <code>~/Jenkins/</code> 目录下，给 <code>~/Jenkins/apache-tomcat-9.0.5/bin</code> 目录下的 <code>catalina.sh</code>、<code>shutdown.sh</code> 和 <code>startup.sh</code> 增加执行权限。(<code>chmod +x *.sh</code>)</li>
+<li>将第一步下载好的 <code>jenkins.war</code> 放至 <code>~/Jenkins/apache-tomcat-9.0.5/webapps/</code> 目录下。</li>
+</ol>
+<h1 id="3-启动-Tomcat"><a href="#3-启动-Tomcat" class="headerlink" title="3 启动 Tomcat"></a>3 启动 Tomcat</h1><ol>
+<li>执行 <code>~/Jenkins/apache-tomcat-9.0.5/bin/startup.sh</code> 脚本即可启动 Tomcat ( <code>./startup.sh</code>  )。<br>Tomcat 启动后，jenkins.war 会被自动解压，生成一个 jenkins 目录。</li>
+<li>浏览器访问 <code>http://localhost:8080/jenkins/</code> 会进入Jenkins的解锁界面（Unlock Jenkins），需要输入管理员密码才能继续访问 Jenkins。<br>管理员密码存在于一个名为 <code>initialAdminPassword</code> 的文件中，该文件的位置在解锁界面有显示（<code>~/.jenkins/secrets/initialAdminPassword</code>）。 </li>
+<li>输入管理员密码之后会进入插件安装界面，有的机器安装 Jenkins 不能访问 https 开头的网址，而下载插件需要访问 <a href="https://updates.jenkins.io/current/update-center.json" target="_blank" rel="external">https://updates.jenkins.io/current/update-center.json</a> ，所以可能会出现 <strong>Offline</strong> 。<br>此时需要更改一个名为 <code>hudson.model.UpdateCenter.xml</code> 的文件，该文件位于 <code>~/.jenkins/</code> 目录下。将文件中 url 标签内的网址替换为一个以 http 开头的镜像网站的URL，如 <a href="http://mirror.xmission.com/jenkins/updates/update-center.json" target="_blank" rel="external">http://mirror.xmission.com/jenkins/updates/update-center.json</a> 。<br>重启 Tomcat（先执行 <code>shutdown.sh</code> 关闭，再执行 <code>startup.sh</code> 开启）。</li>
+<li>再次进入插件安装界面应该就可以看到内容了，但是点击安装插件会出现一个错误：<code>No such plugin: cloudbees-folder</code> ，这个插件 jenkins.war 中默认没有包含，所以需要手动安装一下。<br>安装方法：将第一步下载的 <code>cloudbees-folder.hpi</code> 文件放到 <code>~/Jenkins/apache-tomcat-9.0.5/webapps/jenkins/WEB-INF/detached-plugins/</code> 目录下 和 <code>~/.jenkins/plugins/</code> 目录下即可。</li>
+</ol>
+<h1 id="4-重设管理员密码（可选）"><a href="#4-重设管理员密码（可选）" class="headerlink" title="4 重设管理员密码（可选）"></a>4 重设管理员密码（可选）</h1><p>进入 Jenkins 之后，可以在 <strong>系统管理 –&gt; 管理用户</strong> 中重新设置 admin 账户的密码，以免下次登录还需要查看 <code>initialAdminPassword</code> 文件中的密码。</p>
+<h1 id="5-安装插件（可选）"><a href="#5-安装插件（可选）" class="headerlink" title="5 安装插件（可选）"></a>5 安装插件（可选）</h1><p>可以在 <strong>系统管理 –&gt; 管理插件</strong> 界面安装一些插件方便使用（比如Pipeline、BlueOcean、Gerrit Trigger、Timestamper、JIRA等等），如果在线安装插件失败，也可以先通过浏览器把插件(.hpi)下载到本地，然后通过 “<strong>高级</strong>“ 选项卡中的上传插件功能安装。</p>
+<blockquote>
+<p>注：以上只是安装Jenkins的一种方法。<br>除此之外，还可以通过 <code>java -Djsse.enableSNIExtension=false -jar jenkins.war --httpPort=8081</code> 命令安装，因为 jenkins.war 有一个内置的 Jetty Server，不再详述。<br>Jenkins 也提供了各个平台的二进制安装包，直接使用安装包安装也很方便。</p>
+</blockquote>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/持续集成/">持续集成</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Linux/">Linux</a><a href="/tags/Jenkins/">Jenkins</a><a href="/tags/持续集成/">持续集成</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="/2018/03/04/2018.01 - Linux系统下的Jenkins的简要安装方法/" data-title="Linux系统下的Jenkins的简要安装方法 | duduhuo&#39;s Blog" data-tsina="3832099344" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2018/06/20/2018.02 - 移动硬盘安装Ubuntu系统（UEFI引导）的一些记录/" title="移动硬盘安装Ubuntu系统（UEFI引导）的一些记录">
+  <strong>上一篇：</strong><br/>
+  <span>
+  移动硬盘安装Ubuntu系统（UEFI引导）的一些记录</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2017/11/19/2017.08 - 使用Gradle打包Kotlin项目代码、生成Kotlin代码文档/"  title="使用Gradle打包Kotlin项目代码、生成Kotlin代码文档">
+ <strong>下一篇：</strong><br/> 
+ <span>使用Gradle打包Kotlin项目代码、生成Kotlin代码文档
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-下载软件包"><span class="toc-number">1.</span> <span class="toc-text">1 下载软件包</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-环境配置"><span class="toc-number">2.</span> <span class="toc-text">2 环境配置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-启动-Tomcat"><span class="toc-number">3.</span> <span class="toc-text">3 启动 Tomcat</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-重设管理员密码（可选）"><span class="toc-number">4.</span> <span class="toc-text">4 重设管理员密码（可选）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-安装插件（可选）"><span class="toc-number">5.</span> <span class="toc-text">5 安装插件（可选）</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Android基础/" title="Android基础">Android基础<sup>5</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Kotlin/" title="Kotlin">Kotlin<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/NDK/" title="NDK">NDK<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/View/" title="View">View<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/其他技能/" title="其他技能">其他技能<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/开源库/" title="开源库">开源库<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/我的开源/" title="我的开源">我的开源<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/持续集成/" title="持续集成">持续集成<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/相关技能/" title="相关技能">相关技能<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/记录/" title="记录">记录<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/问题解决/" title="问题解决">问题解决<sup>2</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/Android/" title="Android">Android<sup>17</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Kotlin/" title="Kotlin">Kotlin<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Timeline/" title="Timeline">Timeline<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Linux/" title="Linux">Linux<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Java/" title="Java">Java<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/IP/" title="IP">IP<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/IPv4/" title="IPv4">IPv4<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Vector/" title="Vector">Vector<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/View/" title="View">View<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/UEFI/" title="UEFI">UEFI<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/RecyclerView/" title="RecyclerView">RecyclerView<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Dialog/" title="Dialog">Dialog<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Permissions/" title="Permissions">Permissions<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/微博/" title="微博">微博<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Splash/" title="Splash">Splash<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/AsyncTask/" title="AsyncTask">AsyncTask<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/打包/" title="打包">打包<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/多渠道/" title="多渠道">多渠道<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Git/" title="Git">Git<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/JNI/" title="JNI">JNI<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://duduhuo.cc" target="_blank" title="独毒火的个人网站">远山寒鸦</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.jianshu.com/u/14ab91761183" target="_blank" title="独毒火的简书主页">独毒火的简书</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m LiYing. <br/>
+			To be better.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/3832099344" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/liying2008" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		<a href="http://stackoverflow.com/users/8063656" target="_blank" class="icon-stack-overflow" title="stackoverflow"></a>
+		
+		
+		<a href="https://twitter.com/topliying" target="_blank" class="icon-twitter" title="twitter"></a>
+		
+		
+		<a href="https://www.facebook.com/topliying" target="_blank" class="icon-facebook" title="facebook"></a>
+		
+		
+		<a href="https://www.linkedin.com/in/neuliying" target="_blank" class="icon-linkedin" title="linkedin"></a>
+		
+		
+		
+		
+		<a href="https://plus.google.com/101179519081581317436?rel=author" target="_blank" class="icon-google_plus" title="Google+"></a>
+		
+		
+		<a href="mailto:liruoer2008@yeah.net" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2019 
+		
+		<a href="/about" target="_blank" title="独毒火">独毒火</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+        getSize();
+        if (myWidth >= 1024) {
+          c.click();
+        }
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+
+
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1261936722'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s23.cnzz.com/z_stat.php%3Fid%3D1261936722' type='text/javascript'%3E%3C/script%3E"));</script>
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

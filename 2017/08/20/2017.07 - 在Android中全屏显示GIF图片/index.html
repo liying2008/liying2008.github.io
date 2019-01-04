@@ -1,0 +1,628 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>在Android中全屏显示GIF图片 | duduhuo&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="独毒火">
+    
+
+    
+    <meta name="description" content="1、自定义一个GifView首先自定义一个GifView，用于显示Gif图片。GifView的代码参考自https://github.com/Cutta/GifView。 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616">
+<meta name="keywords" content="Android,GIF">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在Android中全屏显示GIF图片">
+<meta property="og:url" content="/2017/08/20/2017.07 - 在Android中全屏显示GIF图片/index.html">
+<meta property="og:site_name" content="duduhuo&#39;s Blog">
+<meta property="og:description" content="1、自定义一个GifView首先自定义一个GifView，用于显示Gif图片。GifView的代码参考自https://github.com/Cutta/GifView。 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616">
+<meta property="og:image" content="http://img.blog.csdn.net/20170820001655683">
+<meta property="og:image" content="http://img.blog.csdn.net/20170820001722379">
+<meta property="og:updated_time" content="2018-04-08T14:09:34.684Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="在Android中全屏显示GIF图片">
+<meta name="twitter:description" content="1、自定义一个GifView首先自定义一个GifView，用于显示Gif图片。GifView的代码参考自https://github.com/Cutta/GifView。 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20170820001655683">
+<meta name="twitter:creator" content="@topliying">
+<link rel="publisher" href="101179519081581317436">
+
+    
+    <link rel="alternative" href="/atom.xml" title="duduhuo&#39;s Blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.png">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="duduhuo&#39;s Blog" title="duduhuo&#39;s Blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="duduhuo&#39;s Blog">duduhuo&#39;s Blog</a></h1>
+				<h2 class="blog-motto">To be better.</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页|Home</a></li>
+					
+						<li><a href="/archives">归档|Archives</a></li>
+					
+						<li><a href="/about">关于|About</a></li>
+					
+						<li><a href="/categories">分类|Categories</a></li>
+					
+						<li><a href="/tags">标签|Tags</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2017/08/20/2017.07 - 在Android中全屏显示GIF图片/" title="在Android中全屏显示GIF图片" itemprop="url">在Android中全屏显示GIF图片</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/101179519081581317436?rel=author" title="独毒火" target="_blank" itemprop="author">独毒火</a>
+		
+  <p class="article-time">
+    <time datetime="2017-08-19T16:00:00.000Z" itemprop="datePublished"> Published 2017-08-20</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1、自定义一个GifView"><span class="toc-number">1.</span> <span class="toc-text">1、自定义一个GifView</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2、在布局文件中使用GifView"><span class="toc-number">2.</span> <span class="toc-text">2、在布局文件中使用GifView</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3、缩放Gif图片，使之全屏显示"><span class="toc-number">3.</span> <span class="toc-text">3、缩放Gif图片，使之全屏显示</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4、效果演示"><span class="toc-number">4.</span> <span class="toc-text">4、效果演示</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5、代码下载"><span class="toc-number">5.</span> <span class="toc-text">5、代码下载</span></a></li></ol>
+		
+		</div>
+		
+		<h1 id="1、自定义一个GifView"><a href="#1、自定义一个GifView" class="headerlink" title="1、自定义一个GifView"></a>1、自定义一个GifView</h1><p>首先自定义一个GifView，用于显示Gif图片。GifView的代码参考自<a href="https://github.com/Cutta/GifView" target="_blank" rel="external">https://github.com/Cutta/GifView</a>。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div><div class="line">195</div><div class="line">196</div><div class="line">197</div><div class="line">198</div><div class="line">199</div><div class="line">200</div><div class="line">201</div><div class="line">202</div><div class="line">203</div><div class="line">204</div><div class="line">205</div><div class="line">206</div><div class="line">207</div><div class="line">208</div><div class="line">209</div><div class="line">210</div><div class="line">211</div><div class="line">212</div><div class="line">213</div><div class="line">214</div><div class="line">215</div><div class="line">216</div><div class="line">217</div><div class="line">218</div><div class="line">219</div><div class="line">220</div><div class="line">221</div><div class="line">222</div><div class="line">223</div><div class="line">224</div><div class="line">225</div><div class="line">226</div><div class="line">227</div><div class="line">228</div><div class="line">229</div><div class="line">230</div><div class="line">231</div><div class="line">232</div><div class="line">233</div><div class="line">234</div><div class="line">235</div><div class="line">236</div><div class="line">237</div><div class="line">238</div><div class="line">239</div><div class="line">240</div><div class="line">241</div><div class="line">242</div><div class="line">243</div><div class="line">244</div><div class="line">245</div><div class="line">246</div><div class="line">247</div><div class="line">248</div><div class="line">249</div><div class="line">250</div><div class="line">251</div><div class="line">252</div><div class="line">253</div><div class="line">254</div><div class="line">255</div><div class="line">256</div><div class="line">257</div><div class="line">258</div><div class="line">259</div><div class="line">260</div><div class="line">261</div><div class="line">262</div><div class="line">263</div><div class="line">264</div><div class="line">265</div><div class="line">266</div><div class="line">267</div><div class="line">268</div><div class="line">269</div><div class="line">270</div><div class="line">271</div><div class="line">272</div><div class="line">273</div><div class="line">274</div><div class="line">275</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> cc.duduhuo.gifviewdemo.view;</div><div class="line"></div><div class="line"><span class="keyword">import</span> android.annotation.SuppressLint;</div><div class="line"><span class="keyword">import</span> android.content.Context;</div><div class="line"><span class="keyword">import</span> android.graphics.Canvas;</div><div class="line"><span class="keyword">import</span> android.graphics.Movie;</div><div class="line"><span class="keyword">import</span> android.os.Build;</div><div class="line"><span class="keyword">import</span> android.os.SystemClock;</div><div class="line"><span class="keyword">import</span> android.support.annotation.NonNull;</div><div class="line"><span class="keyword">import</span> android.util.AttributeSet;</div><div class="line"><span class="keyword">import</span> android.view.View;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * =======================================================</div><div class="line"> * 作者：liying - liruoer2008@yeah.net</div><div class="line"> * 日期：2017/8/19 20:09</div><div class="line"> * 版本：1.0</div><div class="line"> * 描述：自定义显示Gif图片的View</div><div class="line"> * 备注：</div><div class="line"> * =======================================================</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GifView</span> <span class="keyword">extends</span> <span class="title">View</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> DEFAULT_MOVIE_VIEW_DURATION = <span class="number">1000</span>;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> mMovieResourceId;</div><div class="line">    <span class="keyword">private</span> Movie mMovie;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">long</span> mMovieStart;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> mCurrentAnimationTime;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * Position for drawing animation frames in the center of the view.</div><div class="line">     */</div><div class="line">    <span class="keyword">private</span> <span class="keyword">float</span> mLeft;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">float</span> mTop;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * Scaling factor to fit the animation within view bounds.</div><div class="line">     */</div><div class="line">    <span class="keyword">private</span> <span class="keyword">float</span> mScale;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * Scaled movie frames width and height.</div><div class="line">     */</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> mMeasuredMovieWidth;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> mMeasuredMovieHeight;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">boolean</span> mPaused;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span> mVisible = <span class="keyword">true</span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">GifView</span><span class="params">(Context context)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>(context, <span class="keyword">null</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">GifView</span><span class="params">(Context context, AttributeSet attrs)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>(context, attrs, <span class="number">0</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">GifView</span><span class="params">(Context context, AttributeSet attrs, <span class="keyword">int</span> defStyle)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>(context, attrs, defStyle);</div><div class="line">        init();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="comment">/*</span></div><div class="line">         * Starting from HONEYCOMB(Api Level:11) have to turn off HW acceleration to draw</div><div class="line">         * Movie on Canvas.</div><div class="line">         */</div><div class="line">        <span class="keyword">if</span> (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.HONEYCOMB) &#123;</div><div class="line">            setLayerType(View.LAYER_TYPE_SOFTWARE, <span class="keyword">null</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setGifResource</span><span class="params">(<span class="keyword">int</span> movieResourceId)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.mMovieResourceId = movieResourceId;</div><div class="line">        mMovie = Movie.decodeStream(getResources().openRawResource(mMovieResourceId));</div><div class="line">        requestLayout();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getGifResource</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.mMovieResourceId;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">play</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>.mPaused) &#123;</div><div class="line">            <span class="keyword">this</span>.mPaused = <span class="keyword">false</span>;</div><div class="line">            <span class="comment">/*</span></div><div class="line">             * Calculate new movie start time, so that it resumes from the same</div><div class="line">             * frame.</div><div class="line">             */</div><div class="line">            mMovieStart = SystemClock.uptimeMillis() - mCurrentAnimationTime;</div><div class="line">            invalidate();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">pause</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (!<span class="keyword">this</span>.mPaused) &#123;</div><div class="line">            <span class="keyword">this</span>.mPaused = <span class="keyword">true</span>;</div><div class="line"></div><div class="line">            invalidate();</div><div class="line">        &#125;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isPaused</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.mPaused;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isPlaying</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> !<span class="keyword">this</span>.mPaused;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onMeasure</span><span class="params">(<span class="keyword">int</span> widthMeasureSpec, <span class="keyword">int</span> heightMeasureSpec)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (mMovie != <span class="keyword">null</span>) &#123;</div><div class="line">            <span class="keyword">int</span> movieWidth = mMovie.width();</div><div class="line">            <span class="keyword">int</span> movieHeight = mMovie.height();</div><div class="line"></div><div class="line">			<span class="comment">/*</span></div><div class="line">             * Calculate horizontal scaling</div><div class="line">			 */</div><div class="line">            <span class="keyword">float</span> scaleH = <span class="number">1f</span>;</div><div class="line">            <span class="keyword">int</span> measureModeWidth = MeasureSpec.getMode(widthMeasureSpec);</div><div class="line"></div><div class="line">            <span class="keyword">if</span> (measureModeWidth != MeasureSpec.UNSPECIFIED) &#123;</div><div class="line">                <span class="keyword">int</span> maximumWidth = MeasureSpec.getSize(widthMeasureSpec);</div><div class="line">                <span class="keyword">if</span> (movieWidth &gt; maximumWidth) &#123;</div><div class="line">                    scaleH = (<span class="keyword">float</span>) movieWidth / (<span class="keyword">float</span>) maximumWidth;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">			<span class="comment">/*</span></div><div class="line">             * calculate vertical scaling</div><div class="line">			 */</div><div class="line">            <span class="keyword">float</span> scaleW = <span class="number">1f</span>;</div><div class="line">            <span class="keyword">int</span> measureModeHeight = MeasureSpec.getMode(heightMeasureSpec);</div><div class="line"></div><div class="line">            <span class="keyword">if</span> (measureModeHeight != MeasureSpec.UNSPECIFIED) &#123;</div><div class="line">                <span class="keyword">int</span> maximumHeight = MeasureSpec.getSize(heightMeasureSpec);</div><div class="line">                <span class="keyword">if</span> (movieHeight &gt; maximumHeight) &#123;</div><div class="line">                    scaleW = (<span class="keyword">float</span>) movieHeight / (<span class="keyword">float</span>) maximumHeight;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">			<span class="comment">/*</span></div><div class="line">             * calculate overall scale</div><div class="line">			 */</div><div class="line">            mScale = <span class="number">1f</span> / Math.max(scaleH, scaleW);</div><div class="line"></div><div class="line">            mMeasuredMovieWidth = (<span class="keyword">int</span>) (movieWidth * mScale);</div><div class="line">            mMeasuredMovieHeight = (<span class="keyword">int</span>) (movieHeight * mScale);</div><div class="line"></div><div class="line">            setMeasuredDimension(mMeasuredMovieWidth, mMeasuredMovieHeight);</div><div class="line"></div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="comment">/*</span></div><div class="line">             * No movie set, just set minimum available size.</div><div class="line">			 */</div><div class="line">            setMeasuredDimension(getSuggestedMinimumWidth(), getSuggestedMinimumHeight());</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onLayout</span><span class="params">(<span class="keyword">boolean</span> changed, <span class="keyword">int</span> l, <span class="keyword">int</span> t, <span class="keyword">int</span> r, <span class="keyword">int</span> b)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onLayout(changed, l, t, r, b);</div><div class="line">        <span class="comment">/* Calculate mLeft / mTop for drawing in center */</span></div><div class="line">        mLeft = (getWidth() - mMeasuredMovieWidth) / <span class="number">2f</span>;</div><div class="line">        mTop = (getHeight() - mMeasuredMovieHeight) / <span class="number">2f</span>;</div><div class="line"></div><div class="line">        mVisible = getVisibility() == View.VISIBLE;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDraw</span><span class="params">(Canvas canvas)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (mMovie != <span class="keyword">null</span>) &#123;</div><div class="line">            <span class="keyword">if</span> (!mPaused) &#123;</div><div class="line">                updateAnimationTime();</div><div class="line">                drawMovieFrame(canvas);</div><div class="line">                invalidateView();</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                drawMovieFrame(canvas);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * Invalidates view only if it is mVisible.</div><div class="line">     * &lt;br&gt;</div><div class="line">     * &#123;<span class="doctag">@link</span> #postInvalidateOnAnimation()&#125; is used for Jelly Bean and higher.</div><div class="line">     */</div><div class="line">    <span class="meta">@SuppressLint</span>(<span class="string">"NewApi"</span>)</div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">invalidateView</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (mVisible) &#123;</div><div class="line">            <span class="keyword">if</span> (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.JELLY_BEAN) &#123;</div><div class="line">                postInvalidateOnAnimation();</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                invalidate();</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * Calculate current animation time</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">updateAnimationTime</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">long</span> now = android.os.SystemClock.uptimeMillis();</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (mMovieStart == <span class="number">0</span>) &#123;</div><div class="line">            mMovieStart = now;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">int</span> dur = mMovie.duration();</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (dur == <span class="number">0</span>) &#123;</div><div class="line">            dur = DEFAULT_MOVIE_VIEW_DURATION;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        mCurrentAnimationTime = (<span class="keyword">int</span>) ((now - mMovieStart) % dur);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * Draw current GIF frame</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">drawMovieFrame</span><span class="params">(Canvas canvas)</span> </span>&#123;</div><div class="line">        mMovie.setTime(mCurrentAnimationTime);</div><div class="line"></div><div class="line">        canvas.save();</div><div class="line">        canvas.scale(mScale, mScale);</div><div class="line">        mMovie.draw(canvas, mLeft / mScale, mTop / mScale);</div><div class="line">        canvas.restore();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@SuppressLint</span>(<span class="string">"NewApi"</span>)</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onScreenStateChanged</span><span class="params">(<span class="keyword">int</span> screenState)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onScreenStateChanged(screenState);</div><div class="line">        mVisible = screenState == SCREEN_STATE_ON;</div><div class="line">        invalidateView();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * get gif width</div><div class="line">     *</div><div class="line">     * <span class="doctag">@return</span> width</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getGifWidth</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> mMovie.width();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * get gif height</div><div class="line">     *</div><div class="line">     * <span class="doctag">@return</span> height</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getGifHeight</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> mMovie.height();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@SuppressLint</span>(<span class="string">"NewApi"</span>)</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onVisibilityChanged</span><span class="params">(@NonNull View changedView, <span class="keyword">int</span> visibility)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onVisibilityChanged(changedView, visibility);</div><div class="line">        mVisible = visibility == View.VISIBLE;</div><div class="line">        invalidateView();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onWindowVisibilityChanged</span><span class="params">(<span class="keyword">int</span> visibility)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onWindowVisibilityChanged(visibility);</div><div class="line">        mVisible = visibility == View.VISIBLE;</div><div class="line">        invalidateView();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>重要的是要添加<code>getGifWidth()</code>和<code>getGifHeight()</code>两个方法，用于获取Gif图片的宽高。<br>（注：获取Gif图片的宽和高可以简单等价于获取对应Movie对象的宽和高。）</p>
+<h1 id="2、在布局文件中使用GifView"><a href="#2、在布局文件中使用GifView" class="headerlink" title="2、在布局文件中使用GifView"></a>2、在布局文件中使用GifView</h1><p>自定义的View可以在布局文件中直接使用。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">cc.duduhuo.gifviewdemo.view.GifView</span></span></div><div class="line">    <span class="attr">android:id</span>=<span class="string">"@+id/gifView"</span></div><div class="line">    <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line">    <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">    <span class="attr">android:layout_gravity</span>=<span class="string">"center"</span>/&gt;</div></pre></td></tr></table></figure>
+<h1 id="3、缩放Gif图片，使之全屏显示"><a href="#3、缩放Gif图片，使之全屏显示" class="headerlink" title="3、缩放Gif图片，使之全屏显示"></a>3、缩放Gif图片，使之全屏显示</h1><p>首先需要调用<code>GifView</code>的<code>setGifResource(int)</code>方法设置要显示的Gif图片。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">GifView gifView = (GifView) findViewById(R.id.gifView);</div><div class="line">gifView.setGifResource(R.drawable.gif1);    <span class="comment">// 设置显示的Gif图片</span></div></pre></td></tr></table></figure>
+<p>其次，调用<code>GifView</code>的<code>getGifWidth()</code>方法和<code>getGifHeight()</code>方法得到Gif图片的宽和高。再获取到当前屏幕的宽和高，分别计算屏幕和Gif图片的宽度和高度比例。为了使图片的宽高比例保持不变，选择缩放比例较小的一边进行缩放。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> width = gifView.getGifWidth();</div><div class="line"><span class="keyword">int</span> height = gifView.getGifHeight();</div><div class="line"><span class="keyword">int</span> screenWidth = getScreenSize().width();</div><div class="line"><span class="keyword">int</span> screenHeight = getScreenSize().height();</div><div class="line"></div><div class="line"><span class="keyword">if</span> (width &gt; <span class="number">0</span> &amp;&amp; height &gt; <span class="number">0</span>) &#123;</div><div class="line">	<span class="keyword">float</span> wScale = (<span class="keyword">float</span>) screenWidth / width;</div><div class="line">	<span class="keyword">float</span> hScale = (<span class="keyword">float</span>) screenHeight / height;</div><div class="line">	<span class="keyword">if</span> (wScale &lt; <span class="number">1</span> || hScale &lt; <span class="number">1</span>) &#123;</div><div class="line">		<span class="comment">// 如果图片的宽或高大于屏幕的宽或高，则图片会自动缩小至全屏</span></div><div class="line">	&#125; <span class="keyword">else</span> <span class="keyword">if</span> (wScale &lt;= hScale) &#123;</div><div class="line">		<span class="comment">// 宽度全屏</span></div><div class="line">		gifView.setScaleX(wScale);</div><div class="line">		gifView.setScaleY(wScale);</div><div class="line">	&#125; <span class="keyword">else</span> &#123;</div><div class="line">		<span class="comment">// 高度全屏</span></div><div class="line">		gifView.setScaleX(hScale);</div><div class="line">		gifView.setScaleY(hScale);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>getScreenSize()</code>方法用于获取屏幕的宽度和高度。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 得到屏幕的尺寸</div><div class="line"> *</div><div class="line"> * <span class="doctag">@return</span> 包含屏幕尺寸的Rect对象</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">private</span> Rect <span class="title">getScreenSize</span><span class="params">()</span> </span>&#123;</div><div class="line">	Rect localRect = <span class="keyword">new</span> Rect();</div><div class="line">	getWindow().getDecorView().getWindowVisibleDisplayFrame(localRect);</div><div class="line">	<span class="keyword">return</span> localRect;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="4、效果演示"><a href="#4、效果演示" class="headerlink" title="4、效果演示"></a>4、效果演示</h1><table>
+<thead>
+<tr>
+<th style="text-align:center">宽度全屏</th>
+<th style="text-align:center">高度全屏</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><img src="http://img.blog.csdn.net/20170820001655683" alt="宽度全屏"></td>
+<td style="text-align:center"><img src="http://img.blog.csdn.net/20170820001722379" alt="高度全屏"></td>
+</tr>
+</tbody>
+</table>
+<h1 id="5、代码下载"><a href="#5、代码下载" class="headerlink" title="5、代码下载"></a>5、代码下载</h1><p>Demo代码下载：<a href="http://download.csdn.net/download/u012939909/9941754" target="_blank" rel="external">http://download.csdn.net/download/u012939909/9941754</a></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Android基础/">Android基础</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Android/">Android</a><a href="/tags/GIF/">GIF</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="/2017/08/20/2017.07 - 在Android中全屏显示GIF图片/" data-title="在Android中全屏显示GIF图片 | duduhuo&#39;s Blog" data-tsina="3832099344" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2017/11/19/2017.08 - 使用Gradle打包Kotlin项目代码、生成Kotlin代码文档/" title="使用Gradle打包Kotlin项目代码、生成Kotlin代码文档">
+  <strong>上一篇：</strong><br/>
+  <span>
+  使用Gradle打包Kotlin项目代码、生成Kotlin代码文档</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2017/06/18/2017.06 - Simpler - 轻量级的微博客户端(开源)/"  title="Simpler - 轻量级的微博客户端(开源)">
+ <strong>下一篇：</strong><br/> 
+ <span>Simpler - 轻量级的微博客户端(开源)
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1、自定义一个GifView"><span class="toc-number">1.</span> <span class="toc-text">1、自定义一个GifView</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2、在布局文件中使用GifView"><span class="toc-number">2.</span> <span class="toc-text">2、在布局文件中使用GifView</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3、缩放Gif图片，使之全屏显示"><span class="toc-number">3.</span> <span class="toc-text">3、缩放Gif图片，使之全屏显示</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4、效果演示"><span class="toc-number">4.</span> <span class="toc-text">4、效果演示</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5、代码下载"><span class="toc-number">5.</span> <span class="toc-text">5、代码下载</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Android基础/" title="Android基础">Android基础<sup>5</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Kotlin/" title="Kotlin">Kotlin<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/NDK/" title="NDK">NDK<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/View/" title="View">View<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/其他技能/" title="其他技能">其他技能<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/开源库/" title="开源库">开源库<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/我的开源/" title="我的开源">我的开源<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/持续集成/" title="持续集成">持续集成<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/相关技能/" title="相关技能">相关技能<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/记录/" title="记录">记录<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/问题解决/" title="问题解决">问题解决<sup>2</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/Android/" title="Android">Android<sup>17</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Kotlin/" title="Kotlin">Kotlin<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Timeline/" title="Timeline">Timeline<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Linux/" title="Linux">Linux<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Java/" title="Java">Java<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/IP/" title="IP">IP<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/IPv4/" title="IPv4">IPv4<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Vector/" title="Vector">Vector<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/View/" title="View">View<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/UEFI/" title="UEFI">UEFI<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/RecyclerView/" title="RecyclerView">RecyclerView<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Dialog/" title="Dialog">Dialog<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Permissions/" title="Permissions">Permissions<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/微博/" title="微博">微博<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Splash/" title="Splash">Splash<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/AsyncTask/" title="AsyncTask">AsyncTask<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/打包/" title="打包">打包<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/多渠道/" title="多渠道">多渠道<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Git/" title="Git">Git<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/JNI/" title="JNI">JNI<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://duduhuo.cc" target="_blank" title="独毒火的个人网站">远山寒鸦</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.jianshu.com/u/14ab91761183" target="_blank" title="独毒火的简书主页">独毒火的简书</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m LiYing. <br/>
+			To be better.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/3832099344" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/liying2008" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		<a href="http://stackoverflow.com/users/8063656" target="_blank" class="icon-stack-overflow" title="stackoverflow"></a>
+		
+		
+		<a href="https://twitter.com/topliying" target="_blank" class="icon-twitter" title="twitter"></a>
+		
+		
+		<a href="https://www.facebook.com/topliying" target="_blank" class="icon-facebook" title="facebook"></a>
+		
+		
+		<a href="https://www.linkedin.com/in/neuliying" target="_blank" class="icon-linkedin" title="linkedin"></a>
+		
+		
+		
+		
+		<a href="https://plus.google.com/101179519081581317436?rel=author" target="_blank" class="icon-google_plus" title="Google+"></a>
+		
+		
+		<a href="mailto:liruoer2008@yeah.net" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2019 
+		
+		<a href="/about" target="_blank" title="独毒火">独毒火</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+        getSize();
+        if (myWidth >= 1024) {
+          c.click();
+        }
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+
+
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1261936722'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s23.cnzz.com/z_stat.php%3Fid%3D1261936722' type='text/javascript'%3E%3C/script%3E"));</script>
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
