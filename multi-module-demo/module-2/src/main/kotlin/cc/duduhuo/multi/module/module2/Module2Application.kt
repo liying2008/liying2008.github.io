@@ -1,5 +1,6 @@
 package cc.duduhuo.multi.module.module2
 
+import cc.duduhuo.multi.module.module1.EnableModule1
 import org.springframework.boot.autoconfigure.SpringBootApplication
 
 /**
@@ -10,5 +11,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
  * Remarks:
  * =======================================================
  */
-@SpringBootApplication(scanBasePackages = ["cc.duduhuo.multi.module"])
+@SpringBootApplication
+@EnableModule1
 class Module2Application
