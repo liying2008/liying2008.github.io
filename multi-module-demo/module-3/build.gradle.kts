@@ -20,10 +20,6 @@ configurations {
     }
 }
 
-repositories {
-    mavenCentral()
-}
-
 dependencies {
     implementation(project(":module-2"))
     implementation("org.springframework.boot:spring-boot-starter-aop")
