@@ -17,10 +17,12 @@ import org.springframework.stereotype.Service
 class MultiSubTestService {
 
     fun getSubClass(type: Int): SuperClass {
-        return when (type) {
+        val c = when (type) {
             0 -> SubClassA(190)
             1 -> SubClassB(89)
             else -> SuperClass("100", "Unknown", 0)
         }
+        c.extra = "aha"
+        return c
     }
 }

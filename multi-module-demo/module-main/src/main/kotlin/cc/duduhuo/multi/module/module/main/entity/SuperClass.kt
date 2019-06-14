@@ -9,7 +9,8 @@ package cc.duduhuo.multi.module.module.main.entity
  * =======================================================
  */
 open class SuperClass(
-    var userId: String? = null,
-    var name: String = "",
-    var age: Int = 0
+    var userId: String,
+    var name: String,
+    var age: Int,
+    var extra: String = ""
 )
