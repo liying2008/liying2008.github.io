@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2019-01-04T11:44:54.972Z</updated>
+  <updated>2019-08-17T02:51:26.846Z</updated>
   <id>/</id>
   
   <author>
@@ -14,6 +14,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Jenkins 提效工具之 Jenkins Helper 使用介绍</title>
+    <link href="/2019/08/17/2019.01%20-%20Jenkins%20%E6%8F%90%E6%95%88%E5%B7%A5%E5%85%B7%E4%B9%8B%20Jenkins%20Helper%20%E4%BD%BF%E7%94%A8%E4%BB%8B%E7%BB%8D/"/>
+    <id>/2019/08/17/2019.01 - Jenkins 提效工具之 Jenkins Helper 使用介绍/</id>
+    <published>2019-08-16T16:00:00.000Z</published>
+    <updated>2019-08-17T02:51:26.846Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;strong&gt;Jenkins Helper&lt;/strong&gt; 是一款能够极大地提高工作效率的 &lt;strong&gt;Chrome/Firefox 浏览器扩展程序&lt;/strong&gt; 。&lt;/p&gt;
+&lt;h2 id=&quot;下载地址&quot;&gt;&lt;a href=&quot;#下载地址&quot; class=&quot;header
+    
+    </summary>
+    
+      <category term="我的开源" scheme="/categories/%E6%88%91%E7%9A%84%E5%BC%80%E6%BA%90/"/>
+    
+      <category term="工具分享" scheme="/categories/%E6%88%91%E7%9A%84%E5%BC%80%E6%BA%90/%E5%B7%A5%E5%85%B7%E5%88%86%E4%BA%AB/"/>
+    
+      <category term="持续集成" scheme="/categories/%E6%88%91%E7%9A%84%E5%BC%80%E6%BA%90/%E5%B7%A5%E5%85%B7%E5%88%86%E4%BA%AB/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90/"/>
+    
+    
+      <category term="Jenkins" scheme="/tags/Jenkins/"/>
+    
+      <category term="Chrome Extensions" scheme="/tags/Chrome-Extensions/"/>
+    
+      <category term="Firefox Addons" scheme="/tags/Firefox-Addons/"/>
+    
+  </entry>
   
   <entry>
     <title>移动硬盘安装Ubuntu系统（UEFI引导）的一些记录</title>
@@ -418,28 +447,6 @@
   </entry>
   
   <entry>
-    <title>Android Studio2.2中JNI的简单使用</title>
-    <link href="/2016/11/27/2016.07%20-%20Android%20Studio2.2%E4%B8%ADJNI%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/"/>
-    <id>/2016/11/27/2016.07 - Android Studio2.2中JNI的简单使用/</id>
-    <published>2016-11-26T16:00:00.000Z</published>
-    <updated>2018-04-08T14:09:34.309Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;方式1：直接创建包含C-支持的项目&quot;&gt;&lt;a href=&quot;#方式1：直接创建包含C-支持的项目&quot; class=&quot;headerlink&quot; title=&quot;方式1：直接创建包含C++支持的项目&quot;&gt;&lt;/a&gt;方式1：直接创建包含C++支持的项目&lt;/h2&gt;&lt;p&gt;如下图所示，创建
-    
-    </summary>
-    
-      <category term="NDK" scheme="/categories/NDK/"/>
-    
-    
-      <category term="Android" scheme="/tags/Android/"/>
-    
-      <category term="JNI" scheme="/tags/JNI/"/>
-    
-  </entry>
-  
-  <entry>
     <title>小技巧：使用Excel通过拼接文本批量生成代码</title>
     <link href="/2016/11/27/2016.08%20-%20%E5%B0%8F%E6%8A%80%E5%B7%A7%EF%BC%9A%E4%BD%BF%E7%94%A8Excel%E9%80%9A%E8%BF%87%E6%8B%BC%E6%8E%A5%E6%96%87%E6%9C%AC%E6%89%B9%E9%87%8F%E7%94%9F%E6%88%90%E4%BB%A3%E7%A0%81/"/>
     <id>/2016/11/27/2016.08 - 小技巧：使用Excel通过拼接文本批量生成代码/</id>
@@ -459,26 +466,24 @@
   </entry>
   
   <entry>
-    <title>Android时间轴(Timeline)效果的实现</title>
-    <link href="/2016/11/26/2016.05%20-%20Android%E6%97%B6%E9%97%B4%E8%BD%B4(Timeline)%E6%95%88%E6%9E%9C%E7%9A%84%E5%AE%9E%E7%8E%B0/"/>
-    <id>/2016/11/26/2016.05 - Android时间轴(Timeline)效果的实现/</id>
-    <published>2016-11-25T16:00:00.000Z</published>
-    <updated>2018-04-08T14:09:34.285Z</updated>
+    <title>Android Studio2.2中JNI的简单使用</title>
+    <link href="/2016/11/27/2016.07%20-%20Android%20Studio2.2%E4%B8%ADJNI%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/"/>
+    <id>/2016/11/27/2016.07 - Android Studio2.2中JNI的简单使用/</id>
+    <published>2016-11-26T16:00:00.000Z</published>
+    <updated>2018-04-08T14:09:34.309Z</updated>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;1、时间轴效果&quot;&gt;&lt;a href=&quot;#1、时间轴效果&quot; class=&quot;headerlink&quot; title=&quot;1、时间轴效果&quot;&gt;&lt;/a&gt;1、时间轴效果&lt;/h2&gt;&lt;p&gt;我们要实现的时间轴效果如下图所示，这是锤子手机的查看物流信息界面的截图。&lt;br&gt;&lt;img src=&quot;
+      &lt;h2 id=&quot;方式1：直接创建包含C-支持的项目&quot;&gt;&lt;a href=&quot;#方式1：直接创建包含C-支持的项目&quot; class=&quot;headerlink&quot; title=&quot;方式1：直接创建包含C++支持的项目&quot;&gt;&lt;/a&gt;方式1：直接创建包含C++支持的项目&lt;/h2&gt;&lt;p&gt;如下图所示，创建
     
     </summary>
     
-      <category term="View" scheme="/categories/View/"/>
+      <category term="NDK" scheme="/categories/NDK/"/>
     
     
       <category term="Android" scheme="/tags/Android/"/>
     
-      <category term="View" scheme="/tags/View/"/>
-    
-      <category term="Timeline" scheme="/tags/Timeline/"/>
+      <category term="JNI" scheme="/tags/JNI/"/>
     
   </entry>
   

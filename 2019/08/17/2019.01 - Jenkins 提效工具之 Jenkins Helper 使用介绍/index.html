@@ -4,27 +4,33 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>使用Android Studio进行多渠道打包 | duduhuo&#39;s Blog</title>
+    <title>Jenkins 提效工具之 Jenkins Helper 使用介绍 | duduhuo&#39;s Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="独毒火">
     
 
     
-    <meta name="description" content="以友盟统计为例。 在AndroidManifest.xml文件中声明channel信息，如下。 123456&amp;lt;meta-data    android:name=&quot;UMENG_APPKEY&quot;    android:value=&quot;产品的APPKEY&quot; /&amp;gt;&amp;lt;meta-data    android:name=&quot;UMENG_CHANNEL&quot;    android:value=&quot;$&amp;#">
-<meta name="keywords" content="Android,打包,多渠道">
+    <meta name="description" content="Jenkins Helper 是一款能够极大地提高工作效率的 Chrome/Firefox 浏览器扩展程序 。 下载地址在线安装Chrome Web Store / Firefox Add-ons 下载文件离线安装https://github.com/liying2008/jenkins-helper/releases 功能介绍该扩展程序可以：  Job 监控: 监控 Jenkins Job 的构">
+<meta name="keywords" content="Jenkins,Chrome Extensions,Firefox Addons">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用Android Studio进行多渠道打包">
-<meta property="og:url" content="/2016/12/17/2016.13 - 使用Android Studio进行多渠道打包/index.html">
+<meta property="og:title" content="Jenkins 提效工具之 Jenkins Helper 使用介绍">
+<meta property="og:url" content="/2019/08/17/2019.01 - Jenkins 提效工具之 Jenkins Helper 使用介绍/index.html">
 <meta property="og:site_name" content="duduhuo&#39;s Blog">
-<meta property="og:description" content="以友盟统计为例。 在AndroidManifest.xml文件中声明channel信息，如下。 123456&amp;lt;meta-data    android:name=&quot;UMENG_APPKEY&quot;    android:value=&quot;产品的APPKEY&quot; /&amp;gt;&amp;lt;meta-data    android:name=&quot;UMENG_CHANNEL&quot;    android:value=&quot;$&amp;#">
-<meta property="og:image" content="http://img.blog.csdn.net/20161217161351553">
-<meta property="og:image" content="http://img.blog.csdn.net/20161217162538709">
-<meta property="og:updated_time" content="2018-04-08T14:09:34.451Z">
+<meta property="og:description" content="Jenkins Helper 是一款能够极大地提高工作效率的 Chrome/Firefox 浏览器扩展程序 。 下载地址在线安装Chrome Web Store / Firefox Add-ons 下载文件离线安装https://github.com/liying2008/jenkins-helper/releases 功能介绍该扩展程序可以：  Job 监控: 监控 Jenkins Job 的构">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190817101954797.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190817102051731.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2019081710212359.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190817102148202.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190817102214454.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190817102248341.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2019081710231389.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190817102340658.png">
+<meta property="og:updated_time" content="2019-08-17T02:51:26.846Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用Android Studio进行多渠道打包">
-<meta name="twitter:description" content="以友盟统计为例。 在AndroidManifest.xml文件中声明channel信息，如下。 123456&amp;lt;meta-data    android:name=&quot;UMENG_APPKEY&quot;    android:value=&quot;产品的APPKEY&quot; /&amp;gt;&amp;lt;meta-data    android:name=&quot;UMENG_CHANNEL&quot;    android:value=&quot;$&amp;#">
-<meta name="twitter:image" content="http://img.blog.csdn.net/20161217161351553">
+<meta name="twitter:title" content="Jenkins 提效工具之 Jenkins Helper 使用介绍">
+<meta name="twitter:description" content="Jenkins Helper 是一款能够极大地提高工作效率的 Chrome/Firefox 浏览器扩展程序 。 下载地址在线安装Chrome Web Store / Firefox Add-ons 下载文件离线安装https://github.com/liying2008/jenkins-helper/releases 功能介绍该扩展程序可以：  Job 监控: 监控 Jenkins Job 的构">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20190817101954797.png">
 <meta name="twitter:creator" content="@topliying">
 <link rel="publisher" href="101179519081581317436">
 
@@ -90,14 +96,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/12/17/2016.13 - 使用Android Studio进行多渠道打包/" title="使用Android Studio进行多渠道打包" itemprop="url">使用Android Studio进行多渠道打包</a>
+      <a href="/2019/08/17/2019.01 - Jenkins 提效工具之 Jenkins Helper 使用介绍/" title="Jenkins 提效工具之 Jenkins Helper 使用介绍" itemprop="url">Jenkins 提效工具之 Jenkins Helper 使用介绍</a>
   </h1>
   <p class="article-author">By
        
 		<a href="https://plus.google.com/101179519081581317436?rel=author" title="独毒火" target="_blank" itemprop="author">独毒火</a>
 		
   <p class="article-time">
-    <time datetime="2016-12-16T16:00:00.000Z" itemprop="datePublished"> Published 2016-12-17</time>
+    <time datetime="2019-08-16T16:00:00.000Z" itemprop="datePublished"> Published 2019-08-17</time>
     
   </p>
 </header>
@@ -106,25 +112,76 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#下载地址"><span class="toc-number">1.</span> <span class="toc-text">下载地址</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#在线安装"><span class="toc-number">1.1.</span> <span class="toc-text">在线安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#下载文件离线安装"><span class="toc-number">1.2.</span> <span class="toc-text">下载文件离线安装</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#功能介绍"><span class="toc-number">2.</span> <span class="toc-text">功能介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tips"><span class="toc-number">3.</span> <span class="toc-text">Tips</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#源代码"><span class="toc-number">4.</span> <span class="toc-text">源代码</span></a></li></ol>
 		
 		</div>
 		
-		<p>以<strong>友盟统计</strong>为例。</p>
-<p>在<code>AndroidManifest.xml</code>文件中声明channel信息，如下。</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">meta-data</span></span></div><div class="line">    <span class="attr">android:name</span>=<span class="string">"UMENG_APPKEY"</span></div><div class="line">    <span class="attr">android:value</span>=<span class="string">"产品的APPKEY"</span> /&gt;</div><div class="line"><span class="tag">&lt;<span class="name">meta-data</span></span></div><div class="line">    <span class="attr">android:name</span>=<span class="string">"UMENG_CHANNEL"</span></div><div class="line">    <span class="attr">android:value</span>=<span class="string">"$&#123;UMENG_CHANNEL_VALUE&#125;"</span> /&gt;</div></pre></td></tr></table></figure>
-<p>在主module下的<code>build.gradle</code>文件中<code>android</code>节点下配置<code>productFlavors</code>，如下。</p>
-<figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">productFlavors &#123;</div><div class="line">    fir &#123;</div><div class="line">        manifestPlaceholders = [UMENG_CHANNEL_VALUE: <span class="string">"fir"</span>]</div><div class="line">    &#125;</div><div class="line">    _360 &#123;</div><div class="line">        manifestPlaceholders = [UMENG_CHANNEL_VALUE: <span class="string">"360"</span>]</div><div class="line">    &#125;</div><div class="line">    baidu &#123;</div><div class="line">        manifestPlaceholders = [UMENG_CHANNEL_VALUE: <span class="string">"baidu"</span>]</div><div class="line">    &#125;</div><div class="line">    _91 &#123;</div><div class="line">        manifestPlaceholders = [UMENG_CHANNEL_VALUE: <span class="string">"91"</span>]</div><div class="line">    &#125;</div><div class="line">    hiapk &#123;</div><div class="line">        manifestPlaceholders = [UMENG_CHANNEL_VALUE: <span class="string">"hiapk"</span>]</div><div class="line">    &#125;</div><div class="line">    tqq &#123;</div><div class="line">        manifestPlaceholders = [UMENG_CHANNEL_VALUE: <span class="string">"tqq"</span>]</div><div class="line">    &#125;</div><div class="line">    wandoujia &#123;</div><div class="line">        manifestPlaceholders = [UMENG_CHANNEL_VALUE: <span class="string">"wandoujia"</span>]</div><div class="line">    &#125;</div><div class="line">    xiaomi &#123;</div><div class="line">        manifestPlaceholders = [UMENG_CHANNEL_VALUE: <span class="string">"xiaomi"</span>]</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+		<p><strong>Jenkins Helper</strong> 是一款能够极大地提高工作效率的 <strong>Chrome/Firefox 浏览器扩展程序</strong> 。</p>
+<h2 id="下载地址"><a href="#下载地址" class="headerlink" title="下载地址"></a>下载地址</h2><h3 id="在线安装"><a href="#在线安装" class="headerlink" title="在线安装"></a>在线安装</h3><p><a href="https://chrome.google.com/webstore/detail/jenkins-helper/lkjoiakaidioklnfdejmnoebfbjcbemh" target="_blank" rel="external">Chrome Web Store</a> / <a href="https://addons.mozilla.org/addon/jenkins-helper/" target="_blank" rel="external">Firefox Add-ons</a></p>
+<h3 id="下载文件离线安装"><a href="#下载文件离线安装" class="headerlink" title="下载文件离线安装"></a>下载文件离线安装</h3><p><a href="https://github.com/liying2008/jenkins-helper/releases" target="_blank" rel="external">https://github.com/liying2008/jenkins-helper/releases</a></p>
+<h2 id="功能介绍"><a href="#功能介绍" class="headerlink" title="功能介绍"></a>功能介绍</h2><p>该扩展程序可以：</p>
+<ol>
+<li><strong>Job 监控</strong>: 监控 Jenkins Job 的构建状态，构建完毕后显示通知。提供“监视器”界面，可以随时查看所关注的 Job 的构建状态。提供筛选功能，可根据构建结果筛选 Job。</li>
+</ol>
+<p><img src="https://img-blog.csdnimg.cn/20190817101954797.png" alt="Monitor"></p>
 <blockquote>
-<p> <strong>上面的fir、_360、baidu， _91等是Flavor名称，双引号里面的fir、360、baidu、91等是渠道名称。</strong> </p>
+<p>注意：状态更新的频率以及通知频率可以在设置页更改。默认是60s更新一次状态，每次构建结束显示通知。</p>
 </blockquote>
-<p>最后可以 在<code>android</code>节点下的<code>buildTypes</code>节点下指定输出APK的文件名。<br>比如要输出文件名格式为“ipgw_4.2.5_fir.apk”，其中，ipgw为产品名称，4.2.5为版本名称，fir为渠道名称，各部分之间用下划线分割。<br>代码片段如下：</p>
-<figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">applicationVariants.all &#123;</div><div class="line">    variant -&gt;</div><div class="line">        variant.outputs.<span class="keyword">each</span> &#123;</div><div class="line">            output -&gt;</div><div class="line">                <span class="keyword">def</span> outFile = output.outputFile</div><div class="line">                <span class="keyword">if</span> (outFile != <span class="keyword">null</span> &amp;&amp; outFile.name.endsWith(<span class="string">".apk"</span>)) &#123;</div><div class="line">                    <span class="keyword">def</span> fileName = <span class="string">"ipgw_4.2.5_$&#123;variant.productFlavors[0].name.replaceAll("</span>_<span class="string">", "</span><span class="string">")&#125;.apk"</span></div><div class="line">                    output.outputFile = <span class="keyword">new</span> <span class="keyword">File</span>(outFile.parent, fileName)</div><div class="line">                &#125;</div><div class="line">        &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>到此，配置就算完成了。</p>
-<p>点击Android Studio菜单栏中的“Build”，选择“Generate Signed APK…”，选择keystore，输入密码等，点击“Next”，出现渠道选择界面，如下图。</p>
-<p><img src="http://img.blog.csdn.net/20161217161351553" alt="选择渠道"></p>
-<p>此处可以选择需要打包的渠道，当然也可以按<code>Ctrl + A</code>全选。<br>点击Finish开始打包。<br>打包完成之后，在工程的主模块目录下就可以看到已经经过 <strong>打包、签名、命名</strong> 好的APK文件了，如下图所示。</p>
-<p><img src="http://img.blog.csdn.net/20161217162538709" alt="打包完成"></p>
+<ol>
+<li><strong>构建参数查看</strong>： 在每一个 Build 页面及其子页面下可方便快速查看构建信息以及构建参数。并提供查看上一次/下一次构建参数的按钮，可直接下载完整的构建日志到本地。</li>
+</ol>
+<p><img src="https://img-blog.csdnimg.cn/20190817102051731.png" alt="Parameters"></p>
+<blockquote>
+<p>注意：只有在构建页面及其子页面下才有数据，其他页面显示 “<strong>No Data</strong>”。 如：<code>http://127.0.0.1:8080/jenkins/job/Pipeline2/4/</code> 是构建页面，<code>http://127.0.0.1:8080/jenkins/job/Pipeline2/4/console</code> 是子页面。  </p>
+<p><strong>支持 Blue Ocean 页面</strong>。</p>
+</blockquote>
+<ol>
+<li><strong>节点磁盘空间监控</strong>: 监控 Jenkins 节点的磁盘空间大小，如果节点剩余空间大小小于或等于给定的阈值，则弹框告警。并提供“监视器”页面，可随时查看节点的剩余空间大小。</li>
+</ol>
+<p><img src="https://img-blog.csdnimg.cn/2019081710212359.png" alt="Node Monitor"></p>
+<blockquote>
+<p>注意：状态更新的频率可以在设置页更改。默认是2小时更新一次状态，每次浏览器启动后会自动检查最新的状态。</p>
+</blockquote>
+<ol>
+<li><strong>地址栏智能搜索</strong>： 在地址栏输入 <strong><code>jk</code></strong>，按 <kbd>Space</kbd> 键进入 Jenkins Job 智能搜索模式，输入Job名称可快速匹配到对应的 Jenkins Job 链接。</li>
+</ol>
+<p><img src="https://img-blog.csdnimg.cn/20190817102148202.png" alt="Omnibox"></p>
+<blockquote>
+<p>注意：使用此功能需要提前在设置页配置好 <strong>地址栏智能搜索（Omnibox Intelligent Search）</strong> 。</p>
+</blockquote>
+<ol>
+<li><strong>Job 统计</strong>： 统计Job的 <strong>运行节点</strong> / <strong>定时构建时间表</strong> / <strong>是否禁用</strong> / <strong>是否允许并发</strong> 等信息。</li>
+</ol>
+<p><img src="https://img-blog.csdnimg.cn/20190817102214454.png" alt="Job Statistics"></p>
+<blockquote>
+<p>注意：使用此功能需要提前在设置页配置好 <strong>Job 统计设置（Job Statistics Settings）</strong> 。</p>
+</blockquote>
+<ol>
+<li><strong>参数暂存与恢复</strong>： 在 <strong>Build/Rebuild</strong> 页面底部会生成两个按钮，分别是 <strong>Stash Parameters</strong> 和 <strong>Recover Parameters</strong>，点击 <strong>Stash Parameters</strong> 可以将当前页面填写的参数值保存起来，点击 <strong>Recover Parameters</strong> 可以将上次保存的参数值恢复到当前页面。</li>
+</ol>
+<p><img src="https://img-blog.csdnimg.cn/20190817102248341.png" alt="Params Stash And Recover"></p>
+<blockquote>
+<p>注意：每一次新保存的参数都会将之前保存的参数覆盖掉，即 <strong>Stash Parameters</strong> 只会保存<strong>一份</strong>参数值。<br>支持 跨Job、跨Jenkins 使用，即 A Job 保存的参数可以恢复给 B Job 。</p>
+</blockquote>
+<ol>
+<li><strong>自定义设置</strong>： 可以针对自己的独特需求进行一些个性化的设置。</li>
+</ol>
+<p><img src="https://img-blog.csdnimg.cn/2019081710231389.png" alt="Settings"></p>
+<blockquote>
+<p>注意：更改设置之后，记得点击页面底部的 <strong>保存设置（Save Settings）</strong> 以应用更改。</p>
+</blockquote>
+<h2 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h2><ol>
+<li>为了让该扩展可以顺利访问 Jenkins API 而不依赖用户在 Jenkins 网站的登录状态，建议在设置界面配置 Jenkins 的 API Token ，如下图所示：</li>
+</ol>
+<p><img src="https://img-blog.csdnimg.cn/20190817102340658.png" alt="Jenkins Token Settings"></p>
+<ol>
+<li>扩展离线安装方法：</li>
+</ol>
+<ul>
+<li><strong>Chrome</strong>：打开 <code>chrome://extensions</code> 页面，打开 <strong>开发者模式</strong> ，重启浏览器（<code>chrome://restart</code>），重新进入 <code>chrome://extensions</code> 页面，将crx文件拖至当前页面上即可。</li>
+<li><strong>Firefox</strong>：将xpi文件拖至浏览器任一页面上即可。</li>
+</ul>
+<h2 id="源代码"><a href="#源代码" class="headerlink" title="源代码"></a>源代码</h2><p><a href="https://github.com/liying2008/jenkins-helper" target="_blank" rel="external">https://github.com/liying2008/jenkins-helper</a></p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -132,13 +189,13 @@
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/相关技能/">相关技能</a>
+  <a class="article-category-link" href="/categories/我的开源/">我的开源</a>►<a class="article-category-link" href="/categories/我的开源/工具分享/">工具分享</a>►<a class="article-category-link" href="/categories/我的开源/工具分享/持续集成/">持续集成</a>
 </div>
 
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/Android/">Android</a><a href="/tags/打包/">打包</a><a href="/tags/多渠道/">多渠道</a>
+  <span></span> <a href="/tags/Jenkins/">Jenkins</a><a href="/tags/Chrome-Extensions/">Chrome Extensions</a><a href="/tags/Firefox-Addons/">Firefox Addons</a>
   </div>
 
 </div>
@@ -147,7 +204,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="/2016/12/17/2016.13 - 使用Android Studio进行多渠道打包/" data-title="使用Android Studio进行多渠道打包 | duduhuo&#39;s Blog" data-tsina="3832099344" class="share clearfix">
+	  <div data-url="/2019/08/17/2019.01 - Jenkins 提效工具之 Jenkins Helper 使用介绍/" data-title="Jenkins 提效工具之 Jenkins Helper 使用介绍 | duduhuo&#39;s Blog" data-tsina="3832099344" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -160,19 +217,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2016/12/19/2016.14 - Android获取本机IPv4地址/" title="Android获取本机IPv4地址">
-  <strong>上一篇：</strong><br/>
-  <span>
-  Android获取本机IPv4地址</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2016/12/07/2016.11 - 问题解决：启动Genymotion模拟器，执行adb命令异常/"  title="问题解决：启动Genymotion模拟器，执行adb命令异常">
+<a href="/2018/06/20/2018.02 - 移动硬盘安装Ubuntu系统（UEFI引导）的一些记录/"  title="移动硬盘安装Ubuntu系统（UEFI引导）的一些记录">
  <strong>下一篇：</strong><br/> 
- <span>问题解决：启动Genymotion模拟器，执行adb命令异常
+ <span>移动硬盘安装Ubuntu系统（UEFI引导）的一些记录
 </span>
 </a>
 </div>
@@ -188,7 +237,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
  
- 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#下载地址"><span class="toc-number">1.</span> <span class="toc-text">下载地址</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#在线安装"><span class="toc-number">1.1.</span> <span class="toc-text">在线安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#下载文件离线安装"><span class="toc-number">1.2.</span> <span class="toc-text">下载文件离线安装</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#功能介绍"><span class="toc-number">2.</span> <span class="toc-text">功能介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tips"><span class="toc-number">3.</span> <span class="toc-text">Tips</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#源代码"><span class="toc-number">4.</span> <span class="toc-text">源代码</span></a></li></ol>
  
   </div>
 
