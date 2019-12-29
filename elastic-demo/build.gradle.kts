@@ -11,6 +11,7 @@ allprojects {
 tasks.register<Delete>("cleanAll") {
     delete(rootProject.buildDir)
     subprojects {
+        delete(buildDir)
         delete("out")
     }
 }
