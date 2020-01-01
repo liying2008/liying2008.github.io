@@ -1,2 +1,2 @@
 rootProject.name = "elastic-demo"
-include("demo1")
+include("demo1", "demo2")

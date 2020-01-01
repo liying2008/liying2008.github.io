@@ -1,0 +1,15 @@
+server:
+  port: 8082
+
+data:
+  elasticsearch:
+    rest:
+      uris:
+        - http://192.168.2.200:9200
+      username: elastic
+      password: elastic
+      connection-timeout: 2000
+      socket-timeout: 500
+      connection-request-timeout: 1000
+      max-conn-per-route: 10
+      max-conn-total: 30

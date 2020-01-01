@@ -1,0 +1,43 @@
+{
+  "properties": {
+    "actionTime": {
+      "type": "text"
+    },
+    "description": {
+      "type": "text"
+    },
+    "logId": {
+      "type": "keyword"
+    },
+    "success": {
+      "type": "boolean"
+    },
+    "userAgent": {
+      "properties": {
+        "agentName": {
+          "type": "keyword"
+        },
+        "agentVersionMajor": {
+          "type": "keyword"
+        },
+        "deviceClass": {
+          "type": "keyword"
+        },
+        "osName": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword"
+            }
+          }
+        },
+        "osVersion": {
+          "type": "keyword"
+        }
+      }
+    },
+    "userId": {
+      "type": "keyword"
+    }
+  }
+}
