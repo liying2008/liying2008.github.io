@@ -1,29 +1,20 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    id("org.springframework.boot") version "2.2.1.RELEASE"
-    id("io.spring.dependency-management") version "1.0.8.RELEASE"
-    kotlin("jvm") version "1.3.50"
-    kotlin("plugin.spring") version "1.3.50"
-    kotlin("plugin.jpa") version "1.3.50"
+    id("org.springframework.boot") version "2.3.4.RELEASE"
+    id("io.spring.dependency-management") version "1.0.10.RELEASE"
+    kotlin("jvm") version "1.3.72"
+    kotlin("plugin.spring") version "1.3.72"
+    kotlin("plugin.jpa") version "1.3.72"
 }
 
 group = "cc.duduhuo.multi-module"
 version = "0.0.1-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_1_8
 
-val developmentOnly by configurations.creating
-configurations {
-    runtimeClasspath {
-        extendsFrom(developmentOnly)
-    }
-    compileOnly {
-        extendsFrom(configurations.annotationProcessor.get())
-    }
-}
-
 dependencies {
     implementation(project(":module-2"))
+    implementation("org.springframework.boot:spring-boot-starter-validation")
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
